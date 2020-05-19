@@ -1,0 +1,3 @@
+class SprintBacklog extends Backlog{
+    
+}
