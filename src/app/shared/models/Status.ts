@@ -1,4 +1,4 @@
-enum Status{
+enum Status {
     TO_DO,
     DOING,
     DONE

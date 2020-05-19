@@ -1,3 +1,3 @@
-class SprintBacklog extends Backlog{
-    
+class SprintBacklog extends Backlog {
+
 }

@@ -1,3 +1,3 @@
-class ScrumTeamMember extends User{
+class ScrumTeamMember extends User {
 
 }

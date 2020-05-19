@@ -1,3 +1,3 @@
-class ProductBacklog extends Backlog{
-    
+class ProductBacklog extends Backlog {
+
 }
