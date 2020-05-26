@@ -8,16 +8,11 @@ import { AppRoutingModule } from "./app-routing.module";
 import { ThemeModule } from "./theme/theme.module";
 import { CoreModule } from "./core/core.module";
 import { SharedModule } from './shared/shared.module';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
-
-const COMPONENTS = [
-  DashboardComponent
-];
+import { PagesModule } from './pages/pages.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ...COMPONENTS
   ],
   imports: [
     BrowserModule,
@@ -26,6 +21,7 @@ const COMPONENTS = [
     AppRoutingModule,
     ThemeModule,
     CoreModule,
+    PagesModule,
     SharedModule,
   ],
   providers: [{ provide: LOCALE_ID, useValue: "fr-FR" }],
