@@ -123,5 +123,8 @@
       }
     }
   },
-  "defaultProject": "gl52-projet"
+  "defaultProject": "gl52-projet",
+  "cli": {
+    "analytics": "983c627e-e006-4265-8866-4edbcbed9511"
+  }
 }
