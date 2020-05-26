@@ -1,0 +1,31 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button aria-label="Toggle sidenav" (click)="sidenav.toggle()">
+    <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+  </button>
+  Scrumboard
+</mat-toolbar>
+<!-- <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav
+      #sidenav
+      class="sidenav"
+      fixedInViewport
+      attr.role="navigation"
+      mode="side"
+      [(opened)]="opened"
+    > -->
+<mat-sidenav-container>
+  <mat-sidenav
+    mode="side"
+    [(opened)]="opened"
+  >
+  <mat-nav-list>
+      <a mat-list-item href="#"><mat-icon>home</mat-icon> Accueil</a>
+      <a mat-list-item href="#"><mat-icon>bookmark</mat-icon> Projets</a>
+      <a mat-list-item href="#"><mat-icon>event</mat-icon> Réunions</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>
