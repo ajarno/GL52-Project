@@ -1,0 +1,21 @@
+.card {
+    cursor: pointer;
+    min-width: fit-content;
+    width: 20vw;
+    text-align: center;
+}
+
+.card:hover {
+    background-color:rgba(63, 81, 181, 0.005);
+}
+
+.mat-card-header {
+    justify-content: center;
+}
+
+.mat-card-image {
+    width: auto;
+    max-height: 200px;
+    padding-right: 10px;
+    padding-left: 10px;
+}

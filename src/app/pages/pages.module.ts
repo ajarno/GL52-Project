@@ -3,14 +3,16 @@ import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SharedModule } from '../shared/shared.module';
 import { ThemeModule } from '../theme/theme.module';
+import { RoleAuthenticationComponent } from './role-authentication/role-authentication.component';
 
 const COMPONENTS = [
-  DashboardComponent
+  DashboardComponent,
+  RoleAuthenticationComponent
 ];
 
 @NgModule({
   declarations: [
-    ...COMPONENTS
+    ...COMPONENTS,
   ],
   imports: [
     CommonModule,
