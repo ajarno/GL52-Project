@@ -15,3 +15,20 @@
   top: 0;
   z-index: 1;
 }
+
+.mat-drawer-content.mat-sidenav-content {
+  height: calc(100vh - 64px);
+}
+
+.toolbar-icon {
+  padding: 0 14px;
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+.authentified-role {
+  font-size: 0.75em;
+  padding-right: 20px; 
+}
