@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { RoleAuthenticationComponent } from './pages/role-authentication/role-authentication.component';
+import { ProjectsComponent } from './pages/projects/projects.component';
 
 const routes: Routes = [
   {
@@ -12,10 +13,10 @@ const routes: Routes = [
     path: "",
     component: DashboardComponent
   },
-  // {
-  //   path: 'my-new-route',
-  //   component: MyNewRouteComponent,
-  // }
+  {
+     path: 'projects',
+     component: ProjectsComponent,
+  }
 ];
 
 @NgModule({
