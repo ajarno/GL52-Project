@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
@@ -27,10 +27,13 @@ export class ProjectsComponent implements OnInit {
       ];
     })
   );
-
-  constructor(private breakpointObserver: BreakpointObserver) { }
+  @Input() project: string;
+  constructor(private breakpointObserver: BreakpointObserver,private router : Router) { }
 
   ngOnInit(): void {
   }
-
+  validate(project:string) {
+    localStorage.setItem("project", project);
+    this.router.navigate(['projects/backlog']);
+  }
 }
