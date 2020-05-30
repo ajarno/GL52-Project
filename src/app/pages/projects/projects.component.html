@@ -1,10 +1,35 @@
 <div class="grid-container">
     <h1 class="mat-h1">My Projects</h1>
 
+
     <mat-grid-list cols="4" rowHeight="350px">
 
         <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
-            <mat-card class="projects-card">
+            <a href="projects/new" *ngIf="card.title=='NEW'">
+                <mat-card class="projects-card">
+                    <!-- <mat-card-header>
+                    <mat-card-title>
+                        {{card.title}}
+                        <button mat-fab color="primary" class="more-button" [matMenuTriggerFor]="menu">
+                                <mat-icon>bookmark</mat-icon>
+                            </button>
+                        <mat-menu #menu="matMenu" xPosition="before">
+                            <button mat-menu-item>Expand</button>
+                            <button mat-menu-item>Remove</button>
+                        </mat-menu>
+                    </mat-card-title>
+                </mat-card-header> -->
+
+                    <mat-card-content class="projects-card-content">
+                        <div class="projects-card-new">
+                            <h1> + New Project</h1>
+                        </div>
+
+                    </mat-card-content>
+
+                </mat-card>
+            </a>
+            <mat-card class="projects-card" *ngIf="card.title!='NEW'">
                 <mat-card-header>
                     <mat-card-title>
                         {{card.title}}
@@ -15,13 +40,6 @@
                             <button mat-menu-item>Expand</button>
                             <button mat-menu-item>Remove</button>
                         </mat-menu>
-                        <!-- <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-                        <mat-icon>more_vert</mat-icon>
-                        </button>
-                            <mat-menu #menu="matMenu" xPosition="before">
-                                <button mat-menu-item>Expand</button>
-                                <button mat-menu-item>Remove</button>
-                            </mat-menu> -->
                     </mat-card-title>
                 </mat-card-header>
                 <a (click)="validate(card.title)">
