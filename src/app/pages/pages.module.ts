@@ -5,25 +5,26 @@ import { SharedModule } from '../shared/shared.module';
 import { ThemeModule } from '../theme/theme.module';
 import { RoleAuthenticationComponent } from './role-authentication/role-authentication.component';
 import { ProjectsComponent } from './projects/projects.component';
-import { BacklogComponent } from './projects/backlog/backlog.component';
 import { NewProjectComponent } from './projects/new-project/new-project.component';
+import { RouterModule } from '@angular/router';
+
 
 const COMPONENTS = [
   DashboardComponent,
-  RoleAuthenticationComponent
+  RoleAuthenticationComponent,
+  ProjectsComponent,
+  NewProjectComponent,
 ];
 
 @NgModule({
   declarations: [
     ...COMPONENTS,
-    ProjectsComponent,
-    BacklogComponent,
-    NewProjectComponent,
   ],
   imports: [
     CommonModule,
     SharedModule,
     ThemeModule,
+    RouterModule
   ]
 })
 export class PagesModule { }

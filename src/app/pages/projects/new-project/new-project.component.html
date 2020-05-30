@@ -2,13 +2,13 @@
     <h1 class="mat-h1">New Project</h1>
     <mat-form-field class="mat-form-field">
         <mat-label>Nom de projet</mat-label>
-        <input matInput type="text">
+        <input matInput type="text" [(ngModel)]="name">
 
     </mat-form-field>
     <br>
     <mat-form-field appearance="fill" class="mat-form-field-textarea">
         <mat-label>Description</mat-label>
-        <textarea matInput rows="5"></textarea>
+        <textarea matInput rows="5" [(ngModel)]="description"></textarea>
     </mat-form-field>
     <br>
 
@@ -18,7 +18,7 @@
     </section>
     <section>
         <div class="example-button-row">
-            <button mat-raised-button color="primary">Create</button>
+            <button mat-raised-button color="primary" routerLink="../">Create</button>
             <!-- <button mat-raised-button color="warn">Cancel</button> -->
             <a mat-raised-button color="warn" routerLink="../">Cancel</a>
         </div>

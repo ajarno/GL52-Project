@@ -11,6 +11,8 @@ export class NewProjectComponent implements OnInit {
   members:string[]=['Alice','Bob']
   memberChecked:boolean[]=[false,false]
   projectMembers:string[]=[]
+  name:string;
+  description:string;
 
   addMembers(i:number):void{
     if(!this.memberChecked[i]){

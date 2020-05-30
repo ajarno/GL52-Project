@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { RoleAuthenticationComponent } from './pages/role-authentication/role-authentication.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
-import { BacklogComponent } from './pages/projects/backlog/backlog.component';
 import { NewProjectComponent } from './pages/projects/new-project/new-project.component';
 const routes: Routes = [
   {
@@ -17,10 +16,6 @@ const routes: Routes = [
   {
      path: 'projects',
      component: ProjectsComponent,
-  },
-  {
-    path: 'projects/backlog',
-    component: BacklogComponent,
   },
   {
     path: 'projects/new',
