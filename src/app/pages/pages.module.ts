@@ -6,6 +6,7 @@ import { ThemeModule } from '../theme/theme.module';
 import { RoleAuthenticationComponent } from './role-authentication/role-authentication.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { BacklogComponent } from './projects/backlog/backlog.component';
+import { NewProjectComponent } from './projects/new-project/new-project.component';
 
 const COMPONENTS = [
   DashboardComponent,
@@ -17,6 +18,7 @@ const COMPONENTS = [
     ...COMPONENTS,
     ProjectsComponent,
     BacklogComponent,
+    NewProjectComponent,
   ],
   imports: [
     CommonModule,

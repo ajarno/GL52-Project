@@ -4,7 +4,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { RoleAuthenticationComponent } from './pages/role-authentication/role-authentication.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
 import { BacklogComponent } from './pages/projects/backlog/backlog.component';
-
+import { NewProjectComponent } from './pages/projects/new-project/new-project.component';
 const routes: Routes = [
   {
     path: "authentication",
@@ -21,6 +21,10 @@ const routes: Routes = [
   {
     path: 'projects/backlog',
     component: BacklogComponent,
+  },
+  {
+    path: 'projects/new',
+    component: NewProjectComponent,
   }
 ];
 

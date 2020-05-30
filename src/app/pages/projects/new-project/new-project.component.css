@@ -1,0 +1,28 @@
+.grid-container {
+    margin: 20px;
+}
+
+.mat-form-field {
+    width: 300px;
+}
+
+.mat-form-field-textarea {
+    width: 60%;
+}
+
+section {
+    display: table;
+    margin: 8px;
+}
+
+.example-button-row button {
+    display: table-cell;
+    margin-right: 20px;
+}
+
+.example-section {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 60px;
+}

@@ -10,7 +10,32 @@ import { Router } from '@angular/router';
 export class ProjectsComponent implements OnInit {
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map(({ matches }) => {
-      if (matches) {
+      if(localStorage.getItem("role")=='Product Owner'){
+        if (matches) {
+          return [
+            { title: 'NEW', cols: 1, rows: 1 },
+            { title: 'Project 1', cols: 1, rows: 1 },
+            { title: 'Project 2', cols: 1, rows: 1 },
+            { title: 'Project 3', cols: 1, rows: 1 },
+            { title: 'Project 4', cols: 1, rows: 1 }
+          ];
+        }
+        return [
+          { title: 'NEW', cols: 1, rows: 1 },
+          { title: 'Project 1', cols: 1, rows: 1 },
+          { title: 'Project 2', cols: 1, rows: 1 },
+          { title: 'Project 3', cols: 1, rows: 1 },
+          { title: 'Project 4', cols: 1, rows: 1 }
+        ];
+      }else{
+        if (matches) {
+          return [
+            { title: 'Project 1', cols: 1, rows: 1 },
+            { title: 'Project 2', cols: 1, rows: 1 },
+            { title: 'Project 3', cols: 1, rows: 1 },
+            { title: 'Project 4', cols: 1, rows: 1 }
+          ];
+        }
         return [
           { title: 'Project 1', cols: 1, rows: 1 },
           { title: 'Project 2', cols: 1, rows: 1 },
@@ -18,13 +43,9 @@ export class ProjectsComponent implements OnInit {
           { title: 'Project 4', cols: 1, rows: 1 }
         ];
       }
+      
 
-      return [
-        { title: 'Project 1', cols: 1, rows: 1 },
-        { title: 'Project 2', cols: 1, rows: 1 },
-        { title: 'Project 3', cols: 1, rows: 1 },
-        { title: 'Project 4', cols: 1, rows: 1 }
-      ];
+      
     })
   );
   @Input() project: string;

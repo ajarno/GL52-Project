@@ -11,6 +11,10 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MenuComponent } from './components/menu/menu.component';
+import { MatTableModule} from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
 
 const BASE_MODULES = [CommonModule, FormsModule, ReactiveFormsModule, LayoutModule];
 
@@ -29,6 +33,9 @@ const MAT_MODULES = [
   MatMenuModule,
   MatSidenavModule,
   MatToolbarModule,
+  MatTableModule,
+  MatInputModule,
+  MatCheckboxModule
 ];
 
 const COMPONENTS = [
