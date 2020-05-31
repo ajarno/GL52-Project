@@ -1,4 +1,6 @@
-class Project {
+import { ScrumMaster, ScrumTeam, ProductOwner, Meeting, ProductBacklog, Sprint } from '.';
+
+export class Project {
     private name : string;
 
     private description : string;
@@ -7,7 +9,7 @@ class Project {
 
     private scrumTeam : ScrumTeam;
 
-    private projectOwner : ProjectOwner;
+    private productOwner : ProductOwner;
 
     private meetings : Array<Meeting> = new Array();
 
@@ -49,12 +51,12 @@ class Project {
         this.scrumTeam = scrumTeam;
     }
 
-    public getProjectOwner() : ProjectOwner {
-        return this.projectOwner;
+    public getProductOwner() : ProductOwner {
+        return this.productOwner;
     }
 
-    public setProjectOwner(projectOwner : ProjectOwner) : void {
-        this.projectOwner = projectOwner;
+    public setProjectOwner(productOwner : ProductOwner) : void {
+        this.productOwner = productOwner;
     }
 
     public getMeetings() : Array<Meeting> {

@@ -1,4 +1,4 @@
-abstract class User {
+export abstract class User {
     private firstName : string;
 
     private lastName : string;

@@ -1,0 +1,4 @@
+{
+    "/api/*": "/$1",
+    "/productBacklog/:projectId": "/productBacklog?projectId=:projectId"
+}

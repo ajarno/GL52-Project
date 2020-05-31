@@ -1,4 +1,6 @@
-class ProjectOwner extends User {
+import { User, Project, Task, Status, ProductBacklog } from '.';
+
+export class ProductOwner extends User {
 
     public addTask(project : Project, task : Task) {
         project.getProductBacklog().addTask(task);

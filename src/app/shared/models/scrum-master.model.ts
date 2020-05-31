@@ -1,4 +1,6 @@
-class ScrumMaster extends User {
+import { User, Project, Meeting, Task } from '.';
+
+export class ScrumMaster extends User {
     
     public createMeeting(project : Project, meeting : Meeting) : void {
         project.addMeeting(meeting);
