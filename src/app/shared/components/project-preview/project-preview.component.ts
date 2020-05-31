@@ -24,5 +24,6 @@ export class ProjectPreviewComponent implements OnInit {
   delete():void{
     this.deleted.emit(this.index);
   }
+  goto(){}
 
 }

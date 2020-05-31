@@ -2,16 +2,17 @@
     <h1 class="mat-h1">My Projects</h1>
 
     <mat-grid-list cols="4" rowHeight="350px">
-        <mat-grid-tile *ngFor="let card of cards | async;let i = index" [colspan]="card.cols" [rowspan]="card.rows">
+        <mat-grid-tile *ngFor="let card of cards | async;let i = index" [colspan]="1" [rowspan]="1">
             <app-project-preview-new></app-project-preview-new>
-            <app-project-preview title="{{card.title}}" id="{{card.id}}" content='{{card.content}}' index={{i}} *ngIf="card.title!='NEW'" (finished)="finish($event)" (deleted)="delete($event)"></app-project-preview>
+            <app-project-preview title="{{card.name}}" id="{{card.id}}" content='{{card.description}}' index={{i}} *ngIf="card.name!='NEW'" (finished)="finish($event)" (deleted)="delete($event)"></app-project-preview>
         </mat-grid-tile>
+
     </mat-grid-list>
     <div *ngIf="role=='Scrum Master'">
         <hr>
         <mat-grid-list cols="4" rowHeight="350px">
-            <mat-grid-tile *ngFor="let card of carda | async" [colspan]="card.cols" [rowspan]="card.rows">
-                <app-project-preview-finish title="{{card.title}}" id="{{card.id}}" content='{{card.content}}' *ngIf="card.title!='NEW'"></app-project-preview-finish>
+            <mat-grid-tile *ngFor="let card of carda | async" [colspan]="1" [rowspan]="1">
+                <app-project-preview-finish title="{{card.name}}" id="{{card.id}}" content='{{card.description}}' *ngIf="card.name!='NEW'"></app-project-preview-finish>
             </mat-grid-tile>
         </mat-grid-list>
     </div>

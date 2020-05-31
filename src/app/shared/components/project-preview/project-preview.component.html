@@ -1,4 +1,4 @@
-<!-- <a [routerLink]="[id,'backlog']"></a> -->
+<!-- <a href="#"> -->
 <mat-card class="projects-card">
     <mat-card-header>
         <mat-card-title>
@@ -6,7 +6,7 @@
         </mat-card-title>
     </mat-card-header>
     <mat-card-actions *ngIf="role=='Scrum Master'">
-        <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+        <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu" (click)="$event.stopPropagation();">
             <mat-icon>more_vert</mat-icon>
           </button>
         <mat-menu #menu="matMenu" xPosition="before">
@@ -18,3 +18,4 @@
         {{content}}
     </mat-card-content>
 </mat-card>
+<!-- </a> -->
