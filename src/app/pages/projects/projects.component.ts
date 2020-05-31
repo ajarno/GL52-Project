@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
 import { ProjectService } from '../../core/services/project.service';
 import { Project } from 'src/app/shared/models';
 
-let projectsInit : any[]=[{name:'NEW'}];
-let projectsFinished : any[]=[];
+// let projectsInit : any[]=[{name:'NEW'}];
+// let projectsFinished : any[]=[];
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
@@ -17,14 +17,16 @@ let projectsFinished : any[]=[];
 export class ProjectsComponent implements OnInit {
   role:string;
   projects: Observable<Project[]>;
+  projectsInit : any[]=[{name:'NEW'}];
+  projectsFinished : any[]=[];
   carda=this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map(({ matches }) => {
-      return projectsFinished;
+      return this.projectsFinished;
     })
     );
   cards =this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map(({ matches }) => {
-      return projectsInit;      
+      return this.projectsInit;      
     })
   );
   @Input() project: string;
@@ -35,22 +37,22 @@ export class ProjectsComponent implements OnInit {
     this.projects=this.projectService.getProjects();
      this.projects.subscribe(data => {
        data.forEach((value,index,array)=>{
-        projectsInit.push(value);
+        this.projectsInit.push(value);
        });
       
      })
      //console.log(projectsInit)
     if(this.role=="Scrum Team"){
-      projectsInit.splice(0,1);
+      this.projectsInit.splice(0,1);
     }
 
   }
   finish(index:number):void{
-    projectsFinished.push(projectsInit[index]);
-    projectsInit.splice(index,1);
+    this.projectsFinished.push(this.projectsInit[index]);
+    this.projectsInit.splice(index,1);
 
   }
   delete(index:number):void{
-    projectsInit.splice(index,1);
+    this.projectsInit.splice(index,1);
   }
 }

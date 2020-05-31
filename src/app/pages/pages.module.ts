@@ -7,6 +7,7 @@ import { RoleAuthenticationComponent } from './role-authentication/role-authenti
 import { ProjectsComponent } from './projects/projects.component';
 import { NewProjectComponent } from './projects/new-project/new-project.component';
 import { RouterModule } from '@angular/router';
+import { ProjectBacklogComponent } from './projects/project-backlog/project-backlog.component';
 
 
 const COMPONENTS = [
@@ -14,11 +15,13 @@ const COMPONENTS = [
   RoleAuthenticationComponent,
   ProjectsComponent,
   NewProjectComponent,
+  ProjectBacklogComponent,
 ];
 
 @NgModule({
   declarations: [
     ...COMPONENTS,
+
   ],
   imports: [
     CommonModule,
