@@ -32,13 +32,13 @@
             </div>
             <div *ngIf="notFinished">
                 <mat-chip-list
-                    *ngIf="card.members && card.members.length < 3">
+                    *ngIf="card.members && card.members.length < 4">
                     <mat-chip *ngFor="let member of card.members">
                         {{ member }}
                     </mat-chip>
                 </mat-chip-list>
                 <mat-chip-list
-                    *ngIf="card.members && card.members.length > 2">
+                    *ngIf="card.members && card.members.length > 3">
                     <mat-chip>
                         {{ card.members[0] }}
                     </mat-chip>

@@ -2,8 +2,8 @@
     <mat-form-field class="title-field">
       <h2 mat-dialog-title>
         <textarea matInput
-          placeholder="Nom de la tâche"
-          [(ngModel)]="title"
+          placeholder="Nom de la tâche" 
+          [(ngModel)]="title" ngDefaultControl
           (change)="hasTitle()"
           value={{title}}
           cdkTextareaAutosize
@@ -22,7 +22,7 @@
   </button>
   </div>
   <div class="check">
-    <mat-checkbox [(ngModel)]="priority" color=primary>
+    <mat-checkbox [(ngModel)]="priority" ngDefaultControl color=primary>
       Tâche prioritaire
     </mat-checkbox>
   </div>
@@ -31,7 +31,7 @@
     <mat-form-field class="deadline-field">
       <input matInput
           placeholder="Date limite"
-          [(ngModel)]="deadline" 
+          [(ngModel)]="deadline" ngDefaultControl
           [matDatepicker]="picker"
           [ngClass]="compareDatetoToday()"> 
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -56,7 +56,7 @@
     <mat-form-field class="description-field">
       <textarea matInput rows="4"
           placeholder="Description"
-          [(ngModel)]="description"
+          [(ngModel)]="description" ngDefaultControl
           value={{description}}>
       </textarea>
     </mat-form-field>

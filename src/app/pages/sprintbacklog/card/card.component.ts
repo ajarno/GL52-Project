@@ -3,8 +3,8 @@ import { Cardschema } from '../cardschema';
 import { Cardstore } from '../cardstore';
 import { Listschema } from '../listschema';
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
-import { MatSnackBar, MatSnackBarConfig } from "@angular/material/snack-bar"
-import { EditDialogComponent } from "../edit-dialog/edit-dialog.component"
+import { MatSnackBar, MatSnackBarConfig } from "@angular/material/snack-bar";
+import { EditDialogComponent } from "../edit-dialog/edit-dialog.component";
 
 @Component({
   selector: 'app-card',
