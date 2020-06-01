@@ -1,5 +1,5 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule, LOCALE_ID } from "@angular/core";
+import { NgModule, LOCALE_ID } from "@angular/core";;
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
@@ -10,9 +10,10 @@ import { CoreModule } from "./core/core.module";
 import { SharedModule } from './shared/shared.module';
 import { PagesModule } from './pages/pages.module';
 
+
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
