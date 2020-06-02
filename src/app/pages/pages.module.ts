@@ -7,20 +7,10 @@ import { RoleAuthenticationComponent } from './role-authentication/role-authenti
 import { SprintBacklogComponent } from './sprintbacklog/board/sprintbacklog.component';
 import { ListComponent } from './sprintbacklog/list/list.component';
 import { CardComponent } from './sprintbacklog/card/card.component';
-import { DragDropModule } from '@angular/cdk/drag-drop';
-import { MatDialogModule } from "@angular/material/dialog";
-import { MatCardModule } from "@angular/material/card";
-import { MatButtonModule } from "@angular/material/button";
-import {MatInputModule} from '@angular/material/input';
 import { EditDialogComponent } from './sprintbacklog/edit-dialog/edit-dialog.component';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatChipsModule} from '@angular/material/chips';
-import {MatTooltipModule} from '@angular/material/tooltip';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {MatNativeDateModule} from '@angular/material/core';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
-import {MatSelectModule} from '@angular/material/select';
+
 registerLocaleData(localeFr);
 
 const COMPONENTS = [
@@ -40,17 +30,7 @@ const COMPONENTS = [
     CommonModule,
     SharedModule,
     ThemeModule,
-    DragDropModule,
-    MatDialogModule,
-    MatCardModule,
-    MatButtonModule,
-    MatInputModule,
-    MatDatepickerModule,
-    MatChipsModule,
-    MatTooltipModule,
-    MatSnackBarModule,
-    MatNativeDateModule,
-    MatSelectModule
+
   ],
   entryComponents: [ EditDialogComponent ],
   providers: [

@@ -9,6 +9,7 @@ import { ThemeModule } from "./theme/theme.module";
 import { CoreModule } from "./core/core.module";
 import { SharedModule } from './shared/shared.module';
 import { PagesModule } from './pages/pages.module';
+import { MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
 
 
 @NgModule({
