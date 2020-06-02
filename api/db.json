@@ -1,0 +1,36 @@
+{
+    "projects": [
+        { "id": 1, "name": "Projet 1", "description": "Ceci est la description du projet" },
+        { "id": 2, "name": "Projet 2", "description": "Ceci est la description du projet" },
+        { "id": 3, "name": "Projet 3", "description": "Ceci est la description du projet" },
+        { "id": 4, "name": "Projet 4", "description": "Ceci est la description du projet" }
+    ],
+    "productBacklog": [
+        {
+            "projectId": 1,
+            "tasks": [
+                { "name": "Tâche 1", "priority": 5, "description": "Description de la tâche", "users": ["Maxime", "Pierre", "Jeanne"] },
+                { "name": "Tâche 2", "priority": 3, "description": "Description de la tâche", "users": ["Maxime"] },
+                { "name": "Tâche 3", "priority": 2, "description": "Description de la tâche", "users": ["Maxime", "Pierre"] },
+                { "name": "Tâche 4", "priority": 8, "description": "Description de la tâche", "users": ["Pierre", "Jeanne"] },
+                { "name": "Tâche 5", "priority": 1, "description": "Description de la tâche", "users": ["Jeanne"] }
+            ]
+        },
+        {
+            "projectId": 2,
+            "tasks": [
+                { "name": "Tâche 1", "priority": 5, "description": "Description de la tâche", "users": ["Paul", "Marie", "Yves"] },
+                { "name": "Tâche 2", "priority": 3, "description": "Description de la tâche", "users": ["Yves"] }
+            ]
+        },
+        {
+            "projectId": 3,
+            "tasks": [
+                { "name": "Tâche 1", "priority": 5, "description": "Description de la tâche", "users": ["Marion", "Jean", "Charles"] },
+                { "name": "Tâche 2", "priority": 3, "description": "Description de la tâche", "users": ["Marion"] },
+                { "name": "Tâche 3", "priority": 2, "description": "Description de la tâche", "users": ["Jean", "Charles"] },
+                { "name": "Tâche 4", "priority": 8, "description": "Description de la tâche", "users": ["Marion", "Charles"] }
+            ]
+        }
+    ]
+}

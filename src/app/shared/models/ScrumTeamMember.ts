@@ -1,3 +1,0 @@
-class ScrumTeamMember extends User {
-
-}

@@ -1,4 +1,6 @@
-class Meeting {
+import { User } from '.';
+
+export class Meeting {
     private startTime : Date;
 
     private endTime : Date;

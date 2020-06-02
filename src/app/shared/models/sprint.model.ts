@@ -1,4 +1,6 @@
-class Sprint {
+import { SprintBacklog } from '.';
+
+export class Sprint {
     private name : string;
 
     private startDate : Date;

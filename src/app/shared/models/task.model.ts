@@ -1,9 +1,11 @@
-class Task {
+import { User, Status } from '.';
+
+export class Task {
     private name : string;
-    private tags : Array<string> = new Array(5);
+    private tags : Array<string> = new Array();
     private priority : number;
     private description : string;
-    private users : Array<User> = new Array(5);
+    private users : Array<User> = new Array();
     private status : Status = Status.TO_DO;
 
     public getName() : string {
