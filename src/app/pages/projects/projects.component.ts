@@ -17,17 +17,21 @@ export class ProjectsComponent implements OnInit {
   projects: Observable<Project[]>;
   projectsInit: any[] = [{ name: "NEW" }];
   projectsFinished: any[] = [];
+
   cardFinished = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map(({ matches }) => {
       return this.projectsFinished;
     })
   );
+
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map(({ matches }) => {
       return this.projectsInit;
     })
   );
+
   @Input() project: string;
+
   constructor(
     private breakpointObserver: BreakpointObserver,
     private projectService: ProjectService,
@@ -50,6 +54,7 @@ export class ProjectsComponent implements OnInit {
       this.projectsInit.splice(0, 1);
     }
   }
+
   finish(projectId: number): void {
     this.projectsInit.forEach((value) => {
       if (value["id"] == projectId) {
@@ -75,12 +80,12 @@ export class ProjectsComponent implements OnInit {
           this.projectService.getProjects().subscribe(
             (projectsAfterDeletion: Project[]) =>
               (this.projectsInit = projectsAfterDeletion)
-            // console.log("projectsAfterDeletion: ", projectsAfterDeletion),
           );
         });
       });
       this.reflash();
   }
+  
   reflash():void{
     window.location.reload()
   }

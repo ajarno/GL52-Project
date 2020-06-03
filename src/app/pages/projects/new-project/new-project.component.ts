@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { Project } from "src/app/shared/models";
 import { ProjectService } from "../../../core/services/project.service";
-import { Router } from '@angular/router';
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-new-project",
@@ -9,12 +8,14 @@ import { Router } from '@angular/router';
   styleUrls: ["./new-project.component.css"],
 })
 export class NewProjectComponent implements OnInit {
+
   members: string[] = ["Alice", "Bob"];
   memberChecked: boolean[] = [false, false];
   projectMembers: string[] = [];
   name: string;
   description: string;
   project: any;
+
   addMembers(i: number): void {
     if (!this.memberChecked[i]) {
       this.projectMembers.push(this.members[i]);
@@ -23,7 +24,8 @@ export class NewProjectComponent implements OnInit {
       this.projectMembers.splice(index, 1);
     }
   }
-  constructor(private projectService: ProjectService,private router: Router) {}
+  constructor(private projectService: ProjectService, private router: Router) {}
+  
   ngOnInit(): void {}
 
   createNewProject() {
@@ -33,6 +35,6 @@ export class NewProjectComponent implements OnInit {
       status: "not finished",
     };
     this.projectService.createNewProject(this.project).subscribe();
-    this.router.navigate(["/projects"])
+    this.router.navigate(["/projects"]);
   }
 }
