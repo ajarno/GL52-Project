@@ -1,5 +1,9 @@
 <div class="grid-container">
-    <h2 class="mat-h2">Mes Projets/Projet{{id}}</h2>
+    <h2 class="mat-h2">
+        <a [routerLink]="['/projects']" routerLinkActive="router-link-active">Mes Projets</a>
+        <span>&nbsp;/&nbsp;</span>
+        <a [routerLink]="['/projects/'+id+'/backlog']" routerLinkActive="router-link-active">Projet{{id}}</a>
+    </h2>
     <h1 class="mat-h1">Backlog du Projet</h1>
 
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -29,7 +33,7 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
     <br>
-    <button mat-raised-button color="primary" [routerLink]="['../../']" routerLinkActive="router-link-active">Return</button>
+    <!-- <button mat-raised-button color="primary" [routerLink]="['../../']" routerLinkActive="router-link-active">Return</button> -->
 
     <!-- <p *ngFor="let task of backlog">{{task.name}} - {{task.priority}} - {{task.description}}</p> -->
 

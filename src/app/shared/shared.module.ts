@@ -5,13 +5,11 @@ import { ThemeModule } from '../theme/theme.module';
 import { ProjectPreviewComponent } from './components/project-preview/project-preview.component';
 import { RouterModule } from '@angular/router';
 import { ProjectPreviewFinishComponent } from './components/project-preview-finish/project-preview-finish.component';
-import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 
 const COMPONENTS = [
   RoleChoiceComponent,
   ProjectPreviewComponent,
-  ProjectPreviewFinishComponent,
-  BreadcrumbComponent
+  ProjectPreviewFinishComponent
 ];
 
 @NgModule({

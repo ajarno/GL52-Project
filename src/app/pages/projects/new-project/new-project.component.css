@@ -38,3 +38,8 @@ section {
     width: 80px;
     left: 55%;
 }
+
+a {
+    color: black;
+    text-decoration: none;
+}

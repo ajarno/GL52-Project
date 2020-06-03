@@ -1,5 +1,9 @@
 <div class="grid-container">
-    <h1 class="mat-h1">New Project</h1>
+    <h2 class="mat-h2">
+        <a [routerLink]="['/projects']" routerLinkActive="router-link-active">Mes Projets</a>
+        <span>&nbsp;/&nbsp;</span>
+        <a [routerLink]="['/projects/new']" routerLinkActive="router-link-active">Nouveau Projet</a>
+    </h2>
     <mat-form-field class="mat-form-field">
         <mat-label>Nom de projet</mat-label>
         <input matInput type="text" [(ngModel)]="name">

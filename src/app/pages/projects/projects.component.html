@@ -1,6 +1,6 @@
 <div class="grid-container">
-    <!-- <app-breadcrumb></app-breadcrumb> -->
-    <h1 class="mat-h1">Mes Projets</h1>
+
+    <h1 class="mat-h1"><a [routerLink]="['/projects']" routerLinkActive="router-link-active">Mes Projets</a></h1>
 
     <mat-grid-list cols="4" rowHeight="350px">
         <mat-grid-tile *ngFor="let card of cards | async;let i = index" [colspan]="1" [rowspan]="1">
