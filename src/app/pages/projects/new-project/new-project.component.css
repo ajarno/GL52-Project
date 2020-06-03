@@ -26,3 +26,15 @@ section {
     align-items: center;
     height: 60px;
 }
+
+.cancel {
+    position: absolute;
+    width: 80px;
+    left: 45%;
+}
+
+.create {
+    position: absolute;
+    width: 80px;
+    left: 55%;
+}

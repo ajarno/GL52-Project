@@ -4,14 +4,14 @@ import { RoleChoiceComponent } from './components/role-choice/role-choice.compon
 import { ThemeModule } from '../theme/theme.module';
 import { ProjectPreviewComponent } from './components/project-preview/project-preview.component';
 import { RouterModule } from '@angular/router';
-import { ProjectPreviewNewComponent } from './components/project-preview-new/project-preview-new.component';
 import { ProjectPreviewFinishComponent } from './components/project-preview-finish/project-preview-finish.component';
+import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 
 const COMPONENTS = [
   RoleChoiceComponent,
   ProjectPreviewComponent,
-  ProjectPreviewNewComponent,
-  ProjectPreviewFinishComponent
+  ProjectPreviewFinishComponent,
+  BreadcrumbComponent
 ];
 
 @NgModule({

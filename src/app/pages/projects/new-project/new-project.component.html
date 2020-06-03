@@ -18,9 +18,8 @@
     </section>
     <section>
         <div class="example-button-row">
-            <button mat-raised-button color="primary" routerLink="../">Create</button>
-            <!-- <button mat-raised-button color="warn">Cancel</button> -->
-            <a mat-raised-button color="warn" routerLink="../">Cancel</a>
+            <a mat-raised-button color="warn" routerLink="../" class="cancel">Annuler</a>
+            <button mat-raised-button color="primary" (click)="createNewProject()" class="create">Créer</button>
         </div>
     </section>
 </div>

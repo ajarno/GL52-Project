@@ -1,7 +1,7 @@
 import { NgModule, ModuleWithProviders, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatTableModule } from '@angular/material/table';
-import { MatInputModule } from '@angular/material/input';
+
+
 
 
 import { ProjectService } from './services/project.service';
@@ -15,8 +15,6 @@ const SERVICES = [
   declarations: [],
   imports: [
     CommonModule,
-    MatTableModule,
-    MatInputModule
   ]
 })
 export class CoreModule { 

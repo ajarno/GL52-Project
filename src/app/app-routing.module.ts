@@ -15,17 +15,34 @@ const routes: Routes = [
     component: DashboardComponent
   },
   {
-     path: 'projects',
-     component: ProjectsComponent,
+    path: 'projects',
+    data:{
+      breadcrumb: 'Mes Projets'
+    },
+    children: [
+      {
+        path:'',
+        component: ProjectsComponent,
+        data: {
+          breadcrumb: null
+        }
+      },
+      {
+        path: ':id/backlog',
+        component: ProjectBacklogComponent,
+        data: {
+          breadcrumb: 'Projet1'
+        }
+      },
+      {
+        path: 'new',
+        component: NewProjectComponent,
+        data: {
+          breadcrumb: 'Nouveau Projet'
+        }
+      }
+    ]
   },
-  {
-    path: 'projects/new',
-    component: NewProjectComponent,
-  },
-  {
-    path: 'projects/:id/backlog',
-    component: ProjectBacklogComponent,
-  }
 ];
 
 @NgModule({

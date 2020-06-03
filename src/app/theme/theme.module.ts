@@ -14,7 +14,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import { MatTableModule} from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-
+import {BreadcrumbModule} from 'primeng/breadcrumb';
 const BASE_MODULES = [CommonModule, FormsModule, ReactiveFormsModule, LayoutModule];
 
 const MAT_MODULES = [
@@ -34,7 +34,9 @@ const MAT_MODULES = [
   MatToolbarModule,
   MatTableModule,
   MatInputModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  BreadcrumbModule,
+  
 ];
 
 const COMPONENTS = [

@@ -18,11 +18,13 @@
 
 .projects-card-content {
     text-align: center;
+    /* line-height：100px; */
 }
 
 .projects-card-new {
-    position: absolute;
+    line-height: 250px;
+    /* position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
 }
