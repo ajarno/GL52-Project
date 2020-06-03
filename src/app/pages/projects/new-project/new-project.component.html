@@ -16,8 +16,8 @@
     </mat-form-field>
     <br>
 
-    <h2 class="mat-h2">Members</h2>
-    <section class="example-section" *ngFor="let item of members,let i=index">
+    <h2 class="mat-h2">Membres</h2>
+    <!-- <section class="example-section" *ngFor="let item of members,let i=index">
         <mat-checkbox class="example-margin" [(ngModel)]="memberChecked[i]" (click)="addMembers(i)">{{item}}</mat-checkbox>
     </section>
     <section>
@@ -25,5 +25,18 @@
             <a mat-raised-button color="warn" routerLink="../" class="cancel">Annuler</a>
             <button mat-raised-button color="primary" (click)="createNewProject()" class="create">Créer</button>
         </div>
-    </section>
+    </section> -->
+    <mat-form-field class="users-chip-list">
+        <mat-chip-list #chipList aria-label="Fruit selection">
+            <mat-chip *ngFor="let user of users" [selectable]="selectable" [removable]="removable" (removed)="remove(user)">
+                {{user}}
+                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+            <input placeholder="Membres..." [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
+        </mat-chip-list>
+    </mat-form-field>
+    <div class="button-row">
+        <a mat-raised-button color="warn" routerLink="../" class="cancel">Annuler</a>
+        <button mat-raised-button color="primary" (click)="createNewProject()" class="create">Créer</button>
+    </div>
 </div>

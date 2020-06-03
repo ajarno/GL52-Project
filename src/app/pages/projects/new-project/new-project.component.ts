@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { COMMA, ENTER } from "@angular/cdk/keycodes";
+import { MatChipInputEvent } from "@angular/material/chips";
 import { ProjectService } from "../../../core/services/project.service";
 import { Router } from "@angular/router";
 
@@ -8,24 +10,18 @@ import { Router } from "@angular/router";
   styleUrls: ["./new-project.component.css"],
 })
 export class NewProjectComponent implements OnInit {
-
-  members: string[] = ["Alice", "Bob"];
-  memberChecked: boolean[] = [false, false];
-  projectMembers: string[] = [];
+  visible = true;
+  selectable = true;
+  removable = true;
+  addOnBlur = true;
+  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
+  users: any[] = ["Alice", "Bob"];
   name: string;
   description: string;
   project: any;
 
-  addMembers(i: number): void {
-    if (!this.memberChecked[i]) {
-      this.projectMembers.push(this.members[i]);
-    } else {
-      let index = this.projectMembers.indexOf(this.members[i]);
-      this.projectMembers.splice(index, 1);
-    }
-  }
   constructor(private projectService: ProjectService, private router: Router) {}
-  
+
   ngOnInit(): void {}
 
   createNewProject() {
@@ -33,8 +29,30 @@ export class NewProjectComponent implements OnInit {
       name: this.name,
       description: this.description,
       status: "not finished",
+      users: this.users,
     };
     this.projectService.createNewProject(this.project).subscribe();
     this.router.navigate(["/projects"]);
+  }
+
+  add(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
+
+    if ((value || "").trim()) {
+      this.users.push(value.trim());
+    }
+
+    if (input) {
+      input.value = "";
+    }
+  }
+
+  remove(user: any): void {
+    const index = this.users.indexOf(user);
+
+    if (index >= 0) {
+      this.users.splice(index, 1);
+    }
   }
 }

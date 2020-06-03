@@ -15,16 +15,9 @@ section {
     margin: 8px;
 }
 
-.example-button-row button {
+.button-row button {
     display: table-cell;
     margin-right: 20px;
-}
-
-.example-section {
-    display: flex;
-    align-content: center;
-    align-items: center;
-    height: 60px;
 }
 
 .cancel {
@@ -42,4 +35,8 @@ section {
 a {
     color: black;
     text-decoration: none;
+}
+
+.users-chip-list {
+    width: 60%;
 }

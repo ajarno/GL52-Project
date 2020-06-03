@@ -25,13 +25,13 @@
         },
         {
             "name": "Projet 5",
-            "description": "asd",
+            "description": "Ceci est la description du projet",
             "status": "not finished",
             "id": 5
         },
         {
             "name": "Projet 6",
-            "description": "ssss",
+            "description": "Ceci est la description du projet",
             "status": "not finished",
             "id": 6
         }
@@ -158,5 +158,4 @@
             ]
         }
     ]
-
 }
