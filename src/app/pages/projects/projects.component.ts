@@ -1,22 +1,20 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, OnDestroy } from "@angular/core";
 import { map } from "rxjs/operators";
 import { Breakpoints, BreakpointObserver } from "@angular/cdk/layout";
-import { Router } from "@angular/router";
 import { Observable } from "rxjs";
 import { ProjectService } from "../../core/services/project.service";
 import { Project } from "src/app/shared/models";
-import { ChangeDetectorRef } from "@angular/core";
 
 @Component({
   selector: "app-projects",
   templateUrl: "./projects.component.html",
-  styleUrls: ["./projects.component.css"],
+  styleUrls: ["./projects.component.css"]
 })
-export class ProjectsComponent implements OnInit {
+export class ProjectsComponent implements OnInit, OnDestroy {
   role: string;
-  projects: Observable<Project[]>;
-  projectsInit: any[] = [{ name: "NEW" }];
+  projectsInit: any[] = [];
   projectsFinished: any[] = [];
+  private subs: Array<any> = []; // store the promises to unsubscribe if pending while exiting page
 
   cardFinished = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map(({ matches }) => {
@@ -30,63 +28,71 @@ export class ProjectsComponent implements OnInit {
     })
   );
 
-  @Input() project: string;
-
   constructor(
     private breakpointObserver: BreakpointObserver,
-    private projectService: ProjectService,
+    private projectService: ProjectService
   ) {}
 
   ngOnInit(): void {
-    this.role = localStorage.getItem("role");
-    this.projects = this.projectService.getProjects();
-    this.projects.subscribe((data) => {
-      data.forEach((value) => {
-        if (value["status"] == "not finished") {
-          this.projectsInit.push(value);
-        } else {
-          this.projectsFinished.push(value);
-        }
-      });
-    });
+    this.initRole();
+    this.initProjects();
+  }
 
-    if (this.role == "Scrum Team") {
-      this.projectsInit.splice(0, 1);
-    }
+  private initRole() {
+    this.role = localStorage.getItem("role");
+  }
+
+  private initProjects() {
+    this.subs.push(
+      this.projectService.getProjects().subscribe(data => {
+        data.forEach(project => {
+          if (project["status"] === "finished") {
+            this.projectsFinished.push(project);
+          } else {
+            this.projectsInit.push(project);
+          }
+        });
+      })
+    );
   }
 
   finish(projectId: number): void {
-    this.projectsInit.forEach((value) => {
-      if (value["id"] == projectId) {
-        value["status"] = "finished";
-        this.projectService.finishProject(value).subscribe(() => {
-          this.projectService
-            .getProjects()
-            .subscribe((projectsAfterDeletion: Project[]) =>
-              console.log("projectsAfterDeletion: ", projectsAfterDeletion)
-            );
+    this.subs.push(this.projectsInit.forEach(project => {
+      if (project["id"] == projectId) {
+        project["status"] = "finished";
+        this.projectService.updateProject(project).subscribe(() => {
+          this.reflash();
         });
       }
-    });
-    this.reflash();
+    }));
+  }
+
+  reOpen(projectId: number): void {
+    this.subs.push(this.projectsFinished.forEach(project => {
+      if (project["id"] == projectId) {
+        project["status"] = "in progress";
+        this.projectService.updateProject(project).subscribe(() => {
+          this.reflash();
+        });
+      }
+    }));
   }
 
   delete(projectId: number): void {
-    this.projectService
-      .getProjects()
-      .subscribe((projectsBeforeDeletion: Project[]) => {
-        console.log("projectsBeforeDeletion: ", projectsBeforeDeletion);
-        this.projectService.deleteProject(projectId).subscribe(() => {
-          this.projectService.getProjects().subscribe(
-            (projectsAfterDeletion: Project[]) =>
-              (this.projectsInit = projectsAfterDeletion)
-          );
-        });
-      });
-      this.reflash();
+    this.subs.push(
+      this.projectService.deleteProject(projectId).subscribe(() => {
+        this.reflash();
+      })
+    );
   }
-  
-  reflash():void{
-    window.location.reload()
+
+  reflash(): void {
+    window.location.reload();
+  }
+
+  ngOnDestroy() {
+    this.subs.forEach(sub => {
+      sub.unsubscribe();
+    });
   }
 }

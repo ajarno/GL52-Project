@@ -4,6 +4,11 @@
     left: 15px;
     right: 15px;
     bottom: 15px;
+    cursor: pointer;
+}
+
+.projects-card:hover {
+    background-color:rgba(63, 81, 181, 0.005);
 }
 
 .more-button {

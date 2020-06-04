@@ -3,6 +3,7 @@ import { COMMA, ENTER } from "@angular/cdk/keycodes";
 import { MatChipInputEvent } from "@angular/material/chips";
 import { ProjectService } from "../../../core/services/project.service";
 import { Router } from "@angular/router";
+import { Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: "app-new-project",
@@ -14,11 +15,17 @@ export class NewProjectComponent implements OnInit {
   selectable = true;
   removable = true;
   addOnBlur = true;
+
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-  users: any[] = ["Alice", "Bob"];
+
+  users: any[] = [];
   name: string;
   description: string;
   project: any;
+
+  projectFormControl = new FormControl('', [
+    Validators.required,
+  ]);
 
   constructor(private projectService: ProjectService, private router: Router) {}
 
@@ -28,11 +35,12 @@ export class NewProjectComponent implements OnInit {
     this.project = {
       name: this.name,
       description: this.description,
-      status: "not finished",
+      status: "in progress",
       users: this.users,
     };
-    this.projectService.createNewProject(this.project).subscribe();
-    this.router.navigate(["/projects"]);
+    this.projectService.createNewProject(this.project).subscribe(() =>
+      this.router.navigate(["/projects"])
+    );
   }
 
   add(event: MatChipInputEvent): void {

@@ -1,9 +1,6 @@
 import { NgModule, ModuleWithProviders, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-
-
-
 import { ProjectService } from './services/project.service';
 import { throwIfAlreadyLoaded } from './module-import-guard';
 

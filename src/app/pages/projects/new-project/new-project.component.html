@@ -4,39 +4,33 @@
         <span>&nbsp;/&nbsp;</span>
         <a [routerLink]="['/projects/new']" routerLinkActive="router-link-active">Nouveau Projet</a>
     </h2>
+
     <mat-form-field class="mat-form-field">
         <mat-label>Nom de projet</mat-label>
-        <input matInput type="text" [(ngModel)]="name">
-
+        <input matInput [formControl]="projectFormControl" type="text" [(ngModel)]="name">
+        <mat-error *ngIf="projectFormControl.hasError('required')">
+            Nom de projet <strong>requis</strong>
+          </mat-error>
     </mat-form-field>
     <br>
-    <mat-form-field appearance="fill" class="mat-form-field-textarea">
+
+    <mat-form-field class="mat-form-field-textarea">
         <mat-label>Description</mat-label>
         <textarea matInput rows="5" [(ngModel)]="description"></textarea>
     </mat-form-field>
     <br>
 
-    <h2 class="mat-h2">Membres</h2>
-    <!-- <section class="example-section" *ngFor="let item of members,let i=index">
-        <mat-checkbox class="example-margin" [(ngModel)]="memberChecked[i]" (click)="addMembers(i)">{{item}}</mat-checkbox>
-    </section>
-    <section>
-        <div class="example-button-row">
-            <a mat-raised-button color="warn" routerLink="../" class="cancel">Annuler</a>
-            <button mat-raised-button color="primary" (click)="createNewProject()" class="create">Créer</button>
-        </div>
-    </section> -->
     <mat-form-field class="users-chip-list">
         <mat-chip-list #chipList aria-label="Fruit selection">
             <mat-chip *ngFor="let user of users" [selectable]="selectable" [removable]="removable" (removed)="remove(user)">
                 {{user}}
                 <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
             </mat-chip>
-            <input placeholder="Membres..." [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
+            <input placeholder="Membres" [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
         </mat-chip-list>
     </mat-form-field>
     <div class="button-row">
-        <a mat-raised-button color="warn" routerLink="../" class="cancel">Annuler</a>
-        <button mat-raised-button color="primary" (click)="createNewProject()" class="create">Créer</button>
+        <a mat-stroked-button routerLink="../" class="cancel">Annuler</a>
+        <button mat-raised-button color="primary" [disabled]="projectFormControl.hasError('required')" (click)="createNewProject()" class="create">Créer</button>
     </div>
 </div>

@@ -1,9 +1,10 @@
 <div class="grid-container">
-
-    <h1 class="mat-h1"><a [routerLink]="['/projects']" routerLinkActive="router-link-active">Mes Projets</a></h1>
+    <h2 class="mat-h2">
+        <a [routerLink]="['/projects']" routerLinkActive="router-link-active">Mes Projets</a>
+    </h2>
 
     <mat-grid-list cols="4" rowHeight="350px">
-        <mat-grid-tile *ngFor="let card of cards | async;let i = index" [colspan]="1" [rowspan]="1">
+        <mat-grid-tile [colspan]="1" [rowspan]="1" *ngIf="role=='Scrum Master'">
             <a href="projects/new">
                 <mat-card class="projects-card">
                     <mat-card-content class="projects-card-content">
@@ -13,15 +14,17 @@
                     </mat-card-content>
                 </mat-card>
             </a>
-            <app-project-preview title="{{card.name}}" id="{{card.id}}" content='{{card.description}}' index={{i}} *ngIf="card.name!='NEW'" (finished)="finish($event)" (deleted)="delete($event)"></app-project-preview>
+        </mat-grid-tile>
+        <mat-grid-tile *ngFor="let card of cards | async;let i = index" [colspan]="1" [rowspan]="1">
+            <app-project-preview title="{{card.name}}" id="{{card.id}}" content='{{card.description}}' index={{i}} (finished)="finish($event)" (deleted)="delete($event)"></app-project-preview>
         </mat-grid-tile>
 
     </mat-grid-list>
-    <div *ngIf="role=='Scrum Master'">
+    <div *ngIf="['Scrum Master', 'Product Owner'].includes(role) ">
         <hr>
         <mat-grid-list cols="4" rowHeight="350px">
             <mat-grid-tile *ngFor="let card of cardFinished | async" [colspan]="1" [rowspan]="1">
-                <app-project-preview-finish title="{{card.name}}" id="{{card.id}}" content='{{card.description}}' *ngIf="card.name!='NEW'"></app-project-preview-finish>
+                <app-project-preview-finish title="{{card.name}}" id="{{card.id}}" content='{{card.description}}' (reOpened)="reOpen($event)"></app-project-preview-finish>
             </mat-grid-tile>
         </mat-grid-list>
     </div>

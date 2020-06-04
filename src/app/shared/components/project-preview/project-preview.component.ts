@@ -11,7 +11,9 @@ export class ProjectPreviewComponent implements OnInit {
   @Input() title: string;
   @Input() content: string;
   @Input() index: number;
+
   role: string;
+  
   @Output() finished = new EventEmitter<number>();
   @Output() deleted = new EventEmitter<number>();
   
@@ -31,6 +33,7 @@ export class ProjectPreviewComponent implements OnInit {
 
   storeID(): void {
     this.router.navigate(["/projects/" + this.id + "/backlog"]);
-    localStorage.setItem("id", this.id.toString());
+    sessionStorage.setItem("projectId", this.id.toString());
+    sessionStorage.setItem("projectTitle", this.title);
   }
 }

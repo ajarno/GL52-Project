@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-project-preview-finish',
@@ -9,9 +9,18 @@ export class ProjectPreviewFinishComponent implements OnInit {
   @Input() id:number;
   @Input() title:string;
   @Input() content:string;
-  constructor() { }
+
+  role: string;
+  
+  @Output() reOpened = new EventEmitter<number>();
+  
+  constructor() {}
 
   ngOnInit(): void {
+    this.role = localStorage.getItem("role");
   }
 
+  reOpen(): void {
+    this.reOpened.emit(this.id);
+  }
 }

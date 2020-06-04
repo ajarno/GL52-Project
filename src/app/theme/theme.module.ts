@@ -15,6 +15,8 @@ import { MatTableModule} from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatSortModule } from '@angular/material/sort';
+
 const BASE_MODULES = [CommonModule, FormsModule, ReactiveFormsModule, LayoutModule];
 
 const MAT_MODULES = [
@@ -35,8 +37,8 @@ const MAT_MODULES = [
   MatTableModule,
   MatInputModule,
   MatCheckboxModule,
-  MatChipsModule
-  
+  MatChipsModule,
+  MatSortModule
 ];
 
 const COMPONENTS = [

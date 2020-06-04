@@ -34,7 +34,7 @@ export class ProjectService {
     return this.http.delete(`/api/projects/${projectId}`, { headers });
   }
 
-  finishProject(project: Project): Observable<{}> {
+  updateProject(project: Project): Observable<{}> {
     return this.http.put(`/api/projects/${project["id"]}`, project, {
       headers,
     });
