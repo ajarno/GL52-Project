@@ -1,10 +1,11 @@
 import { Component, HostListener, Input, OnInit } from '@angular/core';
 //import { Cardschema } from '../cardschema';
 
-import { Cardstore } from '../../../shared/models/cardstore';
+//import { Cardstore } from '../../../shared/models/cardstore';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Task } from 'src/app/shared/models/Task';
 import { Listtask } from 'src/app/shared/models/Listtask';
+import { SprintBacklog } from 'src/app/shared/models/SprintBacklog';
 
 @Component({
   selector: 'app-list',
@@ -13,7 +14,7 @@ import { Listtask } from 'src/app/shared/models/Listtask';
 })
 export class ListComponent implements OnInit {
   @Input() list: Listtask;
-  @Input() cardStore: Cardstore;
+  @Input() cardStore: SprintBacklog;
 
   constructor() { }
 

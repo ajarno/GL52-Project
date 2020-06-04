@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Cardstore } from '../../../shared/models/cardstore';
+//import { Cardstore } from '../../../shared/models/cardstore';
 //cardstore用來創建新的卡片
 import { Listtask } from '../../../shared/models/Listtask';
 import { Symbols } from '../edit-dialog/edit-dialog.component';
+import { SprintBacklog } from 'src/app/shared/models/SprintBacklog';
 //name,cards
 
 @Component({
@@ -13,12 +14,12 @@ import { Symbols } from '../edit-dialog/edit-dialog.component';
 
 export class SprintBacklogComponent implements OnInit {
 
-  cardStore: Cardstore;
+  cardStore: SprintBacklog;
   lists: Listtask[];
   constructor() { }
 
   setMockData(): void {
-    this.cardStore = new Cardstore();
+    this.cardStore = new SprintBacklog();
     //創建LIST
     const lists: Listtask[] = [
       {
