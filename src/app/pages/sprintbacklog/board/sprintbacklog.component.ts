@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Cardstore } from '../cardstore';
 //cardstore用來創建新的卡片
 import { Listschema } from '../listschema';
+import { Symbols } from '../edit-dialog/edit-dialog.component';
 //name,cards
 
 @Component({
@@ -39,7 +40,7 @@ export class SprintBacklogComponent implements OnInit {
   //創建小卡片並把它放入LIST中
   // 小卡片里的格式（標題，在哪一列，描述，小鈴鐺，成員，截止日期）
   _fillList(title: string, list: number, description: string = null, priority: boolean = false, members: string[] = null, deadline: Date = null): void {
-    const cardId =  this.cardStore.newCard(title, description, members, deadline, priority);
+    const cardId =  this.cardStore.newCard(title, description, members, deadline, Symbols.Low);
     //將創建好的卡片放入LIST中
     this.lists[list].cards.push(cardId);
   }

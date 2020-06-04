@@ -6,7 +6,10 @@
         <div>
             <div class="sideBySide">
                 <div class="task">
-                    <mat-icon *ngIf="card.priority && notFinished">notification_important</mat-icon>
+                    <!-- <mat-icon *ngIf="card.priority=='3' && notFinished">looks_3</mat-icon>
+                    <mat-icon *ngIf="card.priority=='2' && notFinished">looks_two</mat-icon>
+                    <mat-icon *ngIf="card.priority=='1' && notFinished">looks_one</mat-icon> -->
+                    
                     <div>
                         <p>
                             {{card.title}}
@@ -15,6 +18,18 @@
                             class="mat-caption" [ngClass]="compareDatetoToday(card.deadline)">
                             {{ card.deadline | date:'dd MMMM yyyy' }}
                         </p>
+                        <p>
+                            <label *ngIf= "card.priority=='3'" class="high">
+                                High
+                            </label>
+                            <label *ngIf= "card.priority=='2'" class="medium">
+                                Medium
+                            </label>
+                            <label *ngIf= "card.priority=='1'" class="low">
+                                Low
+                            </label>
+                        </p>
+                        
                     </div>
                 </div>
                 <button *ngIf="notFinished" aria-label="Editer la tâche"
@@ -32,13 +47,13 @@
             </div>
             <div *ngIf="notFinished">
                 <mat-chip-list
-                    *ngIf="card.members && card.members.length < 4">
+                    *ngIf="card.members && card.members.length < 3">
                     <mat-chip *ngFor="let member of card.members">
                         {{ member }}
                     </mat-chip>
                 </mat-chip-list>
                 <mat-chip-list
-                    *ngIf="card.members && card.members.length > 3">
+                    *ngIf="card.members && card.members.length > 2">
                     <mat-chip>
                         {{ card.members[0] }}
                     </mat-chip>

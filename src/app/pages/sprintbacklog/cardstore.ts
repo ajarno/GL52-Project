@@ -1,7 +1,7 @@
 
 // cardschema 所有CARD的內容
 import { Cardschema } from './cardschema';
- 
+import { Symbols } from './edit-dialog/edit-dialog.component';
 export class Cardstore {
   cards: Object = {};
   lastid = -1;
@@ -16,7 +16,7 @@ export class Cardstore {
     return this.cards[cardId];
   }
  
-  newCard(title: string, description: string = null, members: string[] = null, deadline: Date = null, priority: boolean = false): string {
+  newCard(title: string, description: string = null, members: string[] = null, deadline: Date = null, priority: Symbols = Symbols.Low): string {
     const card = new Cardschema();
     card.title = title;
     card.description = description;
