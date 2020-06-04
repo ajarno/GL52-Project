@@ -1,3 +1,4 @@
+
 .card {
   background-color: rgba(236, 235, 235, 0.8);
   margin-bottom: 5px;
@@ -23,8 +24,39 @@ mat-card .sideBySide .task {
   display: flex;
   align-items: center;
 }
+mat-card .high{
+  border-radius: 25px;
+  background-color: rgb(245, 34, 7);
+  color: white;
+  padding: 5px;
+  font-family: Arial;
+  text-align: center;
+  font-size: 12px 
 
-mat-card .sideBySide .task ::ng-deep .mat-icon {
+}
+
+mat-card .medium{
+  border-radius: 25px;
+  background-color: rgb(51, 182, 199);
+  color: white;
+  padding: 5px;
+  font-family: Arial;
+  text-align: center;
+  font-size: 12px 
+
+}
+mat-card .low{
+  border-radius: 25px;
+  background-color: rgb(43, 184, 55);
+  color: white;
+  padding: 5px;
+  font-family: Arial;
+  text-align: center;
+  font-size: 12px 
+
+}
+
+/* mat-card .sideBySide .task ::ng-deep .mat-icon {
   padding-right: 5px !important;
   color: #da2721fd !important;
 }
@@ -34,7 +66,7 @@ mat-card .sideBySide ::ng-deep .mat-icon {
   width: 20px !important;
   font-size: 20px !important;
   line-height: 10px;
-}
+} */
 
 mat-card .sideBySide ::ng-deep .mat-icon-button {
   height: 30px !important;
@@ -72,3 +104,5 @@ mat-card:hover {
   white-space: pre-line !important;
   font-size: 12px;
 }
+
+

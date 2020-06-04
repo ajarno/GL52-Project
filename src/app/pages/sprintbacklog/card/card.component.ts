@@ -6,6 +6,7 @@ import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import { MatSnackBar, MatSnackBarConfig } from "@angular/material/snack-bar";
 import { EditDialogComponent } from "../edit-dialog/edit-dialog.component";
 
+
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
