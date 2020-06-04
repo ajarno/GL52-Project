@@ -16,7 +16,8 @@ export class Project {
     private productBacklog : ProductBacklog;
 
     private sprints : Array<Sprint> = new Array();
-
+    
+    private status : string;
 
 
     public getName() : string {
@@ -109,4 +110,5 @@ export class Project {
         }
         this.removeMeeting(meeting);
     }
+
 }

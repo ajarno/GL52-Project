@@ -1,0 +1,31 @@
+<div class="grid-container">
+    <h2 class="mat-h2">
+        <a [routerLink]="['/projects']" routerLinkActive="router-link-active">Mes Projets</a>
+    </h2>
+
+    <mat-grid-list cols="4" rowHeight="350px">
+        <mat-grid-tile [colspan]="1" [rowspan]="1" *ngIf="role=='Scrum Master'">
+            <a href="projects/new">
+                <mat-card class="projects-card">
+                    <mat-card-content class="projects-card-content">
+                        <div class="projects-card-new">
+                            <h1> + Nouveau Projet</h1>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </a>
+        </mat-grid-tile>
+        <mat-grid-tile *ngFor="let card of cards | async;let i = index" [colspan]="1" [rowspan]="1">
+            <app-project-preview title="{{card.name}}" id="{{card.id}}" content='{{card.description}}' index={{i}} (finished)="finish($event)" (deleted)="delete($event)"></app-project-preview>
+        </mat-grid-tile>
+
+    </mat-grid-list>
+    <div *ngIf="['Scrum Master', 'Product Owner'].includes(role) ">
+        <hr>
+        <mat-grid-list cols="4" rowHeight="350px">
+            <mat-grid-tile *ngFor="let card of cardFinished | async" [colspan]="1" [rowspan]="1">
+                <app-project-preview-finish title="{{card.name}}" id="{{card.id}}" content='{{card.description}}' (reOpened)="reOpen($event)"></app-project-preview-finish>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+</div>

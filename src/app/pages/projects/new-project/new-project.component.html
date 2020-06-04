@@ -1,0 +1,36 @@
+<div class="grid-container">
+    <h2 class="mat-h2">
+        <a [routerLink]="['/projects']" routerLinkActive="router-link-active">Mes Projets</a>
+        <span>&nbsp;/&nbsp;</span>
+        <a [routerLink]="['/projects/new']" routerLinkActive="router-link-active">Nouveau Projet</a>
+    </h2>
+
+    <mat-form-field class="mat-form-field">
+        <mat-label>Nom de projet</mat-label>
+        <input matInput [formControl]="projectFormControl" type="text" [(ngModel)]="name">
+        <mat-error *ngIf="projectFormControl.hasError('required')">
+            Nom de projet <strong>requis</strong>
+          </mat-error>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field class="mat-form-field-textarea">
+        <mat-label>Description</mat-label>
+        <textarea matInput rows="5" [(ngModel)]="description"></textarea>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field class="users-chip-list">
+        <mat-chip-list #chipList aria-label="Fruit selection">
+            <mat-chip *ngFor="let user of users" [selectable]="selectable" [removable]="removable" (removed)="remove(user)">
+                {{user}}
+                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+            <input placeholder="Membres" [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
+        </mat-chip-list>
+    </mat-form-field>
+    <div class="button-row">
+        <a mat-stroked-button routerLink="../" class="cancel">Annuler</a>
+        <button mat-raised-button color="primary" [disabled]="projectFormControl.hasError('required')" (click)="createNewProject()" class="create">Créer</button>
+    </div>
+</div>

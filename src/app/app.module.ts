@@ -2,6 +2,8 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule, LOCALE_ID } from "@angular/core";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
+
+
 import { AppComponent } from "./app.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { ThemeModule } from "./theme/theme.module";
@@ -24,8 +26,9 @@ import { HttpClientModule } from '@angular/common/http';
     CoreModule,
     PagesModule,
     SharedModule,
+    
   ],
   providers: [{ provide: LOCALE_ID, useValue: "fr-FR" }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

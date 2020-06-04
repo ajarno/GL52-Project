@@ -1,0 +1,22 @@
+.projects-card {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    cursor: pointer;
+}
+
+.projects-card:hover {
+    background-color:rgba(63, 81, 181, 0.005);
+}
+
+.more-button {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+}
+
+.projects-card-content {
+    margin-left: 20px;
+}

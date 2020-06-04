@@ -1,0 +1,20 @@
+<mat-card class="projects-card" (click)="storeID()">
+    <mat-card-header>
+        <mat-card-title>
+            {{title}}
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-actions *ngIf="role=='Scrum Master'">
+        <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu" (click)="$event.stopPropagation();">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+        <mat-menu #menu="matMenu" xPosition="before">
+            <button mat-menu-item (click)="finish()">Clôturer</button>
+            <button mat-menu-item (click)="delete()">Supprimer</button>
+        </mat-menu>
+    </mat-card-actions>
+    <mat-card-content class="projects-card-content">
+        {{content}}
+    </mat-card-content>
+</mat-card>
+<!-- </a> -->

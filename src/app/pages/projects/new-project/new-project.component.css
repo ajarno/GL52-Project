@@ -1,0 +1,42 @@
+.grid-container {
+    margin: 20px;
+}
+
+.mat-form-field {
+    width: 300px;
+}
+
+.mat-form-field-textarea {
+    width: 60%;
+}
+
+section {
+    display: table;
+    margin: 8px;
+}
+
+.button-row button {
+    display: table-cell;
+    margin-right: 20px;
+}
+
+.cancel {
+    position: absolute;
+    width: 80px;
+    left: 45%;
+}
+
+.create {
+    position: absolute;
+    width: 80px;
+    left: 55%;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+.users-chip-list {
+    width: 60%;
+}

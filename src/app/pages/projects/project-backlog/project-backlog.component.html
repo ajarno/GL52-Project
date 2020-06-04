@@ -1,0 +1,32 @@
+<div class="grid-container">
+    <h2 class="mat-h2">
+        <a [routerLink]="['/projects']" routerLinkActive="router-link-active">Mes Projets</a>
+        <span>&nbsp;/&nbsp;</span>
+        <a [routerLink]="['/projects/'+ id]" routerLinkActive="router-link-active">{{title}}</a>
+        <span>&nbsp;/&nbsp;</span>
+        <a [routerLink]="['/projects/'+ id +'/backlog']" routerLinkActive="router-link-active">Backlog Produit</a>
+    </h2>
+
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z1">
+
+        <ng-container matColumnDef="item">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> Tâche </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="priority">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> Priorité </th>
+            <td mat-cell *matCellDef="let element"> {{element.priority}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> Status </th>
+            <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <br>
+
+</div>
