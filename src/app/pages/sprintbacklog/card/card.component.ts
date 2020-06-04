@@ -1,12 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 //import { Cardschema } from '../cardschema';
-import { Cardstore } from '../cardstore';
-import { Listschema } from '../listschema';
+import { Cardstore } from '../../../shared/models/cardstore';
+import { Listtask } from '../../../shared/models/Listtask';
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import { MatSnackBar, MatSnackBarConfig } from "@angular/material/snack-bar";
 import { EditDialogComponent } from "../edit-dialog/edit-dialog.component";
 import { Task } from 'src/app/shared/models/Task';
-import { Status } from 'src/app/shared/models/Status';
 
 
 @Component({
@@ -18,7 +17,7 @@ import { Status } from 'src/app/shared/models/Status';
 export class CardComponent implements OnInit {
   @Input() card: Task;
   @Input() cards: Cardstore;
-  @Input() list: Listschema;
+  @Input() list: Listtask;
   today: Date;
   notFinished: boolean;
 
