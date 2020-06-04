@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projet-GL52_BonnesPratiquesAngular.md</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__left">
+    <div class="stackedit__toc">
+      
+<ul>
+<li><a href="#gl52---tutoriel-et-bonnes-pratiques-angular">GL52 - Tutoriel et bonnes pratiques Angular</a>
+<ul>
+<li><a href="#décomposition-du-code-source">Décomposition du code source</a></li>
+<li><a href="#le-routing">Le routing</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+  <div class="stackedit__right">
+    <div class="stackedit__html">
+      <h1 id="gl52---tutoriel-et-bonnes-pratiques-angular">GL52 - Tutoriel et bonnes pratiques Angular</h1>
+<h2 id="décomposition-du-code-source">Décomposition du code source</h2>
+<p>Le code source du projet est basé sur le dossier app lui-même décomposé en quatre différents modules :</p>
+<ul>
+<li>Le module core</li>
+<li>Le module pages</li>
+<li>Le module shared</li>
+<li>Le module theme</li>
+</ul>
+<p>On retrouve également le dossier assets qui contient les images, les polices d’écritures etc.</p>
+<h3 id="le-module-core">Le module core</h3>
+<p>Le rôle du CoreModule est de déclarer les providers singletons de l’application.<br>
+Le CoreModule contient généralement les services de l’application. Ils sont susceptibles d’être utilisés partout dans l’application et doivent impérativement être des singletons (exister en un seul exemplaire).<br>
+Ainsi, le CoreModule ne doit être importé qu’une seule fois dans l’application, par le module AppModule.<br>
+En effet, puisque les providers d’un module sont globaux, il suffit d’importer CoreModule une fois pour rendre ses providers disponibles partout dans l’application et donc accessibles par tous les modules de l’application.<br>
+<strong>En résumé</strong>,<br>
+Dans ce module on va retrouver les services de l’application, ce sont eux qui feront notamment les appel http get/post… vers le backend.</p>
+<p><em>Utile</em><br>
+<code>ng g service core/leNomDeMonService</code><br>
+Angular va générer un service dans le dossier core de l’application et faire sa déclaration dans le CoreModule.</p>
+<h3 id="le-module-pages">Le module pages</h3>
+<p>Ce module contient les diverses pages et les features qui seront visibles dans l’application.<br>
+Dans le cadre de notre projet, on a la feature de dashboard et celle de la page d’authentification qui se sont présents.</p>
+<p><em>Utile</em><br>
+<code>ng g component pages/leNomDeMaFeature</code><br>
+<code>ng g component pages/leNomDeMaFeature/leNomdeMonSousComposant</code><br>
+Angular va générer un composant dans le dossier pages de l’application et faire sa déclaration dans le PagesModule.<br>
+Par convention, on modifiera la déclaration pour juste l’ajouter à un tableau de composants.</p>
+<pre class=" language-typescript"><code class="prism  language-typescript"><span class="token keyword">const</span> COMPONENTS <span class="token operator">=</span> <span class="token punctuation">[</span> <span class="token punctuation">]</span> <span class="token punctuation">;</span>
+</code></pre>
+<h3 id="le-module-shared">Le module shared</h3>
+<p>Une application Angular possède souvent un SharedModule qui contient les éléments réutilisables de l’application. Son rôle est de déclarer et exporter tous les composants, directives et pipes susceptibles d’être réutilisés partout dans le projet.<br>
+Le SharedModule contient généralement des éléments d’interface réutilisables (barre de navigation, HTML pour afficher un champ de formulaire ou un tableau…) ou des directives et pipes très génériques.<br>
+Tous les objets déclarés dans le SharedModule sont également exportés et donc prêts à être utilisés.<br>
+<strong>En résumé</strong>,<br>
+Dans ce module on va retrouver tous les composants, directives et pipes susceptibles d’être réutilisés.</p>
+<p><em>Exemple</em></p>
+<p><img src="./img/roles.png" alt="Décomposition des roles en composants"></p>
+<p>Ces trois objets ci-dessus sont les mêmes ainsi, on va définir un composant dans Shared qui sera paramétrable.</p>
+<pre class=" language-typescript"><code class="prism  language-typescript">@<span class="token function">Component</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  selector<span class="token punctuation">:</span> <span class="token string">'app-role-choice'</span><span class="token punctuation">,</span>
+  templateUrl<span class="token punctuation">:</span> <span class="token string">'./role-choice.component.html'</span><span class="token punctuation">,</span>
+  styleUrls<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'./role-choice.component.css'</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">RoleChoiceComponent</span> <span class="token keyword">implements</span> <span class="token class-name">OnInit</span> <span class="token punctuation">{</span>
+
+  @<span class="token function">Input</span><span class="token punctuation">(</span><span class="token punctuation">)</span> role<span class="token punctuation">:</span> <span class="token keyword">string</span><span class="token punctuation">;</span>
+  @<span class="token function">Input</span><span class="token punctuation">(</span><span class="token punctuation">)</span> imgPath<span class="token punctuation">:</span> <span class="token keyword">string</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="token keyword">private</span> router <span class="token punctuation">:</span> Router<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+
+  <span class="token function">ngOnInit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword">void</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">validate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    localStorage<span class="token punctuation">.</span><span class="token function">setItem</span><span class="token punctuation">(</span><span class="token string">"role"</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>role<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>router<span class="token punctuation">.</span><span class="token function">navigate</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">''</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Ainsi, on a juste à appeler le composant dans une page de l’application en appelant son selecteur et en lui passant les arguments nécessaires.<br>
+Pour obtenir les trois objets comme montré sur l’exemple, on va juste appeler le composant dans notre page html, avec :</p>
+<pre class=" language-html"><code class="prism  language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>container<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>app-role-choice</span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Scrum Master<span class="token punctuation">"</span></span> <span class="token attr-name">imgPath</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>assets/img/scrumMaster.png<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>app-role-choice</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>app-role-choice</span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Scrum Team<span class="token punctuation">"</span></span> <span class="token attr-name">imgPath</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>assets/img/scrumTeam.png<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>app-role-choice</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>app-role-choice</span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Product Owner<span class="token punctuation">"</span></span> <span class="token attr-name">imgPath</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>assets/img/productOwner.png<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>app-role-choice</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<p><em>Utile</em><br>
+<code>ng g component shared/components/leNomDeMonComposant</code><br>
+<code>ng g pipe shared/pipes/leNomDeMonPipe</code><br>
+<code>ng g directive shared/directives/leNomDeMaDirective</code><br>
+Angular va générer les objets dans le bon dossier de shared et faire leur déclaration dans le SharedModule.<br>
+On privilégiera cependant la déclaration de ces objets dans des tableaux d’objets comme le modèle suivant :</p>
+<pre class=" language-typescript"><code class="prism  language-typescript"><span class="token keyword">const</span> COMPONENTS <span class="token operator">=</span> <span class="token punctuation">[</span>
+  RoleChoiceComponent
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> PIPES <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> DIRECTIVES <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+@<span class="token function">NgModule</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  declarations<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token operator">...</span>COMPONENTS<span class="token punctuation">,</span> <span class="token operator">...</span>PIPES<span class="token punctuation">,</span> <span class="token operator">...</span>DIRECTIVES
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  exports<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token operator">...</span>COMPONENTS<span class="token punctuation">,</span> <span class="token operator">...</span>PIPES<span class="token punctuation">,</span> <span class="token operator">...</span>DIRECTIVES
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  imports<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    CommonModule<span class="token punctuation">,</span>
+    ThemeModule<span class="token punctuation">,</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">SharedModule</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+</code></pre>
+<h3 id="le-module-theme">Le module theme</h3>
+<p>Dans ce module, on retrouve l’import de tous les composants de thème et des composants de layouts et de navigation comme le menu.<br>
+Dans le cadre de notre projet, on a le composant de menu ainsi que l’import des module d’Angular Material (comme MatButtonModule…).</p>
+<p><em>Utile</em><br>
+Pour utiliser de nouveaux composants provenant d’Angular Material, il suffit d’ajouter le module désiré au tableau de modules suivant :</p>
+<pre class=" language-typescript"><code class="prism  language-typescript"><span class="token keyword">const</span> MAT_MODULES <span class="token operator">=</span> <span class="token punctuation">[</span>
+  MatToolbarModule<span class="token punctuation">,</span>
+  MatButtonModule<span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Le ThemeModule est importé dans AppModule, PagesModule et SharedModule. Cela permet l’utilisation de tous les composants et modules exportés.</p>
+<h2 id="le-routing">Le routing</h2>
+<p>Le routing est défini dans le fichier app-routing.module. Pour ajouter un routage vers une URL spécifiques il suffit d’ajouter son routage et le composant auquel il est relié.</p>
+<pre class=" language-typescript"><code class="prism  language-typescript"><span class="token keyword">const</span> routes<span class="token punctuation">:</span> Routes <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    path<span class="token punctuation">:</span> <span class="token string">"authentication"</span><span class="token punctuation">,</span>
+    component<span class="token punctuation">:</span> RoleAuthenticationComponent
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    path<span class="token punctuation">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+    component<span class="token punctuation">:</span> DashboardComponent
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token comment">// {</span>
+  <span class="token comment">//   path: 'my-new-route',</span>
+  <span class="token comment">//   component: MyNewRouteComponent,</span>
+  <span class="token comment">// }</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+
+    </div>
+  </div>
+</body>
+
+</html>

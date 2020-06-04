@@ -1,27 +1,18 @@
-# Gl52Projet
+# GL52-Projet Scrum
+Implémentation d’un logiciel de gestion de projet suivant la méthodologie SCRUM
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.12.
+## Création et configuration
 
-## Development server
+1. Installer [NodeJS](https://nodejs.org/fr/)
+1. Installer Angular `npm install -g @angular/cli`
+1. Run `npm install` ou `npm i`
+1. Si besoin, run `npm audit fix`
+1. Lancer le serveur JSON Server sur le localhost:3000 `npm run api`
+1. Lancer le Frontend Angular sur le localhost:4200 `ng serve --open`
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Documentation
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Il est fort utile de prendre connaissance de la documentation disponible :
+- sur Angular : [Angular docs](https://angular.io/docs) | [Angular Material](https://material.angular.io/)
+- sur JSON Server : [Github](https://github.com/typicode/json-server)
+- dans le dossier docs : [Bonnes pratiques avec Angular](docs/Projet-GL52_BonnesPratiquesAngular.md) | [Management des données](docs/Projet-GL52_ManagementDesDonnées.md)

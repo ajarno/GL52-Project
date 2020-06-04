@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projet-GL52_ManagementDesDonnées</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__left">
+    <div class="stackedit__toc">
+      
+<ul>
+<li><a href="#projet-gl52---le-management-des-données">Projet GL52 - Le management des données</a>
+<ul>
+<li><a href="#quest-ce-que-json-server-">Qu’est-ce que JSON Server ?</a></li>
+<li><a href="#comment-sest-passée-sa-mise-en-place-">Comment s’est passée sa mise en place ?</a></li>
+<li><a href="#comment-lutiliser-dans-notre-projet-">Comment l’utiliser dans notre projet ?</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+  <div class="stackedit__right">
+    <div class="stackedit__html">
+      <h1 id="projet-gl52---le-management-des-données">Projet GL52 - Le management des données</h1>
+<p>En développement Frontend, une tâche courante consiste à simuler un Backend RESTful pour fournir les données à l’application Frontend et s’assurer que tout fonctionne comme prévu.<br>
+On pourrait bien entendu développer un serveur Backend complet en utilisant par exemple Node.js, Express and MongoDB. Mais cela prendrait un certain temps et une approche simple telle que la simulation du Backend permettrait de réduire le temps de développement lié à la mise en place des données et de leur récupération.</p>
+<p>Nous avons alors décidé qu’il n’y aurait pas d’implémentation de Backend dans ce projet. Pour cependant avoir un Frontend parfaitement fonctionnel, le principe récupération des données à partir de services lançant des requêtes HTTP à l’API du Backend a été conservé.<br>
+Pour ce faire, nous avons mis en place un serveur comportant une base de données factice à l’aide de <strong>JSON Server</strong>.</p>
+<h2 id="quest-ce-que-json-server-">Qu’est-ce que JSON Server ?</h2>
+<p>JSON Server est un projet qui aide à mettre rapidement en place une API REST avec les opérations CRUD de base. Le site du projet est disponible à l’adresse suivante : <a href="https://github.com/typicode/json-server">https://github.com/typicode/json-server</a>.<br>
+A cette adresse, vous retrouverez toute la documentation nécessaire à l’utilisation de JSON Server et à l’ajout/l’accès aux données. Il décrit notamment toutes les fonctionnalités prévues, telles que le filtrage des données, leur ordonnancement…</p>
+<h2 id="comment-sest-passée-sa-mise-en-place-">Comment s’est passée sa mise en place ?</h2>
+<p>JSON Server est un package directement installable via NPM. J’ai donc lancé la ligne de commande suivante :<br>
+<code>npm install --save json-server</code><br>
+Cette ligne de commande a ajouté JSON Server aux dépendances présentes dans le fichier package.json.</p>
+<p>Ensuite, j’ai créé le dossier api dans le même dossier que les sources d’Angular. Dedans, j’ai créer le fichier db.json. C’est le fichier qui contient notre base de données au format JSON.<br>
+Dedans on retrouve le code suivant :</p>
+<pre class=" language-json"><code class="prism  language-json"><span class="token punctuation">{</span>
+	<span class="token string">"projects"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+		<span class="token punctuation">{</span> <span class="token string">"id"</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"Projet 1"</span><span class="token punctuation">,</span> <span class="token string">"description"</span><span class="token punctuation">:</span> <span class="token string">"Ceci est la description du projet"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+		<span class="token punctuation">{</span> <span class="token string">"id"</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"Projet 2"</span><span class="token punctuation">,</span> <span class="token string">"description"</span><span class="token punctuation">:</span> <span class="token string">"Ceci est la description du projet"</span> <span class="token punctuation">}</span>
+	<span class="token punctuation">]</span><span class="token punctuation">,</span>
+	<span class="token string">"productBacklog"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+		<span class="token punctuation">{</span>
+			<span class="token string">"projectId"</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+			<span class="token string">"tasks"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+				<span class="token punctuation">{</span> <span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"Tâche 1"</span><span class="token punctuation">,</span> <span class="token string">"priority"</span><span class="token punctuation">:</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token string">"description"</span><span class="token punctuation">:</span> <span class="token string">"Description de la tâche"</span><span class="token punctuation">,</span> <span class="token string">"users"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"Maxime"</span><span class="token punctuation">,</span> <span class="token string">"Pierre"</span><span class="token punctuation">,</span> <span class="token string">"Jeanne"</span><span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+				<span class="token punctuation">{</span> <span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"Tâche 2"</span><span class="token punctuation">,</span> <span class="token string">"priority"</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">"description"</span><span class="token punctuation">:</span> <span class="token string">"Description de la tâche"</span><span class="token punctuation">,</span> <span class="token string">"users"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"Maxime"</span><span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+				<span class="token punctuation">{</span> <span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"Tâche 3"</span><span class="token punctuation">,</span> <span class="token string">"priority"</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">"description"</span><span class="token punctuation">:</span> <span class="token string">"Description de la tâche"</span><span class="token punctuation">,</span> <span class="token string">"users"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"Maxime"</span><span class="token punctuation">,</span> <span class="token string">"Pierre"</span><span class="token punctuation">]</span> <span class="token punctuation">}</span>
+			<span class="token punctuation">]</span>
+		<span class="token punctuation">}</span><span class="token punctuation">,</span>
+		<span class="token punctuation">{</span>
+			<span class="token string">"projectId"</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+			<span class="token string">"tasks"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+				<span class="token punctuation">{</span> <span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"Tâche 1"</span><span class="token punctuation">,</span> <span class="token string">"priority"</span><span class="token punctuation">:</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token string">"description"</span><span class="token punctuation">:</span> <span class="token string">"Description de la tâche"</span><span class="token punctuation">,</span> <span class="token string">"users"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"Paul"</span><span class="token punctuation">,</span> <span class="token string">"Marie"</span><span class="token punctuation">,</span> <span class="token string">"Yves"</span><span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+				<span class="token punctuation">{</span> <span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"Tâche 2"</span><span class="token punctuation">,</span> <span class="token string">"priority"</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">"description"</span><span class="token punctuation">:</span> <span class="token string">"Description de la tâche"</span><span class="token punctuation">,</span> <span class="token string">"users"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"Yves"</span><span class="token punctuation">]</span> <span class="token punctuation">}</span>
+			<span class="token punctuation">]</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Ce fichier défini les endpoints de l’API. Par exemple, l’endpoint /projects renvoie la liste des projets de la base.</p>
+<p>Ensuite, j’ai créé un fichier de routing, routes.json. Les routes de l’API (du backend factice) ne sont pas par défaut préfixées par /api. Cela pose par problème car dans notre application Angular, nous voulons que toutes nos requêtes HTTP débutent par /api.<br>
+Ainsi, j’ai configuré le routing pour que devant chaque endpoint il y ait automatiquement le préfixe /api.</p>
+<p>J’ai ensuite ajouté un script au package.json pour lancer le serveur.<br>
+Notre mock API se lance cependant sur le <em>locahost:3000</em>.<br>
+Il y avait donc des problème de CORS car en <em>localhost</em> il y a un refus de communication entre le port 4200 et le port 3000, j’ai alors configuré un proxy pour obtenir les données sur le port 4200 d’Angular.</p>
+<h2 id="comment-lutiliser-dans-notre-projet-">Comment l’utiliser dans notre projet ?</h2>
+<p>Tout d’abord, lancez une première fois <code>npm install</code>pour installer le serveur.</p>
+<h3 id="lancer-le-serveur">Lancer le serveur</h3>
+<p>Pour lancer le serveur, il suffit de lancer le script que j’ai configuré dans le package.json en faisant : <code>npm run api</code><br>
+Suite à cela, notre serveur est disponible est prêt à renvoyer les données aux endpoints configurés.</p>
+<h3 id="récupérer-des-données">Récupérer des données</h3>
+<h4 id="la-partie-service">La partie Service</h4>
+<p>Par exemple, le project.service.ts :</p>
+<pre class=" language-typescript"><code class="prism  language-typescript"><span class="token keyword">export</span>  <span class="token keyword">class</span>  <span class="token class-name">ProjectService</span> <span class="token punctuation">{</span>
+	  
+	<span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="token keyword">private</span>  http<span class="token punctuation">:</span>  HttpClient<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+	  
+	<span class="token function">getProjects</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">:</span>  Observable<span class="token operator">&lt;</span>Project<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span>  <span class="token keyword">this</span><span class="token punctuation">.</span>http<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token operator">&lt;</span>Project<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`/api/projects`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	  
+	<span class="token function">getProductBacklog</span><span class="token punctuation">(</span>projectId<span class="token punctuation">:</span>  <span class="token keyword">number</span><span class="token punctuation">)</span><span class="token punctuation">:</span>  Observable<span class="token operator">&lt;</span>ProductBacklog<span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span>  <span class="token keyword">this</span><span class="token punctuation">.</span>http<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token operator">&lt;</span>ProductBacklog<span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`/api/productBacklog/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>projectId<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Celui-ci a deux méthodes :</p>
+<ul>
+<li><em>getProjects()</em> permet de récupérer a liste des projets (voir ce qui se retrouve dans projects du fichier JSON</li>
+<li><em>getProductBacklog()</em> permet de récupérer le product backlog d’un projet en particulier. Il fait un appel à l’endpoint /productBacklog/:projectId qui est re-routé grâce au fichier routes.json à l’endpoint /productBacklog?projectId=:projectId</li>
+</ul>
+<h4 id="pour-récupérer-les-données-dans-un-composant-angular">Pour récupérer les données dans un composant Angular</h4>
+<p>Dans le fichier <em>xxxx.component.ts</em> :</p>
+<pre class=" language-typescript"><code class="prism  language-typescript"><span class="token keyword">export</span>  <span class="token keyword">class</span>  <span class="token class-name">XXXXComponent</span>  <span class="token keyword">implements</span>  <span class="token class-name">OnInit</span> <span class="token punctuation">{</span>
+	backlog$<span class="token punctuation">:</span>  Observable<span class="token operator">&lt;</span>ProductBacklog<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+	<span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="token keyword">private</span>  projectService<span class="token punctuation">:</span>  ProjectService<span class="token punctuation">)</span> <span class="token punctuation">{</span>	<span class="token punctuation">}</span>
+	  
+	<span class="token function">ngOnInit</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>backlog$  <span class="token operator">=</span>  <span class="token keyword">this</span><span class="token punctuation">.</span>projectService<span class="token punctuation">.</span><span class="token function">getProductBacklog</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Et pour l’afficher dans le fichier <em>xxxx.component.html</em>, on peut faire par exemple :</p>
+<pre class=" language-html"><code class="prism  language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">*ngIf</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>backlog$ | async as backlog<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">*ngFor</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>let task of backlog.tasks<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>{{task.name}} - {{task.priority}} - {{task.description}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<p>Le pipe async est absolument indispensable car le Service renvoie un Observable et c’est le pipe qui va s’occuper de faire la conversion vers un objet.</p>
+<p>On aura ici utilisé <em>*ngIf</em> car on obtient un objet unique. Tandis que lorsque le service renvoie une liste d’objets il faudra faire un <code>*ngFor="let project of projects$ | async"</code> en utilisant directement <em>project</em> et ses propriétés.</p>
+
+    </div>
+  </div>
+</body>
+
+</html>
