@@ -5,6 +5,7 @@ import { Listschema } from '../listschema';
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import { MatSnackBar, MatSnackBarConfig } from "@angular/material/snack-bar";
 import { EditDialogComponent } from "../edit-dialog/edit-dialog.component";
+import { Task } from 'src/app/shared/models/Task';
 
 
 @Component({
@@ -14,7 +15,7 @@ import { EditDialogComponent } from "../edit-dialog/edit-dialog.component";
 })
 
 export class CardComponent implements OnInit {
-  @Input() card: Cardschema;
+  @Input() card: Task;
   @Input() cards: Cardstore;
   @Input() list: Listschema;
   today: Date;
@@ -43,19 +44,19 @@ export class CardComponent implements OnInit {
     
     if(this.card.deadline) {
       dialogConfig.data = {
-        title: this.card.title,
-        description: this.card.description,
+        title: this.card.getTitle(),
+        description: this.card.getDescription(),
         deadline: this.card.deadline.toDateString(),
         members: this.card.members,
-        priority: this.card.priority
+        priority: this.card.getPriority()
       };
     } else {
       dialogConfig.data = {
-        title: this.card.title,
-        description: this.card.description,
+        title: this.card.getTitle(),
+        description: this.card.getDescription(),
         deadline: null,
         members: this.card.members, 
-        priority: this.card.priority
+        priority: this.card.getPriority()
       };
     }
     console.log("Dialog input:", dialogConfig.data);
@@ -71,11 +72,11 @@ export class CardComponent implements OnInit {
           this._onDeleteClicked();
 
         } else {
-          this.card.title = data.title;
-          this.card.description = data.description;
+          this.card.setTitle(data.title);
+          this.card.setDescription(data.description);
           this.card.deadline = data.deadline;
           this.card.members = data.members;
-          this.card.priority = data.priority;
+          this.card.setPriority(data.priority);
         }
       }
     });   
@@ -92,13 +93,13 @@ export class CardComponent implements OnInit {
     config.panelClass = ['custom-class'];
     config.duration = 3000;
 
-    let snackBarRef = this.snackBar.open("La tâche \"" + this.card.title + "\" a bien été supprimée", 
+    let snackBarRef = this.snackBar.open("La tâche \"" + this.card.getTitle() + "\" a bien été supprimée", 
                   "Annuler", 
                   config);
 
     snackBarRef.onAction().subscribe(() => {
       console.log('La suppression a été annulée');
-      const cardId =  this.cards.newCard(this.card.title, this.card.description, this.card.members, this.card.deadline, this.card.priority);
+      const cardId =  this.cards.newCard(this.card.getTitle(), this.card.getDescription(), this.card.members, this.card.deadline, this.card.getPriority());
       this.list.cards.push(cardId);
     });
   }
@@ -138,7 +139,7 @@ export class CardComponent implements OnInit {
     this.dialog.open(templateRef, {
       maxWidth: '30vw',
       minHeight: 'auto',
-      data: { title: this.card.title, description: this.card.description, members: this.card.members, priority: this.card.priority }
+      data: { title: this.card.getTitle(), description: this.card.getDescription(), members: this.card.members, priority: this.card.getPriority() }
     });
   }
 }

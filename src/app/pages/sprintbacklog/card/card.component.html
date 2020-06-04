@@ -1,31 +1,30 @@
 <mat-card class="card" 
     draggable="true" 
     (dragstart)="dragStart($event)" 
-    id="{{card.id}}">
+    id="{{card.id}}"> 
+    
     <mat-card-content>
         <div>
             <div class="sideBySide">
                 <div class="task">
-                    <!-- <mat-icon *ngIf="card.priority=='3' && notFinished">looks_3</mat-icon>
-                    <mat-icon *ngIf="card.priority=='2' && notFinished">looks_two</mat-icon>
-                    <mat-icon *ngIf="card.priority=='1' && notFinished">looks_one</mat-icon> -->
                     
                     <div>
                         <p>
-                            {{card.title}}
-                        </p>
+                            {{card.getTitle()}}
+                            <!-- card.getTitle() -->
+                        </p> 
                         <p *ngIf="notFinished"
                             class="mat-caption" [ngClass]="compareDatetoToday(card.deadline)">
                             {{ card.deadline | date:'dd MMMM yyyy' }}
                         </p>
                         <p>
-                            <label *ngIf= "card.priority=='3'" class="high">
+                            <label *ngIf= "card.getPriority()=='3'" class="high">
                                 High
                             </label>
-                            <label *ngIf= "card.priority=='2'" class="medium">
+                            <label *ngIf= "card.getPriority()=='2'" class="medium">
                                 Medium
                             </label>
-                            <label *ngIf= "card.priority=='1'" class="low">
+                            <label *ngIf= "card.getPriority()=='1'" class="low">
                                 Low
                             </label>
                         </p>
@@ -38,7 +37,7 @@
                         edit
                     </mat-icon>
                 </button>
-                <button *ngIf="!notFinished && card.description" aria-label="Voir les détails de la tâche terminée"
+                <button *ngIf="!notFinished && card.getDescription()" aria-label="Voir les détails de la tâche terminée"
                     mat-icon-button (click)="openViewDialog(viewDetails)">
                     <mat-icon matTooltip="Voir les détails" matTooltipShowDelay="1300">
                         remove_red_eye

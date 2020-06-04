@@ -1,32 +1,37 @@
-class Task {
-    private name : string;
-    private tags : Array<string> = new Array(5);
-    private priority : number;
+import { Symbols } from 'src/app/pages/sprintbacklog/edit-dialog/edit-dialog.component';
+
+export class Task {
+    id :string;
+    private title : string;
+    //private tags : Array<string> = new Array(5);
+    private priority : Symbols;
     private description : string;
-    private users : Array<User> = new Array(5);
-    private status : Status = Status.TO_DO;
+    //private users : Array<User> = new Array(5);
+    //private status : Status = Status.TO_DO;
+    deadline: Date;
+    members: string[];
 
-    public getName() : string {
-        return this.name;
+    public getTitle() : string {
+        return this.title;
     }
 
-    public setName(name : string) : void {
-        this.name = name;
+    public setTitle(title : string) : void {
+        this.title = title;
     }
 
-    public getTags() : Array<string> {
-        return this.tags;
-    }
+    // public getTags() : Array<string> {
+    //     return this.tags;
+    // }
 
-    public setTags(tags : Array<string>) : void {
-        this.tags = tags;
-    }
+    // public setTags(tags : Array<string>) : void {
+    //     this.tags = tags;
+    // }
 
-    public getPriority() : number {
+    public getPriority() : Symbols {
         return this.priority;
     }
 
-    public setPriority(priority : number) : void {
+    public setPriority(priority : Symbols) : void {
         this.priority = priority;
     }
 
@@ -38,53 +43,53 @@ class Task {
         this.description = description;
     }
 
-    public getStatus() : Status {
-        return this.status;
-    }
+    // public getStatus() : Status {
+    //     return this.status;
+    // }
 
-    public setStatus(status : Status) : void {
-        this.status = status;
-    }
+    // public setStatus(status : Status) : void {
+    //     this.status = status;
+    // }
 
-    public getUsers() : Array<User> {
-        return this.users;
-    }
+    // public getUsers() : Array<User> {
+    //     return this.users;
+    // }
 
-    public setUsers(users : Array<User>) : void {
-        this.users = users;
-    }
+    // public setUsers(users : Array<User>) : void {
+    //     this.users = users;
+    // }
 
-    public changeStatus(status : Status) : void {
-        this.setStatus(status);
-    }
+    // public changeStatus(status : Status) : void {
+    //     this.setStatus(status);
+    // }
 
-    public addTag(tag : string) : void {
-        this.tags.push(tag);
-    }
+    // public addTag(tag : string) : void {
+    //     this.tags.push(tag);
+    // }
 
-    public removeTag(tag : string) : void {
-        let index = this.tags.indexOf(tag);
-        this.tags.splice(index, 1);
-    }
+    // public removeTag(tag : string) : void {
+    //     let index = this.tags.indexOf(tag);
+    //     this.tags.splice(index, 1);
+    // }
 
-    public addUser(user : User) : void {
-        this.users.push(user);
-    }
+    // public addUser(user : User) : void {
+    //     this.users.push(user);
+    // }
 
-    public removeUser(user : User) : void {
-        let index = this.users.indexOf(user);
-        this.users.splice(index, 1);
-    }
+    // public removeUser(user : User) : void {
+    //     let index = this.users.indexOf(user);
+    //     this.users.splice(index, 1);
+    // }
     
-    public assignMember(user : User) : void {
-        this.addUser(user);
-    }
+    // public assignMember(user : User) : void {
+    //     this.addUser(user);
+    // }
 
-    public assignMembers(users : Array<User>) : void {
-        this.setUsers(users);
-    }
+    // public assignMembers(users : Array<User>) : void {
+    //     this.setUsers(users);
+    // }
     
-    public changePriority(priority : number) {
-        this.setPriority(priority);
-    }
+    // public changePriority(priority : Symbols) {
+    //     this.setPriority(priority);
+    // }
 }
