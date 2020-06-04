@@ -1,15 +1,17 @@
 
 // cardschema 所有CARD的內容
-import { Cardschema } from './cardschema';
+//import { Cardschema } from './cardschema';
 import { Symbols } from './edit-dialog/edit-dialog.component';
+import { Task } from 'src/app/shared/models/Task';
+
 export class Cardstore {
   cards: Object = {};
   lastid = -1;
   
-  _addCard(card: Cardschema) {
-    card.id = String(++this.lastid);
-    this.cards[card.id] = card;
-    return (card.id);
+  _addCard(card: Task) {
+    card.setId(String(++this.lastid));
+    this.cards[card.getId()] = card;
+    return (card.getId());
   }
  
   getCard(cardId: string) {
@@ -17,12 +19,12 @@ export class Cardstore {
   }
  
   newCard(title: string, description: string = null, members: string[] = null, deadline: Date = null, priority: Symbols = Symbols.Low): string {
-    const card = new Cardschema();
-    card.title = title;
-    card.description = description;
+    const card = new Task();
+    card.setTitle(title);
+    card.setDescription(description);
     card.members = members;
     card.deadline = deadline;
-    card.priority = priority;
+    card.setPriority(priority);
     return (this._addCard(card));
   }
 

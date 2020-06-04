@@ -1,4 +1,6 @@
-abstract class Backlog {
+import { Task } from "./Task";
+
+export abstract class Backlog {
     private tasks : Array<Task> = new Array();
 
     public getTasks() : Array<Task> {

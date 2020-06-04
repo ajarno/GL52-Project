@@ -1,15 +1,22 @@
 import { Symbols } from 'src/app/pages/sprintbacklog/edit-dialog/edit-dialog.component';
 
 export class Task {
-    id :string;
+    private id :string;
     private title : string;
     //private tags : Array<string> = new Array(5);
     private priority : Symbols;
     private description : string;
     //private users : Array<User> = new Array(5);
-    //private status : Status = Status.TO_DO;
+    
     deadline: Date;
     members: string[];
+
+    public getId():string{
+        return this.id;
+    }
+    public setId(id:string){
+        this.id = id;
+    }
 
     public getTitle() : string {
         return this.title;
