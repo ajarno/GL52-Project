@@ -3,7 +3,6 @@ import { Cardstore } from '../cardstore';
 //cardstore用來創建新的卡片
 import { Listschema } from '../listschema';
 import { Symbols } from '../edit-dialog/edit-dialog.component';
-import { Status } from 'src/app/shared/models/Status';
 //name,cards
 
 @Component({
@@ -23,19 +22,16 @@ export class SprintBacklogComponent implements OnInit {
     //創建LIST
     const lists: Listschema[] = [
       {
-        //name: 'TODO',
-        cards: [],
-        status:Status.TO_DO
+        name: 'TODO',
+        cards: []
       },
       {
-        //name: 'DOING',
-        cards: [],
-        status:Status.DOING
+        name: 'DOING',
+        cards: []
       },
       {
-        //name: 'DONE',
-        cards: [],
-        status:Status.DONE
+        name: 'DONE',
+        cards: []
       }
     ]
     this.lists = lists;

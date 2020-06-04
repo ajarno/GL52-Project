@@ -29,7 +29,7 @@ export class CardComponent implements OnInit {
     }
  
   ngOnInit() { 
-    this.notFinished = (this.list.status != Status.DONE);
+    this.notFinished = (this.list.name != 'Terminé');
   }
  
   dragStart(ev) {
