@@ -14,8 +14,8 @@
                             <!-- card.getTitle() -->
                         </p> 
                         <p *ngIf="notFinished"
-                            class="mat-caption" [ngClass]="compareDatetoToday(card.deadline)">
-                            {{ card.deadline | date:'dd MMMM yyyy' }}
+                            class="mat-caption" [ngClass]="compareDatetoToday(card.getDeadline())">
+                            {{ card.getDeadline() | date:'dd MMMM yyyy' }}
                         </p>
                         <p>
                             <label *ngIf= "card.getPriority()=='3'" class="high">
@@ -46,18 +46,18 @@
             </div>
             <div *ngIf="notFinished">
                 <mat-chip-list
-                    *ngIf="card.members && card.members.length < 3">
-                    <mat-chip *ngFor="let member of card.members">
+                    *ngIf="card.getMembers() && card.getMembers().length < 3">
+                    <mat-chip *ngFor="let member of card.getMembers()">
                         {{ member }}
                     </mat-chip>
                 </mat-chip-list>
                 <mat-chip-list
-                    *ngIf="card.members && card.members.length > 2">
+                    *ngIf="card.getMembers() && card.getMembers().length > 2">
                     <mat-chip>
-                        {{ card.members[0] }}
+                        {{ card.getMembers()[0] }}
                     </mat-chip>
                     <mat-chip>
-                        {{ card.members[1] }}
+                        {{ card.getMembers()[1] }}
                     </mat-chip>
                     <mat-chip 
                         [matTooltip]="displayOthers()" 

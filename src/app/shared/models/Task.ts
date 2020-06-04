@@ -7,9 +7,23 @@ export class Task {
     private priority : Symbols;
     private description : string;
     //private users : Array<User> = new Array(5);
-    
-    deadline: Date;
-    members: string[];
+    private deadline: Date;
+    private members: string[];
+
+    public getDeadline():Date{
+        return this.deadline;
+    }
+    public setDeadline(deadline:Date){
+        this.deadline=deadline;
+
+    }
+    public getMembers():string[]{
+        return this.members;
+    }
+    public setMembers(members:string[]){
+        this.members=members;
+
+    }
 
     public getId():string{
         return this.id;

@@ -43,12 +43,12 @@ export class CardComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = "55vh";
     
-    if(this.card.deadline) {
+    if(this.card.getDeadline()) {
       dialogConfig.data = {
         title: this.card.getTitle(),
         description: this.card.getDescription(),
-        deadline: this.card.deadline.toDateString(),
-        members: this.card.members,
+        deadline: this.card.getDeadline().toDateString(),
+        members: this.card.getMembers(),
         priority: this.card.getPriority()
       };
     } else {
@@ -56,7 +56,7 @@ export class CardComponent implements OnInit {
         title: this.card.getTitle(),
         description: this.card.getDescription(),
         deadline: null,
-        members: this.card.members, 
+        members: this.card.getMembers(), 
         priority: this.card.getPriority()
       };
     }
@@ -75,8 +75,8 @@ export class CardComponent implements OnInit {
         } else {
           this.card.setTitle(data.title);
           this.card.setDescription(data.description);
-          this.card.deadline = data.deadline;
-          this.card.members = data.members;
+          this.card.setDeadline(data.deadline) ;
+          this.card.setMembers(data.members);
           this.card.setPriority(data.priority);
         }
       }
@@ -100,7 +100,7 @@ export class CardComponent implements OnInit {
 
     snackBarRef.onAction().subscribe(() => {
       console.log('La suppression a été annulée');
-      const cardId =  this.cards.newCard(this.card.getTitle(), this.card.getDescription(), this.card.members, this.card.deadline, this.card.getPriority());
+      const cardId =  this.cards.newCard(this.card.getTitle(), this.card.getDescription(), this.card.getMembers(), this.card.getDeadline(), this.card.getPriority());
       this.list.cards.push(cardId);
     });
   }
@@ -125,12 +125,12 @@ export class CardComponent implements OnInit {
   }
 
   remove(member: string): void {
-    const index = this.card.members.indexOf(member);
-    if (index >= 0) this.card.members.splice(index, 1);
+    const index = this.card.getMembers().indexOf(member);
+    if (index >= 0) this.card.getMembers().splice(index, 1);
   }
 
   displayOthers() {
-    let others = Object.assign([], this.card.members);
+    let others = Object.assign([], this.card.getMembers());
     others.splice(0, 2);
 
     return others.join('\n');
@@ -140,7 +140,7 @@ export class CardComponent implements OnInit {
     this.dialog.open(templateRef, {
       maxWidth: '30vw',
       minHeight: 'auto',
-      data: { title: this.card.getTitle(), description: this.card.getDescription(), members: this.card.members, priority: this.card.getPriority() }
+      data: { title: this.card.getTitle(), description: this.card.getDescription(), members: this.card.getMembers(), priority: this.card.getPriority() }
     });
   }
 }

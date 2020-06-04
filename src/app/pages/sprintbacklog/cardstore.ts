@@ -22,8 +22,8 @@ export class Cardstore {
     const card = new Task();
     card.setTitle(title);
     card.setDescription(description);
-    card.members = members;
-    card.deadline = deadline;
+    card.setMembers(members);
+    card.setDeadline(deadline);
     card.setPriority(priority);
     return (this._addCard(card));
   }
