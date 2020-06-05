@@ -6,16 +6,16 @@ export class ProductOwner extends User {
         project.getProductBacklog().addTask(task);
     }
 
-    public changeTaskStatus(task : Task, status : Status) : void {
-        task.changeStatus(status);
-    }
+    // public changeTaskStatus(task : Task, status : Status) : void {
+    //     task.changeStatus(status);
+    // }
 
     public createProductBacklog(project : Project) : void {
         let productBacklog = new ProductBacklog();
         project.setProductBacklog(productBacklog);
     }
     
-    public changeTaskPriority(task : Task, priority : number) : void {
-        task.changePriority(priority);
-    }
+    // public changeTaskPriority(task : Task, priority : number) : void {
+    //     task.changePriority(priority);
+    // }
 }

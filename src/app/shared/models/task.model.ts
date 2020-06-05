@@ -1,34 +1,59 @@
-import { User, Status } from '.';
+
+import { Symbols } from './Symbols';
 
 export class Task {
-    private name : string;
-    private tags : Array<string> = new Array();
-    private priority : number;
+    private id :string;
+    private title : string;
+    //private tags : Array<string> = new Array(5);
+    private priority : Symbols;
     private description : string;
-    private users : Array<User> = new Array();
-    private status : Status = Status.TO_DO;
+    //private users : Array<User> = new Array(5);
+    private deadline: Date;
+    private members: string[];
 
-    public getName() : string {
-        return this.name;
+    public getDeadline():Date{
+        return this.deadline;
+    }
+    public setDeadline(deadline:Date){
+        this.deadline=deadline;
+
+    }
+    public getMembers():string[]{
+        return this.members;
+    }
+    public setMembers(members:string[]){
+        this.members=members;
+
     }
 
-    public setName(name : string) : void {
-        this.name = name;
+    public getId():string{
+        return this.id;
+    }
+    public setId(id:string){
+        this.id = id;
     }
 
-    public getTags() : Array<string> {
-        return this.tags;
+    public getTitle() : string {
+        return this.title;
     }
 
-    public setTags(tags : Array<string>) : void {
-        this.tags = tags;
+    public setTitle(title : string) : void {
+        this.title = title;
     }
 
-    public getPriority() : number {
+    // public getTags() : Array<string> {
+    //     return this.tags;
+    // }
+
+    // public setTags(tags : Array<string>) : void {
+    //     this.tags = tags;
+    // }
+
+    public getPriority() : Symbols {
         return this.priority;
     }
 
-    public setPriority(priority : number) : void {
+    public setPriority(priority : Symbols) : void {
         this.priority = priority;
     }
 
@@ -40,53 +65,53 @@ export class Task {
         this.description = description;
     }
 
-    public getStatus() : Status {
-        return this.status;
-    }
+    // public getStatus() : Status {
+    //     return this.status;
+    // }
 
-    public setStatus(status : Status) : void {
-        this.status = status;
-    }
+    // public setStatus(status : Status) : void {
+    //     this.status = status;
+    // }
 
-    public getUsers() : Array<User> {
-        return this.users;
-    }
+    // public getUsers() : Array<User> {
+    //     return this.users;
+    // }
 
-    public setUsers(users : Array<User>) : void {
-        this.users = users;
-    }
+    // public setUsers(users : Array<User>) : void {
+    //     this.users = users;
+    // }
 
-    public changeStatus(status : Status) : void {
-        this.setStatus(status);
-    }
+    // public changeStatus(status : Status) : void {
+    //     this.setStatus(status);
+    // }
 
-    public addTag(tag : string) : void {
-        this.tags.push(tag);
-    }
+    // public addTag(tag : string) : void {
+    //     this.tags.push(tag);
+    // }
 
-    public removeTag(tag : string) : void {
-        let index = this.tags.indexOf(tag);
-        this.tags.splice(index, 1);
-    }
+    // public removeTag(tag : string) : void {
+    //     let index = this.tags.indexOf(tag);
+    //     this.tags.splice(index, 1);
+    // }
 
-    public addUser(user : User) : void {
-        this.users.push(user);
-    }
+    // public addUser(user : User) : void {
+    //     this.users.push(user);
+    // }
 
-    public removeUser(user : User) : void {
-        let index = this.users.indexOf(user);
-        this.users.splice(index, 1);
-    }
+    // public removeUser(user : User) : void {
+    //     let index = this.users.indexOf(user);
+    //     this.users.splice(index, 1);
+    // }
     
-    public assignMember(user : User) : void {
-        this.addUser(user);
-    }
+    // public assignMember(user : User) : void {
+    //     this.addUser(user);
+    // }
 
-    public assignMembers(users : Array<User>) : void {
-        this.setUsers(users);
-    }
+    // public assignMembers(users : Array<User>) : void {
+    //     this.setUsers(users);
+    // }
     
-    public changePriority(priority : number) {
-        this.setPriority(priority);
-    }
+    // public changePriority(priority : Symbols) {
+    //     this.setPriority(priority);
+    // }
 }

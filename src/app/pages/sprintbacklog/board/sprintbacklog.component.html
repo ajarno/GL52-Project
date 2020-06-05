@@ -1,0 +1,12 @@
+<div class="grid-container">
+  <h1 class="mat-h1">Sprint Backlog</h1>
+  <div style="text-align:center" class="bg-text">
+
+    <div class="container" cdkDropListGroup>
+
+      <div class="item" *ngFor="let list of lists" >
+        <app-list [list]="list" [cardStore]="cardStore"></app-list>
+      </div>
+    </div>
+  </div>
+</div>
