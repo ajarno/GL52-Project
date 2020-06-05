@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { Symbols } from '../edit-dialog/edit-dialog.component';
 import { SprintBacklog } from 'src/app/shared/models/sprint-backlog.model';
 import { Listtask } from 'src/app/shared/models/Listtask';
+import { ProjectBacklogComponent } from '../../projects/project-backlog/project-backlog.component';
 //name,cards
 
 @Component({
@@ -14,7 +15,7 @@ import { Listtask } from 'src/app/shared/models/Listtask';
 })
 
 export class SprintBacklogComponent implements OnInit {
-
+  id : number;
   cardStore: SprintBacklog;
   lists: Listtask[];
   constructor() { }

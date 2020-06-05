@@ -1,5 +1,9 @@
 <div class="grid-container">
-  <h1 class="mat-h1">Sprint Backlog</h1>
+  <a [routerLink]="['/projects']" routerLinkActive="router-link-active">Mes Projets</a>
+        <span>&nbsp;/&nbsp;</span>
+        <a [routerLink]="['/projects/'+ id +'/backlog']" routerLinkActive="router-link-active">Backlog Produit</a>
+  <h2 class="mat-h2">Sprint Backlog</h2>
+
   <div style="text-align:center" class="bg-text">
 
     <div class="container" cdkDropListGroup>
