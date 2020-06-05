@@ -1,0 +1,54 @@
+.saveButton {
+    background-color: rgba(69, 133, 80, 0.89);
+    color: whitesmoke;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .header ::ng-deep .title-field {
+    height: auto !important;
+    width: 80%;
+  }
+  
+  .header ::ng-deep .title-field h2 {
+    margin: 0px;
+  }
+  
+  .header ::ng-deep .mat-icon-button {
+    height: 37.5px !important;
+    width: 37.5px !important;
+    margin: 5px;
+  }
+  
+  .header ::ng-deep .mat-icon-button ::ng-deep .mat-icon {
+    height: 25px !important;
+    width: 25px !important;
+    font-size: 25px !important;
+    line-height: 20px !important;
+    color: #c72d28e3;
+  }
+  
+  ::ng-deep .deadline-field {
+    width: 50%;
+  }
+  
+  ::ng-deep .description-field, .newMember {
+    width: 100% !important;
+  }
+  
+  ::ng-deep .check {
+    padding-bottom: 25px !important;
+  }
+  
+  ::ng-deep input.late {
+    color: #da2721fd !important;
+  }
+  
+  ::ng-deep input.near {
+    color: rgba(60, 49, 212, 0.906) !important;
+  }
+  

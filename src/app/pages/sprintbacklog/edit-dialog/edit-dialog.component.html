@@ -1,0 +1,78 @@
+<div class="header">
+  <mat-form-field class="title-field">
+    <h2 mat-dialog-title>
+      <textarea matInput
+        placeholder="Nom de la tâche"
+        [(ngModel)]="title"
+        (change)="hasTitle()"
+        value={{title}}
+        cdkTextareaAutosize
+        required>
+      </textarea>
+    </h2>
+    <!-- error message, if the blank is empty -->
+    <mat-error *ngIf="!title">
+      Merci d'entrer un nom pour la tâche
+    </mat-error>
+  </mat-form-field>
+  <!-- The icon of rubbish bin -->
+  <button mat-icon-button aria-label="Supprimer la tâche" (click)="onDeleteClicked()">
+    <mat-icon matTooltip="Supprimer la tâche" matTooltipPosition="above" matTooltipShowDelay="1300"
+    class="deleteButton">
+    delete
+  </mat-icon>
+</button>
+</div>
+
+<mat-dialog-content>
+
+  <mat-form-field>
+    <mat-label>Priority</mat-label>
+    <mat-select [(ngModel)]="priority" name="food">
+      <mat-option [value]="3">High</mat-option>
+      <mat-option [value]="2">Medium</mat-option>
+      <mat-option [value]="1">Low</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  
+
+  <!-- date limite -->
+  <mat-form-field class="deadline-field">
+    <input matInput
+        placeholder="Date limite"
+        [(ngModel)]="deadline" 
+        [matDatepicker]="picker"
+        [ngClass]="compareDatetoToday()"> 
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field class="newMember">
+    <mat-chip-list #chipList>
+      <mat-chip *ngFor="let member of members" [selectable]="selectable"
+        [removable]="removable" (removed)="remove(member)">
+        {{member}}
+        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+      </mat-chip>
+    </mat-chip-list>
+    <input placeholder="Membres"
+          [matChipInputFor]="chipList"
+          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          [matChipInputAddOnBlur]="addOnBlur"
+          (matChipInputTokenEnd)="add($event)">
+  </mat-form-field>
+<!-- description -->
+  <mat-form-field class="description-field">
+    <textarea matInput rows="4"
+        placeholder="Description"
+        [(ngModel)]="description"
+        value={{description}}>
+    </textarea>
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button class="mat-raised-button" aria-label="Retourner à l'écran principal" (click)="close()">Retour</button>
+    <button class="mat-raised-button saveButton" aria-label="Enregistrer les modifications" [disabled]="!title" (click)="save()" >Enregistrer</button>
+</mat-dialog-actions>
