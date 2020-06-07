@@ -32,7 +32,7 @@ export class ProjectPreviewComponent implements OnInit {
   }
 
   storeID(): void {
-    this.router.navigate(["/projects/" + this.id + "/backlog"]);
+    this.router.navigate(["/projects/" + this.id + "/productbacklog"]);
     sessionStorage.setItem("projectId", this.id.toString());
     sessionStorage.setItem("projectTitle", this.title);
   }

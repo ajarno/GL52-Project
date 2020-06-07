@@ -25,30 +25,18 @@ const routes: Routes = [
       {
         path:'',
         component: ProjectsComponent,
-        data: {
-          breadcrumb: null
-        }
       },
       {
-        path: ':id/backlog',
+        path: ':id/productbacklog',
         component: ProjectBacklogComponent,
-        data: {
-          breadcrumb: 'Projet1'
-        },
       },
       {
         path: 'new',
         component: NewProjectComponent,
-        data: {
-          breadcrumb: 'Nouveau Projet'
-        }
       },
       {
-        path:'sprintbacklog',
+        path:':id/sprintbacklog',
         component: SprintBacklogComponent,
-        data: {
-          breadcrumb: null
-        }
       }
     ]
   },

@@ -1,5 +1,3 @@
-import { Backlog } from '.';
-
-export class ProductBacklog extends Backlog {
+export class ProductBacklog {
 
 }

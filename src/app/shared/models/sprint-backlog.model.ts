@@ -1,30 +1,40 @@
-import { Backlog } from './backlog.model';
 import { Task } from './task.model';
 import { Symbols } from './Symbols';
 
-export class SprintBacklog extends Backlog {
-    lastid = -1;
+export class SprintBacklog {
+    private sprintName: string;
+    private tasks: Array<Task>;
 
-    //add a task
+    constructor(backlog) {
+        this.sprintName = backlog.sprintName;
+        this.tasks = backlog.tasks.map(task => new Task(task.id, task.title, task.priority, task.description, task.deadline, task.members, task.status));
+    }
+
+    getSprintName() : string {
+        return this.sprintName;
+    }
+
+    getTasksIdForStatus(status: string) : Array<number> {
+        const filteredArray = this.tasks.filter(task => task.getStatus() === status);
+        console.log(status);
+        console.table(filteredArray);
+
+        return filteredArray.map(task => task.getId());
+    }
+
     _addCard(card: Task) {
-        card.setId(String(++this.lastid));
-        this.addTask(card);
-        //this.cards[card.getId()] = card;
+        this.tasks.push(card);
+
         return (card.getId());
     }
      
-    getCard(cardId: string) {
-        return this.getTasks()[cardId];
-        // return this.cards[cardId];
+    getCard(cardId: number) {
+        return this.tasks.find(task => task.getId() === cardId);
     }
      
-    newCard(title: string, description: string = null, members: string[] = null, deadline: Date = null, priority: Symbols = Symbols.Low): string {
-        const card = new Task();
-        card.setTitle(title);
-        card.setDescription(description);
-        card.setMembers(members);
-        card.setDeadline(deadline);
-        card.setPriority(priority);
+    newCard(title: string, description: string = null, members: string[] = null, deadline: Date = null, priority: string = null): number {
+        const card = new Task(this.tasks.length + 1, title, priority, description, deadline, members, status);
+
         return (this._addCard(card));
     }
     

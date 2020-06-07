@@ -1,117 +1,124 @@
-
-import { Symbols } from './Symbols';
+import { Symbols } from "./Symbols";
 
 export class Task {
-    private id :string;
-    private title : string;
-    //private tags : Array<string> = new Array(5);
-    private priority : Symbols;
-    private description : string;
-    //private users : Array<User> = new Array(5);
-    private deadline: Date;
-    private members: string[];
+  private id: number;
+  private title: string;
+  private priority: string;
+  private description: string;
+  //private users : Array<User> = new Array(5);
+  private deadline: Date;
+  private members: string[];
+  private status: string;
 
-    public getDeadline():Date{
-        return this.deadline;
-    }
-    public setDeadline(deadline:Date){
-        this.deadline=deadline;
+  constructor(_id: number, _title: string, _priority: string = null, _description: string = null, _deadline: Date = null, _members: string[] = [], _status: string = "To do") {
+    this.id = _id;
+    this.title = _title;
+    this.priority = _priority;
+    this.description = _description;
+    this.deadline = (_deadline ? new Date(_deadline) : null);
+    this.members = _members;
+    this.status = _status;
+  }
 
-    }
-    public getMembers():string[]{
-        return this.members;
-    }
-    public setMembers(members:string[]){
-        this.members=members;
+  public getDeadline(): Date {
+    return this.deadline;
+  }
+  public setDeadline(deadline: Date) {
+    this.deadline = deadline;
+  }
+  public getMembers(): string[] {
+    return this.members;
+  }
+  public setMembers(members: string[]) {
+    this.members = members;
+  }
 
-    }
+  public getId(): number {
+    return this.id;
+  }
+  public setId(id: number) {
+    this.id = id;
+  }
 
-    public getId():string{
-        return this.id;
-    }
-    public setId(id:string){
-        this.id = id;
-    }
+  public getTitle(): string {
+    return this.title;
+  }
 
-    public getTitle() : string {
-        return this.title;
-    }
+  public setTitle(title: string): void {
+    this.title = title;
+  }
 
-    public setTitle(title : string) : void {
-        this.title = title;
-    }
+  // public getTags() : Array<string> {
+  //     return this.tags;
+  // }
 
-    // public getTags() : Array<string> {
-    //     return this.tags;
-    // }
+  // public setTags(tags : Array<string>) : void {
+  //     this.tags = tags;
+  // }
 
-    // public setTags(tags : Array<string>) : void {
-    //     this.tags = tags;
-    // }
+  public getPriority(): string {
+    return this.priority;
+  }
 
-    public getPriority() : Symbols {
-        return this.priority;
-    }
+  public setPriority(priority: string): void {
+    this.priority = priority;
+  }
 
-    public setPriority(priority : Symbols) : void {
-        this.priority = priority;
-    }
+  public getDescription(): string {
+    return this.description;
+  }
 
-    public getDescription() : string {
-        return this.description;
-    }
+  public setDescription(description: string): void {
+    this.description = description;
+  }
 
-    public setDescription(description : string) : void {
-        this.description = description;
-    }
+  public getStatus(): string {
+    return this.status;
+  }
 
-    // public getStatus() : Status {
-    //     return this.status;
-    // }
+  public setStatus(status: string): void {
+    this.status = status;
+  }
 
-    // public setStatus(status : Status) : void {
-    //     this.status = status;
-    // }
+  // public getUsers() : Array<User> {
+  //     return this.users;
+  // }
 
-    // public getUsers() : Array<User> {
-    //     return this.users;
-    // }
+  // public setUsers(users : Array<User>) : void {
+  //     this.users = users;
+  // }
 
-    // public setUsers(users : Array<User>) : void {
-    //     this.users = users;
-    // }
+  // public changeStatus(status : Status) : void {
+  //     this.setStatus(status);
+  // }
 
-    // public changeStatus(status : Status) : void {
-    //     this.setStatus(status);
-    // }
+  // public addTag(tag : string) : void {
+  //     this.tags.push(tag);
+  // }
 
-    // public addTag(tag : string) : void {
-    //     this.tags.push(tag);
-    // }
+  // public removeTag(tag : string) : void {
+  //     let index = this.tags.indexOf(tag);
+  //     this.tags.splice(index, 1);
+  // }
 
-    // public removeTag(tag : string) : void {
-    //     let index = this.tags.indexOf(tag);
-    //     this.tags.splice(index, 1);
-    // }
+  // public addUser(user : User) : void {
+  //     this.users.push(user);
+  // }
 
-    // public addUser(user : User) : void {
-    //     this.users.push(user);
-    // }
+  // public removeUser(user : User) : void {
+  //     let index = this.users.indexOf(user);
+  //     this.users.splice(index, 1);
+  // }
 
-    // public removeUser(user : User) : void {
-    //     let index = this.users.indexOf(user);
-    //     this.users.splice(index, 1);
-    // }
-    
-    // public assignMember(user : User) : void {
-    //     this.addUser(user);
-    // }
+  // public assignMember(user : User) : void {
+  //     this.addUser(user);
+  // }
 
-    // public assignMembers(users : Array<User>) : void {
-    //     this.setUsers(users);
-    // }
-    
-    // public changePriority(priority : Symbols) {
-    //     this.setPriority(priority);
-    // }
+  // public assignMembers(users : Array<User>) : void {
+  //     this.setUsers(users);
+  // }
+
+  // public changePriority(priority : Symbols) {
+  //     this.setPriority(priority);
+  // }
 }

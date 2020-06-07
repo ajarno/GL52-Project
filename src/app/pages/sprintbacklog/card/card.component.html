@@ -1,4 +1,4 @@
-<mat-card class="card" 
+<mat-card class="card" *ngIf="card"
     draggable="true" 
     (dragstart)="dragStart($event)" 
     id="{{card.getId()}}"> 
@@ -9,22 +9,19 @@
                 <div class="task">
                     
                     <div>
-                        <p>
-                            {{card.getTitle()}}
-                            <!-- card.getTitle() -->
-                        </p> 
+                        <p>{{card.getTitle()}}</p> 
                         <p *ngIf="notFinished"
                             class="mat-caption" [ngClass]="compareDatetoToday(card.getDeadline())">
-                            {{ card.getDeadline() | date:'dd MMMM yyyy' }}
+                            {{ card.getDeadline() | date: 'longDate' }}
                         </p>
                         <p>
-                            <label *ngIf= "card.getPriority()=='3'" class="high">
+                            <label *ngIf= "card.getPriority()=='High'" class="high">
                                 High
                             </label>
-                            <label *ngIf= "card.getPriority()=='2'" class="medium">
+                            <label *ngIf= "card.getPriority()=='Medium'" class="medium">
                                 Medium
                             </label>
-                            <label *ngIf= "card.getPriority()=='1'" class="low">
+                            <label *ngIf= "card.getPriority()=='Low'" class="low">
                                 Low
                             </label>
                         </p>

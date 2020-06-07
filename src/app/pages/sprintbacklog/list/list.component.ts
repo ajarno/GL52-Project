@@ -4,8 +4,8 @@ import { Component, HostListener, Input, OnInit } from '@angular/core';
 //import { Cardstore } from '../../../shared/models/cardstore';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Task } from 'src/app/shared/models/task.model';
-import { Listtask } from 'src/app/shared/models/Listtask';
 import { SprintBacklog } from 'src/app/shared/models/sprint-backlog.model';
+import { SprintBacklogService } from 'src/app/core/services/sprint-backlog.service';
 
 @Component({
   selector: 'app-list',
@@ -13,11 +13,26 @@ import { SprintBacklog } from 'src/app/shared/models/sprint-backlog.model';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-  @Input() list: Listtask;
-  @Input() cardStore: SprintBacklog;
+  @Input() name: string;
+  @Input() addable: boolean = false;
 
-  constructor() { }
+  _cardStore: SprintBacklog;
+  @Input() set cardStore(cards: SprintBacklog) {
+    if (cards && this.name) {
+      this._cardStore = cards;
+      this.list = this.cardStore.getTasksIdForStatus(this.name);
+    }
+  };
+  get cardStore() : SprintBacklog {
+    return this._cardStore;
+  }
+  
+  list: Array<number>;
 
+  constructor(private sprintBacklogService : SprintBacklogService) { }
+
+  ngOnInit(): void { }
+  
   drop(event: CdkDragDrop<Task[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
@@ -33,10 +48,7 @@ export class ListComponent implements OnInit {
     value = value.trim();
     if (value) {
       const cardId =  this.cardStore.newCard(value);
-      this.list.cards.push(cardId);
+      this.list.push(cardId);
     }
-  }
-
-  ngOnInit(): void {
   }
 }

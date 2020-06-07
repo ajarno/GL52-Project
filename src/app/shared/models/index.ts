@@ -1,4 +1,3 @@
-export * from './backlog.model';
 export * from './product-backlog.model';
 export * from './meeting.model';
 export * from './product-owner.model';
@@ -8,6 +7,5 @@ export * from './scrum-team-member.model';
 export * from './scrum-team.model';
 export * from './sprint-backlog.model';
 export * from './sprint.model';
-export * from './status.enum';
 export * from './task.model';
 export * from './user.model';

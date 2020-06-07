@@ -1,22 +1,22 @@
-<mat-card class="cardList">
+<mat-card *ngIf="cardStore" class="cardList">
     <div class="list">
         <mat-card-title>
-            {{list.name}}
+            {{ name }}
         </mat-card-title>
         <mat-card-subtitle>
-            {{ list.cards.length }} tâche(s)
+            {{ list.length }} tâche(s)
         </mat-card-subtitle>
         <mat-card-content>
             <div cdkDropList 
                 (cdkDropListDropped)="drop($event)" 
-                [cdkDropListData]="list.cards"
+                [cdkDropListData]="list"
                 class="cards">
-                <div *ngFor="let cardId of list.cards" 
+                <div *ngFor="let cardId of list" 
                     cdkDrag>
                     <app-card [card]="cardStore.getCard(cardId)" [cards]="cardStore" [list]="list"></app-card>
                 </div>
             </div>
-            <mat-form-field class="newCard">
+            <mat-form-field *ngIf="addable" class="newCard">
                 <input matInput #addCardInput type="text" 
                     placeholder="Ajouter une tâche..."
                     (keyup.enter)="onEnter(addCardInput.value); addCardInput.value='';" 

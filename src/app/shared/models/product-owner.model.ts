@@ -1,9 +1,9 @@
-import { User, Project, Task, Status, ProductBacklog } from '.';
+import { User, Project, Task, ProductBacklog } from '.';
 
 export class ProductOwner extends User {
 
     public addTask(project : Project, task : Task) {
-        project.getProductBacklog().addTask(task);
+        // project.getProductBacklog().addTask(task);
     }
 
     // public changeTaskStatus(task : Task, status : Status) : void {

@@ -1,7 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-//import { Cardschema } from '../cardschema';
-//import { Cardstore } from '../../../shared/models/cardstore';
-import { Listtask } from '../../../shared/models/Listtask';
+import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import { MatSnackBar, MatSnackBarConfig } from "@angular/material/snack-bar";
 import { EditDialogComponent } from "../edit-dialog/edit-dialog.component";
@@ -16,20 +13,28 @@ import { SprintBacklog } from 'src/app/shared/models/sprint-backlog.model';
 })
 
 export class CardComponent implements OnInit {
-  @Input() card: Task;
+  _card: Task;
+  @Input() set card(card: Task) {
+    if (card) {
+      this._card = card;
+      console.log(card);
+      this.notFinished = (this.card.getStatus() !== 'Done');
+    }
+  }
+  get card(): Task {
+    return this._card;
+  };
   @Input() cards: SprintBacklog;
-  @Input() list: Listtask;
+  @Input() list: Array<number>;
   today: Date;
   notFinished: boolean;
 
-  constructor(private dialog: MatDialog,
-    private snackBar: MatSnackBar) { 
-      
-    this.today = new Date();
-    }
- 
+  @Output() deleted = new EventEmitter<number>();
+
+  constructor(private dialog: MatDialog, private snackBar: MatSnackBar) { }
+    
   ngOnInit() { 
-    this.notFinished = (this.list.name != 'Terminé');
+    this.today = new Date();
   }
  
   dragStart(ev) {
@@ -85,8 +90,9 @@ export class CardComponent implements OnInit {
 
   _onDeleteClicked(): void {
     this.cards.deleteCard[this.card.getId()];
-    const index = this.list.cards.indexOf(this.card.getId()); 
-    this.list.cards.splice(index, 1);
+    const index = this.list.indexOf(this.card.getId()); 
+    this.list.splice(index, 1);
+    this.deleted.emit(index);
   }
 
   _openSnackBar() {
@@ -101,7 +107,7 @@ export class CardComponent implements OnInit {
     snackBarRef.onAction().subscribe(() => {
       console.log('La suppression a été annulée');
       const cardId =  this.cards.newCard(this.card.getTitle(), this.card.getDescription(), this.card.getMembers(), this.card.getDeadline(), this.card.getPriority());
-      this.list.cards.push(cardId);
+      this.list.push(cardId);
     });
   }
 

@@ -132,12 +132,12 @@
           "status": "Doing",
           "description": "Définir les spécifications techniques, le contexte du projet, vérifier les brevets, faire l'étude de marché",
           "priority": "High"
-        }, 
+        },
         {
           "id": 2,
           "title": "Faire le SADT",
           "status": "Doing"
-        }, 
+        },
         {
           "id": 3,
           "title": "Réaliser une maquette",
@@ -150,7 +150,12 @@
           "status": "To do",
           "description": null,
           "priority": "High",
-          "members": ["Marie", "Jacques", "Jean-Charles", "Alexane"],
+          "members": [
+            "Marie",
+            "Jacques",
+            "Jean-Charles",
+            "Alexane"
+          ],
           "deadline": "08-22-2019"
         },
         {
@@ -177,12 +182,12 @@
           "status": "Doing",
           "description": "Définir les spécifications techniques, le contexte du projet, vérifier les brevets, faire l'étude de marché",
           "priority": "High"
-        }, 
+        },
         {
           "id": 2,
           "title": "Faire le SADT",
           "status": "Doing"
-        }, 
+        },
         {
           "id": 3,
           "title": "Choisir le sujet de projet",
@@ -213,7 +218,12 @@
           "status": "To do",
           "description": null,
           "priority": "High",
-          "members": ["Marie", "Jacques", "Jean-Charles", "Alexane"],
+          "members": [
+            "Marie",
+            "Jacques",
+            "Jean-Charles",
+            "Alexane"
+          ],
           "deadline": "08-22-2019"
         }
       ]
@@ -229,7 +239,7 @@
           "status": "Doing",
           "description": "Définir les spécifications techniques, le contexte du projet, vérifier les brevets, faire l'étude de marché",
           "priority": "High"
-        }, 
+        },
         {
           "id": 2,
           "title": "Choisir le sujet de projet",
