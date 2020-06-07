@@ -9,19 +9,33 @@
 
     <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z1">
 
-        <ng-container matColumnDef="item">
-            <th mat-header-cell mat-sort-header *matHeaderCellDef> Tâche </th>
+        <ng-container matColumnDef="story">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> Story </th>
             <td mat-cell *matCellDef="let element"> {{element.name}} </td>
         </ng-container>
 
         <ng-container matColumnDef="priority">
             <th mat-header-cell mat-sort-header *matHeaderCellDef> Priorité </th>
-            <td mat-cell *matCellDef="let element"> {{element.priority}} </td>
+            <td mat-cell *matCellDef="let element">
+                <mat-chip-list aria-label="Priority tag" selectable="false">
+                    <mat-chip focus="false" selected disableRipple [ngClass]="element.status === 'Done' ? 'done': ''"
+                        [color]="element.priority === 'High' ? 'warn' : (element.priority === 'Medium' ? 'primary' : 'basic')">
+                        <small>{{element.priority}}</small>
+                    </mat-chip>
+                </mat-chip-list>
+            </td>
         </ng-container>
 
         <ng-container matColumnDef="status">
             <th mat-header-cell mat-sort-header *matHeaderCellDef> Status </th>
-            <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+            <td mat-cell *matCellDef="let element">
+                <mat-chip-list aria-label="Status tag" selectable="false">
+                    <mat-chip focus="false" selected disableRipple [ngClass]="element.status === 'Done' ? 'done': ''"
+                        [color]="element.status === 'To do' ? 'basic' : 'primary'">
+                        <small>{{element.status}}</small>
+                    </mat-chip>
+                </mat-chip-list>
+            </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
