@@ -22,11 +22,7 @@ export class ProjectService {
     return this.http.get<Project[]>(`/api/projects`);
   }
 
-  getProductBacklog(projectId: number): Observable<ProductBacklog> {
-    return this.http.get<ProductBacklog>(`/api/productBacklog/${projectId}`);
-  }
-
-  createNewProject(project: Project): Observable<{}> {
+  createProject(project: Project): Observable<{}> {
     return this.http.post(`/api/projects`, project, { headers });
   }
 

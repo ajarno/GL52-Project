@@ -38,7 +38,7 @@ export class NewProjectComponent implements OnInit {
       status: "in progress",
       users: this.users,
     };
-    this.projectService.createNewProject(this.project).subscribe(() =>
+    this.projectService.createProject(this.project).subscribe(() =>
       this.router.navigate(["/projects"])
     );
   }

@@ -10,3 +10,7 @@ a {
     color: black;
     text-decoration: none;
 }
+
+.mat-chip.done {
+    opacity: 0.6;
+}

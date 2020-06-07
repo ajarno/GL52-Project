@@ -3,9 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { ProjectService } from './services/project.service';
 import { throwIfAlreadyLoaded } from './module-import-guard';
+import { ProductBacklogService } from './services/product-backlog.service';
+import { SprintBacklogService } from './services/sprint-backlog.service';
 
 const SERVICES = [
-  ProjectService
+  ProjectService,
+  ProductBacklogService,
+  SprintBacklogService
 ]
 
 @NgModule({

@@ -1,4 +1,5 @@
 {
     "/api/*": "/$1",
-    "/productBacklog/:projectId": "/productBacklog?projectId=:projectId"
+    "/productBacklog/:projectId": "/productBacklog?projectId=:projectId",
+    "/sprintBacklog/:projectId/:storyId": "/sprintBacklog?projectId=:projectId&storyId=:storyId"
 }

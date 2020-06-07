@@ -40,125 +40,191 @@
   "productBacklog": [
     {
       "projectId": 1,
-      "tasks": [
+      "stories": [
         {
-          "name": "Tâche 1",
-          "priority": 5,
-          "description": "Description de la tâche",
-          "users": [
-            "Maxime",
-            "Pierre",
-            "Jeanne"
-          ],
-          "status": "TO DO"
+          "id": 1,
+          "name": "Story 1",
+          "priority": "Medium",
+          "status": "Doing"
         },
         {
-          "name": "Tâche 2",
-          "priority": 3,
-          "description": "Description de la tâche",
-          "users": [
-            "Maxime"
-          ],
-          "status": "DOING"
+          "id": 2,
+          "name": "Story 2",
+          "priority": "Low",
+          "status": "To do"
         },
         {
-          "name": "Tâche 3",
-          "priority": 2,
-          "description": "Description de la tâche",
-          "users": [
-            "Maxime",
-            "Pierre"
-          ],
-          "status": "DONE"
+          "id": 3,
+          "name": "Story 3",
+          "priority": "Low",
+          "status": "To do"
         },
         {
-          "name": "Tâche 4",
-          "priority": 8,
-          "description": "Description de la tâche",
-          "users": [
-            "Pierre",
-            "Jeanne"
-          ],
-          "status": "DOING"
+          "id": 4,
+          "name": "Story 4",
+          "priority": "High",
+          "status": "To do"
         },
         {
-          "name": "Tâche 5",
-          "priority": 1,
-          "description": "Description de la tâche",
-          "users": [
-            "Jeanne"
-          ],
-          "status": "TO DO"
+          "id": 5,
+          "name": "Story 5",
+          "priority": "High",
+          "status": "To do"
         }
       ]
     },
     {
       "projectId": 2,
-      "tasks": [
+      "stories": [
         {
-          "name": "Tâche 1",
-          "priority": 5,
-          "description": "Description de la tâche",
-          "users": [
-            "Paul",
-            "Marie",
-            "Yves"
-          ],
-          "status": "TO DO"
+          "id": 1,
+          "name": "Story 1",
+          "priority": "Medium",
+          "status": "Done"
         },
         {
-          "name": "Tâche 2",
-          "priority": 3,
-          "description": "Description de la tâche",
-          "users": [
-            "Yves"
-          ],
-          "status": "DOING"
+          "id": 2,
+          "name": "Story 2",
+          "priority": "Medium",
+          "status": "Doing"
         }
       ]
     },
     {
       "projectId": 3,
+      "stories": [
+        {
+          "id": 1,
+          "name": "Story 1",
+          "priority": "Medium",
+          "status": "Doing"
+        },
+        {
+          "id": 2,
+          "name": "Story 2",
+          "priority": "Low",
+          "status": "To do"
+        },
+        {
+          "id": 3,
+          "name": "Story 3",
+          "priority": "Medium",
+          "status": "To do"
+        },
+        {
+          "id": 4,
+          "name": "Story 4",
+          "priority": "High",
+          "status": "To do"
+        }
+      ]
+    }
+  ],
+  "sprintBacklog": [
+    {
+      "storyId": 1,
+      "projectId": 1,
+      "name": "Sprint 1",
       "tasks": [
         {
-          "name": "Tâche 1",
-          "priority": 5,
-          "description": "Description de la tâche",
-          "users": [
-            "Marion",
-            "Jean",
-            "Charles"
-          ],
-          "status": "TO DO"
+          "name": "Rédiger le Cahier des Charges",
+          "status": "Doing",
+          "description": "Définir les spécifications techniques, le contexte du projet, vérifier les brevets, faire l'étude de marché",
+          "priority": "High"
+        }, 
+        {
+          "name": "Faire le SADT",
+          "status": "Doing"
+        }, 
+        {
+          "name": "Réaliser une maquette",
+          "status": "Doing",
+          "priority": "Medium"
         },
         {
-          "name": "Tâche 2",
-          "priority": 3,
-          "description": "Description de la tâche",
-          "users": [
-            "Marion"
-          ],
-          "status": "DOING"
+          "name": "Concevoir l'application",
+          "status": "To do",
+          "description": null,
+          "priority": "High",
+          "members": ["Marie", "Jacques", "Jean-Charles", "Alexane"],
+          "deadline": "08-22-2019"
         },
         {
-          "name": "Tâche 3",
-          "priority": 2,
-          "description": "Description de la tâche",
-          "users": [
-            "Jean",
-            "Charles"
-          ],
-          "status": "DONE"
+          "name": "Choisir le sujet de projet",
+          "status": "Done",
+          "description": "Définir le périmètre du sujet, les objectifs à atteindre, ainsi que les outils de réalisation utilisés."
         },
         {
-          "name": "Tâche 4",
-          "priority": 8,
-          "description": "Description de la tâche",
-          "users": [
-            "Marion",
-            "Charles"
-          ],
-          "status": "TO DO"
+          "name": "Définir le groupe de projet",
+          "status": "Done"
+        }
+      ]
+    },
+    {
+      "storyId": 2,
+      "projectId": 2,
+      "name": "Sprint 1",
+      "tasks": [
+        {
+          "name": "Rédiger le Cahier des Charges",
+          "status": "Doing",
+          "description": "Définir les spécifications techniques, le contexte du projet, vérifier les brevets, faire l'étude de marché",
+          "priority": "High"
+        }, 
+        {
+          "name": "Faire le SADT",
+          "status": "Doing"
+        }, 
+        {
+          "name": "Choisir le sujet de projet",
+          "status": "Done",
+          "description": "Définir le périmètre du sujet, les objectifs à atteindre, ainsi que les outils de réalisation utilisés."
+        },
+        {
+          "name": "Définir le groupe de projet",
+          "status": "Done"
+        }
+      ]
+    },
+    {
+      "storyId": 3,
+      "projectId": 2,
+      "name": "Sprint 2",
+      "tasks": [
+        {
+          "name": "Réaliser une maquette",
+          "status": "Doing",
+          "priority": "Medium"
+        },
+        {
+          "name": "Concevoir l'application",
+          "status": "To do",
+          "description": null,
+          "priority": "High",
+          "members": ["Marie", "Jacques", "Jean-Charles", "Alexane"],
+          "deadline": "08-22-2019"
+        }
+      ]
+    },
+    {
+      "storyId": 1,
+      "projectId": 3,
+      "name": "Sprint 1",
+      "tasks": [
+        {
+          "name": "Rédiger le Cahier des Charges",
+          "status": "Doing",
+          "description": "Définir les spécifications techniques, le contexte du projet, vérifier les brevets, faire l'étude de marché",
+          "priority": "High"
+        }, 
+        {
+          "name": "Choisir le sujet de projet",
+          "status": "Done",
+          "description": "Définir le périmètre du sujet, les objectifs à atteindre, ainsi que les outils de réalisation utilisés."
+        },
+        {
+          "name": "Définir le groupe de projet",
+          "status": "Done"
         }
       ]
     }
