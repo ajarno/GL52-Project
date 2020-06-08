@@ -13,7 +13,7 @@
                 class="cards">
                 <div *ngFor="let cardId of list" 
                     cdkDrag>
-                    <app-card [card]="cardStore.getCard(cardId)" [cards]="cardStore" [list]="list"></app-card>
+                    <app-card [card]="cardStore.getCard(cardId)" [cards]="cardStore" [list]="list" (updated)="updateSprint()"></app-card>
                 </div>
             </div>
             <mat-form-field *ngIf="addable" class="newCard">

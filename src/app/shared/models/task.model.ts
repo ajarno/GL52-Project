@@ -1,7 +1,7 @@
 import { Symbols } from "./Symbols";
 
 export class Task {
-  private id: number;
+  private id: string;
   private title: string;
   private priority: string;
   private description: string;
@@ -10,7 +10,7 @@ export class Task {
   private members: string[];
   private status: string;
 
-  constructor(_id: number, _title: string, _priority: string = null, _description: string = null, _deadline: Date = null, _members: string[] = [], _status: string = "To do") {
+  constructor(_id: string, _title: string, _priority: string = null, _description: string = null, _deadline: Date = null, _members: string[] = [], _status: string = "To do") {
     this.id = _id;
     this.title = _title;
     this.priority = _priority;
@@ -33,11 +33,8 @@ export class Task {
     this.members = members;
   }
 
-  public getId(): number {
+  public getId(): string {
     return this.id;
-  }
-  public setId(id: number) {
-    this.id = id;
   }
 
   public getTitle(): string {

@@ -1,11 +1,10 @@
-import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 //import { Cardschema } from '../cardschema';
 
 //import { Cardstore } from '../../../shared/models/cardstore';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Task } from 'src/app/shared/models/task.model';
 import { SprintBacklog } from 'src/app/shared/models/sprint-backlog.model';
-import { SprintBacklogService } from 'src/app/core/services/sprint-backlog.service';
 
 @Component({
   selector: 'app-list',
@@ -27,9 +26,10 @@ export class ListComponent implements OnInit {
     return this._cardStore;
   }
   
-  list: Array<number>;
+  list: Array<string>;
+  @Output() updated = new EventEmitter<number>();
 
-  constructor(private sprintBacklogService : SprintBacklogService) { }
+  constructor() { }
 
   ngOnInit(): void { }
   
@@ -37,18 +37,27 @@ export class ListComponent implements OnInit {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
+      const previousList = [...this.list]; // clone the list before update
       transferArrayItem(event.previousContainer.data,
                         event.container.data,
                         event.previousIndex,
                         event.currentIndex);
+      const idOfTransferedCard: string = this.list.find(num => !previousList.includes(num));
+      this.cardStore.getCard(idOfTransferedCard).setStatus(this.name);
+      this.updateSprint();
     }
   }
   
   onEnter(value: string) {
     value = value.trim();
     if (value) {
-      const cardId =  this.cardStore.newCard(value);
+      const cardId =  this.cardStore.newCard(value, this.name);
       this.list.push(cardId);
+      this.updateSprint();
     }
+  }
+
+  updateSprint() {
+    this.updated.emit();
   }
 }

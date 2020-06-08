@@ -106,7 +106,7 @@ export class Project {
         let participants = meeting.getParticipants();
         for (const iterator of participants) {
             let email = iterator.getEmail();
-            console.log("The meeting has been canceled ! =>" + email);
+            // console.log("The meeting has been canceled ! =>" + email);
         }
         this.removeMeeting(meeting);
     }

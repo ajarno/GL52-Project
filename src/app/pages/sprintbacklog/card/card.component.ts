@@ -4,6 +4,7 @@ import { MatSnackBar, MatSnackBarConfig } from "@angular/material/snack-bar";
 import { EditDialogComponent } from "../edit-dialog/edit-dialog.component";
 import { Task } from 'src/app/shared/models/task.model';
 import { SprintBacklog } from 'src/app/shared/models/sprint-backlog.model';
+import { SprintBacklogService } from 'src/app/core/services/sprint-backlog.service';
 
 
 @Component({
@@ -17,7 +18,6 @@ export class CardComponent implements OnInit {
   @Input() set card(card: Task) {
     if (card) {
       this._card = card;
-      console.log(card);
       this.notFinished = (this.card.getStatus() !== 'Done');
     }
   }
@@ -25,13 +25,13 @@ export class CardComponent implements OnInit {
     return this._card;
   };
   @Input() cards: SprintBacklog;
-  @Input() list: Array<number>;
+  @Input() list: Array<string>;
   today: Date;
   notFinished: boolean;
 
-  @Output() deleted = new EventEmitter<number>();
+  @Output() updated = new EventEmitter<string>();
 
-  constructor(private dialog: MatDialog, private snackBar: MatSnackBar) { }
+  constructor(private dialog: MatDialog, private snackBar: MatSnackBar, private service: SprintBacklogService) { }
     
   ngOnInit() { 
     this.today = new Date();
@@ -48,7 +48,7 @@ export class CardComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = "55vh";
     
-    if(this.card.getDeadline()) {
+    if (this.card.getDeadline()) {
       dialogConfig.data = {
         title: this.card.getTitle(),
         description: this.card.getDescription(),
@@ -65,12 +65,10 @@ export class CardComponent implements OnInit {
         priority: this.card.getPriority()
       };
     }
-    console.log("Dialog input:", dialogConfig.data);
 
     let dialogRef = this.dialog.open(EditDialogComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(data => {
-      console.log("Dialog output:", data);
       if(data) {
         
         if(data == "delete") {
@@ -83,16 +81,16 @@ export class CardComponent implements OnInit {
           this.card.setDeadline(data.deadline) ;
           this.card.setMembers(data.members);
           this.card.setPriority(data.priority);
+          this.updateSprint();
         }
       }
     });   
   }
 
   _onDeleteClicked(): void {
-    this.cards.deleteCard[this.card.getId()];
-    const index = this.list.indexOf(this.card.getId()); 
-    this.list.splice(index, 1);
-    this.deleted.emit(index);
+    this.cards.deleteCard(this.card.getId());
+    this.list.splice(this.list.indexOf(this.card.getId()), 1);
+    this.updateSprint();
   }
 
   _openSnackBar() {
@@ -105,10 +103,15 @@ export class CardComponent implements OnInit {
                   config);
 
     snackBarRef.onAction().subscribe(() => {
-      console.log('La suppression a été annulée');
-      const cardId =  this.cards.newCard(this.card.getTitle(), this.card.getDescription(), this.card.getMembers(), this.card.getDeadline(), this.card.getPriority());
+      const cardId =  this.cards.newCard(this.card.getTitle(), this.card.getStatus(), this.card.getDescription(), this.card.getMembers(), this.card.getDeadline(), this.card.getPriority());
       this.list.push(cardId);
+      // update backlog manually since event emitter not catch by list
+      this.service.updateSprintBacklog(this.cards).subscribe(() => {}); 
     });
+  }
+
+  updateSprint() {
+    this.updated.emit();
   }
 
   public compareDatetoToday(date : Date): string {

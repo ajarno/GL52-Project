@@ -14,18 +14,11 @@
                             class="mat-caption" [ngClass]="compareDatetoToday(card.getDeadline())">
                             {{ card.getDeadline() | date: 'longDate' }}
                         </p>
-                        <p>
-                            <label *ngIf= "card.getPriority()=='High'" class="high">
-                                High
-                            </label>
-                            <label *ngIf= "card.getPriority()=='Medium'" class="medium">
-                                Medium
-                            </label>
-                            <label *ngIf= "card.getPriority()=='Low'" class="low">
-                                Low
+                        <p *ngIf="notFinished && card.getPriority()">
+                            <label [ngClass]="card.getPriority().toLowerCase()">
+                                {{ card.getPriority() }}
                             </label>
                         </p>
-                        
                     </div>
                 </div>
                 <button *ngIf="notFinished" aria-label="Editer la tâche"

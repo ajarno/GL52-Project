@@ -42,7 +42,7 @@ export class Meeting {
     public sendInvitations() : void {
         for (const iterator of this.participants) {
             let email = iterator.getEmail();
-            console.log("send a invatation to" + email);
+            // console.log("send a invatation to" + email);
         }
     }
 }

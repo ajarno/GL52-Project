@@ -10,9 +10,9 @@
   <div style="text-align:center" class="bg-text">
 
     <div class="container" cdkDropListGroup>
-      <app-list name="To do" [cardStore]="cardStore" addable="true"></app-list>
-      <app-list name="Doing" [cardStore]="cardStore"></app-list>
-      <app-list name="Done" [cardStore]="cardStore"></app-list>
+      <app-list name="To do" [cardStore]="cardStore" addable="true" (updated)="updateSprintBacklog()"></app-list>
+      <app-list name="Doing" [cardStore]="cardStore" (updated)="updateSprintBacklog()"></app-list>
+      <app-list name="Done" [cardStore]="cardStore" (updated)="updateSprintBacklog()"></app-list>
     </div>
   </div>
 </div>

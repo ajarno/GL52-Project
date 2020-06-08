@@ -28,14 +28,16 @@ export class SprintBacklogComponent implements OnInit {
 
   private initBacklog() {
     this.subs.push(
-      this.sprintBacklogService.getSprintBacklog(this.projectId, this.storyId).subscribe((data : SprintBacklog[])=> {
+      this.sprintBacklogService.getSprintBacklog(this.projectId, this.storyId).subscribe((data : SprintBacklog[]) => {
         this.cardStore = new SprintBacklog(data[0]);
       })
     );
   }
 
   updateSprintBacklog() {
-    this.sprintBacklogService.updateSprintBacklog(Number(sessionStorage.getItem("projectId")), Number(sessionStorage.getItem("storyId")), this.cardStore);
+    this.subs.push(this.sprintBacklogService.updateSprintBacklog(this.cardStore).subscribe(data => {
+      // console.info(data);
+    }));
   }
 
   ngOnDestroy() {

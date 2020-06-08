@@ -3,24 +3,18 @@ import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
 
-export enum Symbols {
-  High ="3",
-  Medium ="2",
-  Low = "1"
-}
-
 export interface DialogData {
   title: string;
   description: string;
   deadline: Date;
   members: Array<string>;
-  priority: Symbols;
+  priority: string;
 }
 
 @Component({
   selector: 'app-edit-dialog',
   templateUrl: './edit-dialog.component.html',
-  styleUrls: ['./edit-dialog.component.scss']
+  styleUrls: ['./edit-dialog.component.css']
 })
 export class EditDialogComponent implements OnInit {
 
@@ -33,7 +27,7 @@ export class EditDialogComponent implements OnInit {
   description: string;
   deadline: Date;
   members: Array<string>;
-  priority: Symbols;
+  priority: string;
 
   constructor(
     private dialogRef: MatDialogRef<EditDialogComponent>,
@@ -53,9 +47,7 @@ export class EditDialogComponent implements OnInit {
       }
   }
 
-  ngOnInit() {
-    this.priority = Symbols.Low;
-  }
+  ngOnInit() { }
 
   save() {
     if(this.members.length === 0) {

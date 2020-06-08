@@ -15,10 +15,10 @@ export class SprintBacklogService {
   constructor(private http: HttpClient) {}
 
   getSprintBacklog(projectId: number, storyId: number): Observable<SprintBacklog[]> {
-    return this.http.get<SprintBacklog[]>(`/api/sprintBacklog/${projectId}/${storyId}`);
+    return this.http.get<SprintBacklog[]>(`/api/sprintBacklog?projectId=${projectId}&storyId=${storyId}`);
   }
 
-  updateSprintBacklog(projectId: number, storyId: number, sprintBacklog: SprintBacklog): Observable<{}> {
-    return this.http.post(`/api/sprintBacklog/${projectId}/${storyId}`, sprintBacklog, { headers });
+  updateSprintBacklog(sprintBacklog: SprintBacklog): Observable<{}> {
+    return this.http.put(`/api/sprintBacklog/${sprintBacklog.getSprintId()}`, JSON.stringify(sprintBacklog), { headers });
   }
 }
