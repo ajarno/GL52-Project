@@ -4,7 +4,7 @@
         <span>&nbsp;/&nbsp;</span>
         <a [routerLink]="['/projects/'+ id]" routerLinkActive="router-link-active">{{title}}</a>
         <span>&nbsp;/&nbsp;</span>
-        <a [routerLink]="['/projects/'+ id +'/backlog']" routerLinkActive="router-link-active">Backlog Produit</a>
+        <a [routerLink]="['/projects/'+ id +'/productbacklog']" routerLinkActive="router-link-active">Backlog Produit</a>
     </h2>
 
     <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z1">
@@ -38,8 +38,8 @@
             </td>
         </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let element; columns: displayedColumns;" class="element-row" [ngClass]="element.status === 'Doing' ? 'have-sprintbacklog': ''" (click)="openSprintBacklog(element)"></tr>
     </table>
     <br>
 

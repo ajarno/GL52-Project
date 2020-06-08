@@ -1,0 +1,27 @@
+<mat-card *ngIf="cardStore" class="cardList">
+    <div class="list">
+        <mat-card-title>
+            {{ name }}
+        </mat-card-title>
+        <mat-card-subtitle>
+            {{ list.length }} tâche(s)
+        </mat-card-subtitle>
+        <mat-card-content>
+            <div cdkDropList 
+                (cdkDropListDropped)="drop($event)" 
+                [cdkDropListData]="list"
+                class="cards">
+                <div *ngFor="let cardId of list" 
+                    cdkDrag>
+                    <app-card [card]="cardStore.getCard(cardId)" [cards]="cardStore" [list]="list" (updated)="updateSprint()"></app-card>
+                </div>
+            </div>
+            <mat-form-field *ngIf="addable" class="newCard">
+                <input matInput #addCardInput type="text" 
+                    placeholder="Ajouter une tâche..."
+                    (keyup.enter)="onEnter(addCardInput.value); addCardInput.value='';" 
+                    autofocus>
+            </mat-form-field>
+        </mat-card-content>
+    </div>
+</mat-card>

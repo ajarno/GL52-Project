@@ -1,9 +1,7 @@
 import { Component, OnInit, Input, OnDestroy } from "@angular/core";
 import { map } from "rxjs/operators";
 import { Breakpoints, BreakpointObserver } from "@angular/cdk/layout";
-import { Observable } from "rxjs";
 import { ProjectService } from "../../core/services/project.service";
-import { Project } from "src/app/shared/models";
 
 @Component({
   selector: "app-projects",

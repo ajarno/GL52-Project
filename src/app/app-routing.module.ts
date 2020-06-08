@@ -5,6 +5,8 @@ import { RoleAuthenticationComponent } from './pages/role-authentication/role-au
 import { ProjectsComponent } from './pages/projects/projects.component';
 import { NewProjectComponent } from './pages/projects/new-project/new-project.component';
 import { ProjectBacklogComponent } from './pages/projects/project-backlog/project-backlog.component';
+import { SprintBacklogComponent } from './pages/sprintbacklog/board/sprintbacklog.component';
+//import { SprintBacklogComponent } from './pages/sprintbacklog/board/sprintbacklog.component';
 const routes: Routes = [
   {
     path: "authentication",
@@ -23,23 +25,18 @@ const routes: Routes = [
       {
         path:'',
         component: ProjectsComponent,
-        data: {
-          breadcrumb: null
-        }
       },
       {
-        path: ':id/backlog',
+        path: ':id/productbacklog',
         component: ProjectBacklogComponent,
-        data: {
-          breadcrumb: 'Projet1'
-        }
       },
       {
         path: 'new',
         component: NewProjectComponent,
-        data: {
-          breadcrumb: 'Nouveau Projet'
-        }
+      },
+      {
+        path:':id/sprintbacklog',
+        component: SprintBacklogComponent,
       }
     ]
   },

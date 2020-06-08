@@ -12,6 +12,6 @@ export class ScrumMaster extends User {
     }
 
     public estimateTask(project : Project, task : Task) : void {
-        project.getProductBacklog().addTask(task);
+        // project.getProductBacklog().addTask(task);
     }
 }

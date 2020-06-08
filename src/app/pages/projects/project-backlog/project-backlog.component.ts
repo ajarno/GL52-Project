@@ -1,8 +1,9 @@
 import { Component, OnInit, Input, OnDestroy, ViewChild } from "@angular/core";
-import { ProjectService } from "../../../core/services/project.service";
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProductBacklogService } from 'src/app/core/services/product-backlog.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: "app-project-backlog",
@@ -13,7 +14,7 @@ export class ProjectBacklogComponent implements OnInit, OnDestroy {
   id: number;
   title: string;
 
-  constructor(private projectService: ProjectService, private productBacklogService: ProductBacklogService) {}
+  constructor(private router: Router, private productBacklogService: ProductBacklogService) {}
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   displayedColumns: string[] = ["story", "priority", "status"];
@@ -34,6 +35,13 @@ export class ProjectBacklogComponent implements OnInit, OnDestroy {
         this.dataSource.data = data[0].stories;
       })
     );
+  }
+
+  openSprintBacklog(element) {
+    if (element.status === "Doing") {
+      sessionStorage.setItem("storyId", element.id)
+      this.router.navigate(["/projects/" + this.id + "/sprintbacklog"]);
+    }
   }
 
   ngOnDestroy() {

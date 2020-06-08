@@ -1,0 +1,18 @@
+<div class="grid-container">
+  <h2 class="mat-h2">
+      <a [routerLink]="['/projects']" routerLinkActive="router-link-active">Mes Projets</a>
+      <span>&nbsp;/&nbsp;</span>
+      <a [routerLink]="['/projects/'+ projectId +'/productbacklog']" routerLinkActive="router-link-active">{{ projectTitle }}</a>
+      <span>&nbsp;/&nbsp;</span>
+      <a [routerLink]="['/projects/'+ projectId +'/sprintbacklog']" routerLinkActive="router-link-active">Sprint Backlog</a>
+  </h2>
+
+  <div style="text-align:center" class="bg-text">
+
+    <div class="container" cdkDropListGroup>
+      <app-list name="To do" [cardStore]="cardStore" addable="true" (updated)="updateSprintBacklog()"></app-list>
+      <app-list name="Doing" [cardStore]="cardStore" (updated)="updateSprintBacklog()"></app-list>
+      <app-list name="Done" [cardStore]="cardStore" (updated)="updateSprintBacklog()"></app-list>
+    </div>
+  </div>
+</div>

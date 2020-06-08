@@ -22,7 +22,7 @@ export class ScrumTeam {
         this.members.splice(index, 1);
     }
     
-    public changeTaskPriority(task : Task, priority : number) : void {
-        task.changePriority(priority);
-    }
+    // public changeTaskPriority(task : Task, priority : number) : void {
+    //     task.changePriority(priority);
+    // }
 }

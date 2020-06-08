@@ -1,0 +1,80 @@
+<mat-card class="card" *ngIf="card"
+    draggable="true" 
+    (dragstart)="dragStart($event)" 
+    id="{{card.getId()}}"> 
+    
+    <mat-card-content>
+        <div>
+            <div class="sideBySide">
+                <div class="task">
+                    
+                    <div>
+                        <p>{{card.getTitle()}}</p> 
+                        <p *ngIf="notFinished"
+                            class="mat-caption" [ngClass]="compareDatetoToday(card.getDeadline())">
+                            {{ card.getDeadline() | date: 'longDate' }}
+                        </p>
+                        <p *ngIf="notFinished && card.getPriority()">
+                            <label [ngClass]="card.getPriority().toLowerCase()">
+                                {{ card.getPriority() }}
+                            </label>
+                        </p>
+                    </div>
+                </div>
+                <button *ngIf="notFinished" aria-label="Editer la tâche"
+                    mat-icon-button (click)="openDialog()">
+                    <mat-icon matTooltip="Editer la tâche" matTooltipShowDelay="1300">
+                        edit
+                    </mat-icon>
+                </button>
+                <button *ngIf="!notFinished && card.getDescription()" aria-label="Voir les détails de la tâche terminée"
+                    mat-icon-button (click)="openViewDialog(viewDetails)">
+                    <mat-icon matTooltip="Voir les détails" matTooltipShowDelay="1300">
+                        remove_red_eye
+                    </mat-icon>
+                </button>
+            </div>
+            <div *ngIf="notFinished">
+                <mat-chip-list
+                    *ngIf="card.getMembers() && card.getMembers().length < 3">
+                    <mat-chip *ngFor="let member of card.getMembers()">
+                        {{ member }}
+                    </mat-chip>
+                </mat-chip-list>
+                <mat-chip-list
+                    *ngIf="card.getMembers() && card.getMembers().length > 2">
+                    <mat-chip>
+                        {{ card.getMembers()[0] }}
+                    </mat-chip>
+                    <mat-chip>
+                        {{ card.getMembers()[1] }}
+                    </mat-chip>
+                    <mat-chip 
+                        [matTooltip]="displayOthers()" 
+                        [matTooltipClass]="'my-tooltip'">
+                        ...
+                    </mat-chip>
+                </mat-chip-list>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>
+
+<ng-template #viewDetails let-data>
+    <h2 mat-dialog-title>
+        {{data.title}}
+    </h2>
+    <mat-dialog-content style="overflow-y: hidden !important;">
+        <p style="word-wrap: break-word;">
+            {{data.description}}
+        </p>
+        <mat-chip-list *ngIf="data.members">
+            <mat-chip *ngFor="let member of data.members">
+                {{ member }}
+            </mat-chip>
+        </mat-chip-list>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button aria-label="Retourner à l'écran principal" mat-button mat-dialog-close>Retour</button>
+    </mat-dialog-actions>
+</ng-template>

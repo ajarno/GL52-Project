@@ -1,0 +1,20 @@
+.grid-container {
+  margin: 20px;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding-inline-start: 20px;
+  padding-inline-end: 20px;
+}
+
+.item {
+  margin-bottom: 20px;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
