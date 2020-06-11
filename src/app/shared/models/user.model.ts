@@ -1,13 +1,9 @@
-export abstract class User {
-    private firstName : string;
-
-    private lastName : string;
-
-    private age : number;
-
-    private job : string;
-
-    private email : string;
+abstract class User {
+    private firstName: string;
+    private lastName: string;
+    private age: number;
+    private job: string;
+    private email: string;
 
 
     public getFirstName() : string {

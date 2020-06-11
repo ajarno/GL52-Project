@@ -1,14 +1,10 @@
-import { SprintBacklog } from '.';
+import { SprintBacklog } from './sprint-backlog.model';
 
 export class Sprint {
     private name : string;
-
     private startDate : Date;
-
     private endDate : Date;
-    
     private sprintBacklog : SprintBacklog;
-
 
     public getName() : string {
         return this.name;

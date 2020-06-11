@@ -1,0 +1,39 @@
+<div class="header">
+  <h2 class="title" mat-dialog-title>
+    Terminer le sprint : {{ backlog.getSprintName() }}
+  </h2>
+  <small>{{ done }} ticket(s) terminé(s).</small>
+  <small>{{ toDo + done }} ticket(s) incomplet(s).</small>
+</div>
+
+<mat-dialog-content>
+  <div *ngIf="stories">
+    <h5>Transférer les tickets incomplets vers un nouveau sprint.</h5>
+    <mat-form-field>
+      <mat-label>Créer un sprint à partir de la story suivante</mat-label>
+      <mat-select [(value)]="selectedStory" name="story" required>
+        <mat-option *ngFor="let story of stories" value="story.getName()">
+            {{ story.getName() }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button class="mat-stroked-button" aria-label="Annuler" (click)="dismiss()">
+    Retour
+  </button>
+  <button *ngIf="stories === null"
+    color="primary" mat-flat-button
+    [disabled]="selectedStory === null"
+    (click)="close()">
+    Terminer
+  </button>
+  <button *ngIf="stories !== null"
+    color="primary" mat-flat-button
+    [disabled]="selectedStory === null"
+    (click)="transfer()">
+    Transférer
+  </button>
+</mat-dialog-actions>

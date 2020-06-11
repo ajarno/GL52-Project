@@ -1,11 +1,14 @@
 <div class="grid-container">
-  <h2 class="mat-h2">
-      <a [routerLink]="['/projects']" routerLinkActive="router-link-active">Mes Projets</a>
-      <span>&nbsp;/&nbsp;</span>
-      <a [routerLink]="['/projects/'+ projectId +'/productbacklog']" routerLinkActive="router-link-active">{{ projectTitle }}</a>
-      <span>&nbsp;/&nbsp;</span>
-      <a [routerLink]="['/projects/'+ projectId +'/sprintbacklog']" routerLinkActive="router-link-active">Sprint Backlog</a>
-  </h2>
+  <div class="header">
+    <h2 class="mat-h2">
+        <a [routerLink]="['/projects']" routerLinkActive="router-link-active">Mes Projets</a>
+        <span>&nbsp;/&nbsp;</span>
+        <a [routerLink]="['/projects/'+ projectId +'/productbacklog']" routerLinkActive="router-link-active">{{ projectTitle }}</a>
+        <span>&nbsp;/&nbsp;</span>
+        <a [routerLink]="['/projects/'+ projectId +'/sprintbacklog']" routerLinkActive="router-link-active">Sprint Backlog</a>
+    </h2>
+    <button *ngIf="role === 'Scrum Master'" mat-stroked-button class="action-button" color="primary" (click)="closeSprint()">Terminer le sprint</button>
+  </div>
 
   <div style="text-align:center" class="bg-text">
 

@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LayoutModule } from '@angular/cdk/layout';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MenuComponent } from './components/menu/menu.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -10,14 +12,19 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { MenuComponent } from './components/menu/menu.component';
 import { MatTableModule} from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatSortModule } from '@angular/material/sort';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
 
-const BASE_MODULES = [CommonModule, FormsModule, ReactiveFormsModule, LayoutModule];
+const BASE_MODULES = [CommonModule, FormsModule, ReactiveFormsModule, LayoutModule, DragDropModule];
 
 const MAT_MODULES = [
   MatToolbarModule,
@@ -32,7 +39,13 @@ const MAT_MODULES = [
   MatInputModule,
   MatCheckboxModule,
   MatChipsModule,
-  MatSortModule
+  MatSortModule,
+  MatDialogModule,
+  MatDatepickerModule,
+  MatTooltipModule,
+  MatSnackBarModule,
+  MatNativeDateModule,
+  MatSelectModule
 ];
 
 const COMPONENTS = [

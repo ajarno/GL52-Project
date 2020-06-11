@@ -1,0 +1,20 @@
+.story-title {
+    margin: 0;
+}
+
+.mat-form-field {
+    width: 100%
+}
+
+.mat-dialog-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header {
+    padding-bottom: 2rem;
+}
+
+.mat-dialog-actions {
+    padding-top: 1rem; 
+}

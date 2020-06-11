@@ -1,5 +1,3 @@
-import { Symbols } from "./Symbols";
-
 export class Task {
   private id: string;
   private title: string;
@@ -45,14 +43,6 @@ export class Task {
     this.title = title;
   }
 
-  // public getTags() : Array<string> {
-  //     return this.tags;
-  // }
-
-  // public setTags(tags : Array<string>) : void {
-  //     this.tags = tags;
-  // }
-
   public getPriority(): string {
     return this.priority;
   }
@@ -85,19 +75,6 @@ export class Task {
   //     this.users = users;
   // }
 
-  // public changeStatus(status : Status) : void {
-  //     this.setStatus(status);
-  // }
-
-  // public addTag(tag : string) : void {
-  //     this.tags.push(tag);
-  // }
-
-  // public removeTag(tag : string) : void {
-  //     let index = this.tags.indexOf(tag);
-  //     this.tags.splice(index, 1);
-  // }
-
   // public addUser(user : User) : void {
   //     this.users.push(user);
   // }
@@ -113,9 +90,5 @@ export class Task {
 
   // public assignMembers(users : Array<User>) : void {
   //     this.setUsers(users);
-  // }
-
-  // public changePriority(priority : Symbols) {
-  //     this.setPriority(priority);
   // }
 }

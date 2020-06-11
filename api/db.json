@@ -25,20 +25,21 @@
       "status": "finished"
     },
     {
-      "name": "Projet 5",
-      "description": "Ceci est la description du projet",
-      "status": "in progress",
-      "id": 5
-    },
-    {
       "name": "Projet 6",
       "description": "Ceci est la description du projet",
       "status": "finished",
       "id": 6
+    },
+    {
+      "name": "Projet 5",
+      "description": "Ceci est la description du projet.",
+      "status": "in progress",
+      "id": 7
     }
   ],
   "productBacklog": [
     {
+      "id": 1,
       "projectId": 1,
       "stories": [
         {
@@ -74,6 +75,7 @@
       ]
     },
     {
+      "id": 2,
       "projectId": 2,
       "stories": [
         {
@@ -91,6 +93,7 @@
       ]
     },
     {
+      "id": 3,
       "projectId": 3,
       "stories": [
         {
@@ -118,11 +121,23 @@
           "status": "To do"
         }
       ]
+    },
+    {
+      "id": 4,
+      "projectId": 7,
+      "stories": [
+        {
+          "id": "OAf2ULQYD",
+          "name": "Page d'accueil",
+          "priority": "Medium",
+          "status": "Doing"
+        }
+      ]
     }
   ],
   "sprintBacklog": [
     {
-      "id": "PPBqWA9",
+      "id": 1,
       "storyId": 1,
       "projectId": 1,
       "sprintName": "Sprint 1",
@@ -189,7 +204,7 @@
       ]
     },
     {
-      "id": "eWRhpRV",
+      "id": 2,
       "storyId": 2,
       "projectId": 2,
       "sprintName": "Sprint 1",
@@ -241,7 +256,7 @@
       ]
     },
     {
-      "id": "23TplPdS",
+      "id": 3,
       "storyId": 3,
       "projectId": 2,
       "sprintName": "Sprint 2",
@@ -269,7 +284,7 @@
       ]
     },
     {
-      "id": "46Juzcyx",
+      "id": 4,
       "storyId": 1,
       "projectId": 3,
       "sprintName": "Sprint 1",

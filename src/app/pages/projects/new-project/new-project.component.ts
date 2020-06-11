@@ -1,9 +1,12 @@
 import { Component, OnInit } from "@angular/core";
 import { COMMA, ENTER } from "@angular/cdk/keycodes";
 import { MatChipInputEvent } from "@angular/material/chips";
-import { ProjectService } from "../../../core/services/project.service";
 import { Router } from "@angular/router";
 import { Validators, FormControl } from '@angular/forms';
+import { Project } from 'src/app/shared/models/project.model';
+import { ProductBacklogService } from 'src/app/core/services/product-backlog.service';
+import { ProjectService } from 'src/app/core/services/project.service';
+import { ProductBacklog } from 'src/app/shared/models/product-backlog.model';
 
 @Component({
   selector: "app-new-project",
@@ -21,26 +24,22 @@ export class NewProjectComponent implements OnInit {
   users: any[] = [];
   name: string;
   description: string;
-  project: any;
 
   projectFormControl = new FormControl('', [
     Validators.required,
   ]);
 
-  constructor(private projectService: ProjectService, private router: Router) {}
+  constructor(private projectService: ProjectService, private productBacklogService: ProductBacklogService, private router: Router) {}
 
   ngOnInit(): void {}
 
   createNewProject() {
-    this.project = {
-      name: this.name,
-      description: this.description,
-      status: "in progress",
-      users: this.users,
-    };
-    this.projectService.createProject(this.project).subscribe(() =>
-      this.router.navigate(["/projects"])
-    );
+    const project: Project = new Project(this.name, this.description, "in progress" /*, this.users, */);
+    this.projectService.createProject(project).subscribe((newCreatedProject: any) => {
+      if (newCreatedProject.id) this.productBacklogService.createProductBacklog(new ProductBacklog(newCreatedProject.id)).subscribe(() => 
+        this.router.navigate(["/projects"])
+      );
+    });
   }
 
   add(event: MatChipInputEvent): void {

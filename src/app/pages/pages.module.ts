@@ -7,22 +7,12 @@ import { RoleAuthenticationComponent } from './role-authentication/role-authenti
 import { ProjectsComponent } from './projects/projects.component';
 import { NewProjectComponent } from './projects/new-project/new-project.component';
 import { RouterModule } from '@angular/router';
-import { ProjectBacklogComponent } from './projects/project-backlog/project-backlog.component';
+import { ProjectBacklogComponent } from './project-backlog/project-backlog.component';
 import { SprintBacklogComponent } from './sprintbacklog/board/sprintbacklog.component';
-import { ListComponent } from './sprintbacklog/list/list.component';
-import { CardComponent } from './sprintbacklog/card/card.component';
 import { EditDialogComponent } from './sprintbacklog/edit-dialog/edit-dialog.component';
-import { DragDropModule } from '@angular/cdk/drag-drop';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatInputModule } from '@angular/material/input';
-import { MatChipsModule } from '@angular/material/chips';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatSelectModule } from '@angular/material/select';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { NewSprintComponent } from './project-backlog/new-sprint/new-sprint.component';
+import { NewStoryComponent } from './project-backlog/new-story/new-story.component';
+import { CloseSprintComponent } from './sprintbacklog/close-sprint/close-sprint.component';
 
 const COMPONENTS = [
   DashboardComponent,
@@ -33,9 +23,10 @@ const COMPONENTS = [
   DashboardComponent,
   RoleAuthenticationComponent,
   SprintBacklogComponent,
-  ListComponent,
-  CardComponent,
-  EditDialogComponent
+  EditDialogComponent,
+  NewSprintComponent,
+  NewStoryComponent,
+  CloseSprintComponent,
 ];
 
 @NgModule({
@@ -48,20 +39,6 @@ const COMPONENTS = [
     SharedModule,
     ThemeModule,
     RouterModule,
-    CommonModule,
-    SharedModule,
-    ThemeModule,
-    DragDropModule,
-    MatDialogModule,
-    MatCardModule,
-    MatButtonModule,
-    MatInputModule,
-    MatDatepickerModule,
-    MatChipsModule,
-    MatTooltipModule,
-    MatSnackBarModule,
-    MatNativeDateModule,
-    MatSelectModule
   ]
 })
 export class PagesModule { }

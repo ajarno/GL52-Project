@@ -1,0 +1,62 @@
+<div class="header">
+  <mat-form-field class="title-field">
+    <h2 class="title" mat-dialog-title>
+      <input required matInput
+        placeholder="Nom du sprint"
+        [formControl]="sprintName"
+        type="text"
+      />
+    </h2>
+    <mat-error *ngIf="sprintName.hasError('required')">
+      Nom de sprint <strong>requis</strong>
+    </mat-error>
+  </mat-form-field>
+</div>
+
+<mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Durée</mat-label>
+    <mat-select [(value)]="duration" name="duration" (selectionChange)="changeDuration()" required>
+      <mat-option value="1">1 semaine</mat-option>
+      <mat-option value="2">2 semaines</mat-option>
+      <mat-option value="3">3 semaines</mat-option>
+      <mat-option value="">Personalisé</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="date-field">
+    <input required [formControl]="startDate"
+      matInput [min]="today" readonly
+      placeholder="Date de début"
+      [matDatepicker]="startDatePicker"
+      (dateChange)="changeDuration()"
+    />
+    <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+    <mat-datepicker #startDatePicker disabled="false"></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field class="date-field">
+    <input required [disabled]="duration !== ''" [formControl]="endDate"
+      matInput [min]="startDate.value" readonly
+      placeholder="Date de fin"
+      [matDatepicker]="endDatepicker"
+      (dateChange)="togglePersonalized()"
+    />
+    <mat-datepicker-toggle matSuffix [for]="endDatepicker"></mat-datepicker-toggle>
+    <mat-datepicker #endDatepicker disabled="false"></mat-datepicker>
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button class="mat-stroked-button" aria-label="Annuler" (click)="close()">
+    Retour
+  </button>
+  <button color="primary" mat-flat-button
+    class="saveButton"
+    aria-label="Enregistrer le sprint"
+    [disabled]="sprintName.hasError('required')"
+    (click)="save()"
+  >
+    Valider
+  </button>
+</mat-dialog-actions>

@@ -1,114 +1,125 @@
-import { ScrumMaster, ScrumTeam, ProductOwner, Meeting, ProductBacklog, Sprint } from '.';
+// import { ScrumMaster, ScrumTeam, ProductOwner, Meeting, ProductBacklog, Sprint } from '.';
 
 export class Project {
-    private name : string;
+    private id: number;
+    private name: string;
+    private description: string;
+    // private scrumMaster: ScrumMaster;
+    // private scrumTeam: ScrumTeam;
+    // private productOwner: ProductOwner;
+    // private meetings: Array<Meeting> = new Array();
+    // private productBacklog: ProductBacklog;
+    // private sprints: Array<Sprint> = new Array();
+    private status: string;
 
-    private description : string;
+    constructor(name: string, description: string, status: string, id?: number) {
+            this.name = name;
+            this.description = description;
+            this.status = status;
+            if (id) this.id = id;
+    }
 
-    private scrumMaster : ScrumMaster;
+    public getId(): number {
+        return this.id;
+    };
 
-    private scrumTeam : ScrumTeam;
-
-    private productOwner : ProductOwner;
-
-    private meetings : Array<Meeting> = new Array();
-
-    private productBacklog : ProductBacklog;
-
-    private sprints : Array<Sprint> = new Array();
-    
-    private status : string;
-
-
-    public getName() : string {
+    public getName(): string {
         return this.name;
     }
     
-    public setName(name : string) : void {
+    public setName(name: string): void {
         this.name = name;
     }
 
-    public getDescription() : string {
+    public getDescription(): string {
         return this.description;
     }
 
-    public setDescription(description : string) : void {
+    public setDescription(description: string): void {
         this.description = description;
     }
 
-    public getScrumMaster() : ScrumMaster {
-        return this.scrumMaster;
+    public getStatus(): string {
+        return this.status;
     }
 
-    public setScrumMaster(scrumMaster : ScrumMaster) : void {
-        this.scrumMaster = scrumMaster;
+    public setStatus(status: string): void {
+        this.status = status;
     }
 
-    public getScrumTeam() : ScrumTeam {
-        return this.scrumTeam;
-    }
+    // public getScrumMaster() : ScrumMaster {
+    //     return this.scrumMaster;
+    // }
 
-    public setScrumTeam(scrumTeam : ScrumTeam) : void {
-        this.scrumTeam = scrumTeam;
-    }
+    // public setScrumMaster(scrumMaster : ScrumMaster) : void {
+    //     this.scrumMaster = scrumMaster;
+    // }
 
-    public getProductOwner() : ProductOwner {
-        return this.productOwner;
-    }
+    // public getScrumTeam() : ScrumTeam {
+    //     return this.scrumTeam;
+    // }
 
-    public setProjectOwner(productOwner : ProductOwner) : void {
-        this.productOwner = productOwner;
-    }
+    // public setScrumTeam(scrumTeam : ScrumTeam) : void {
+    //     this.scrumTeam = scrumTeam;
+    // }
 
-    public getMeetings() : Array<Meeting> {
-        return this.meetings;
-    }
+    // public getProductOwner() : ProductOwner {
+    //     return this.productOwner;
+    // }
 
-    public setMeetings(meetings : Array<Meeting>) : void {
-        this.meetings = meetings;
-    }
+    // public setProjectOwner(productOwner : ProductOwner) : void {
+    //     this.productOwner = productOwner;
+    // }
 
-    public getProductBacklog() : ProductBacklog {
-        return this.productBacklog;
-    }
+    // public getMeetings() : Array<Meeting> {
+    //     return this.meetings;
+    // }
 
-    public setProductBacklog(productBacklog : ProductBacklog) : void {
-        this.productBacklog = productBacklog;
-    }
+    // public setMeetings(meetings : Array<Meeting>) : void {
+    //     this.meetings = meetings;
+    // }
 
-    public getSprints() : Array<Sprint> {
-        return this.sprints;
-    }
+    // public getProductBacklog() : ProductBacklog {
+    //     return this.productBacklog;
+    // }
 
-    public setSprints(sprints : Array<Sprint>) : void {
-        this.sprints = sprints;
-    }
+    // public setProductBacklog(productBacklog : ProductBacklog) : void {
+    //     this.productBacklog = productBacklog;
+    // }
 
-    public addMeeting(meeting : Meeting) : void {
-        this.meetings.push(meeting);
-    }
+    // public getSprints() : Array<Sprint> {
+    //     return this.sprints;
+    // }
 
-    public removeMeeting(meeting : Meeting) : void {
-        let index = this.meetings.indexOf(meeting);
-        this.meetings.splice(index, 1);
-    }
+    // public setSprints(sprints : Array<Sprint>) : void {
+    //     this.sprints = sprints;
+    // }
 
-    public addSprint(sprint : Sprint) : void {
-        this.sprints.push(sprint);
-    }
+    // public addMeeting(meeting : Meeting) : void {
+    //     this.meetings.push(meeting);
+    // }
 
-    public removeSprint(sprint : Sprint) : void {
-        let index = this.sprints.indexOf(sprint);
-        this.sprints.splice(index, 1);
-    }
+    // public removeMeeting(meeting : Meeting) : void {
+    //     let index = this.meetings.indexOf(meeting);
+    //     this.meetings.splice(index, 1);
+    // }
 
-    public cancelMeeting(meeting : Meeting) : void {
-        let participants = meeting.getParticipants();
-        for (const iterator of participants) {
-            let email = iterator.getEmail();
-            // console.log("The meeting has been canceled ! =>" + email);
-        }
-        this.removeMeeting(meeting);
-    }
+    // public addSprint(sprint : Sprint) : void {
+    //     this.sprints.push(sprint);
+    // }
+
+    // public removeSprint(sprint : Sprint) : void {
+    //     let index = this.sprints.indexOf(sprint);
+    //     this.sprints.splice(index, 1);
+    // }
+
+    // public cancelMeeting(meeting : Meeting) : void {
+    //     let participants = meeting.getParticipants();
+    //     for (const iterator of participants) {
+    //         let email = iterator.getEmail();
+    //         // console.log("The meeting has been canceled ! =>" + email);
+    //     }
+    //     this.removeMeeting(meeting);
+    // }
 
 }

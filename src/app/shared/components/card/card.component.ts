@@ -1,10 +1,10 @@
 import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import { MatSnackBar, MatSnackBarConfig } from "@angular/material/snack-bar";
-import { EditDialogComponent } from "../edit-dialog/edit-dialog.component";
 import { Task } from 'src/app/shared/models/task.model';
 import { SprintBacklog } from 'src/app/shared/models/sprint-backlog.model';
 import { SprintBacklogService } from 'src/app/core/services/sprint-backlog.service';
+import { EditDialogComponent } from 'src/app/pages/sprintbacklog/edit-dialog/edit-dialog.component';
 
 
 @Component({

@@ -1,6 +1,4 @@
-import { ScrumTeamMember, Task } from '.';
-
-export class ScrumTeam {
+class ScrumTeam {
 
     
     private members : Array<ScrumTeamMember>;

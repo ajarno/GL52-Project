@@ -16,7 +16,7 @@
             </a>
         </mat-grid-tile>
         <mat-grid-tile *ngFor="let card of cards | async;let i = index" [colspan]="1" [rowspan]="1">
-            <app-project-preview title="{{card.name}}" id="{{card.id}}" content='{{card.description}}' index={{i}} (finished)="finish($event)" (deleted)="delete($event)"></app-project-preview>
+            <app-project-preview title="{{ card.getName() }}" id="{{ card.getId() }}" content='{{ card.getDescription() }}' index={{i}} (finished)="finish($event)" (deleted)="delete($event)"></app-project-preview>
         </mat-grid-tile>
 
     </mat-grid-list>
@@ -24,7 +24,7 @@
         <hr>
         <mat-grid-list cols="4" rowHeight="350px">
             <mat-grid-tile *ngFor="let card of cardFinished | async" [colspan]="1" [rowspan]="1">
-                <app-project-preview-finish title="{{card.name}}" id="{{card.id}}" content='{{card.description}}' (reOpened)="reOpen($event)"></app-project-preview-finish>
+                <app-project-preview-finish title="{{ card.getName() }}" id="{{ card.getId() }}" content='{{ card.getDescription() }}' (reOpened)="reOpen($event)"></app-project-preview-finish>
             </mat-grid-tile>
         </mat-grid-list>
     </div>

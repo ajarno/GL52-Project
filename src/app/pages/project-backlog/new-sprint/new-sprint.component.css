@@ -1,0 +1,17 @@
+.title {
+    margin: 0;
+}
+
+.mat-form-field {
+    width: 100%
+}
+
+.mat-dialog-actions {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1rem; 
+}
+
+.header {
+    padding-bottom: 1rem;
+}

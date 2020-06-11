@@ -1,48 +1,44 @@
-import { User } from '.';
-
 export class Meeting {
-    private startTime : Date;
+    // private startTime : Date;
+    // private endTime : Date;
+    // private participants : Array<User> = new Array();
 
-    private endTime : Date;
+    // public getStartTime() : Date {
+    //     return this.startTime;
+    // }
 
-    private participants : Array<User> = new Array();
+    // public setStartTime(startTime : Date) : void {
+    //     this.startTime = startTime; 
+    // }
 
-    public getStartTime() : Date {
-        return this.startTime;
-    }
+    // public getEndTime() : Date {
+    //     return this.endTime;
+    // }
 
-    public setStartTime(startTime : Date) : void {
-        this.startTime = startTime; 
-    }
+    // public setEndTime(endTime : Date) : void {
+    //     this.endTime = endTime;
+    // }
 
-    public getEndTime() : Date {
-        return this.endTime;
-    }
+    // public getParticipants() : Array<User> {
+    //     return this.participants;
+    // }
 
-    public setEndTime(endTime : Date) : void {
-        this.endTime = endTime;
-    }
+    // public setParticipants(participants : Array<User>) : void {
+    //     this.participants = participants;
+    // }
 
-    public getParticipants() : Array<User> {
-        return this.participants;
-    }
+    // public changeStartDate(date: Date) : void {
+    //     this.setStartTime(date);
+    // }
 
-    public setParticipants(participants : Array<User>) : void {
-        this.participants = participants;
-    }
+    // public changeEndDate(date: Date) : void {
+    //     this.setEndTime(date);
+    // }
 
-    public changeStartDate(date: Date) : void {
-        this.setStartTime(date);
-    }
-
-    public changeEndDate(date: Date) : void {
-        this.setEndTime(date);
-    }
-
-    public sendInvitations() : void {
-        for (const iterator of this.participants) {
-            let email = iterator.getEmail();
-            // console.log("send a invatation to" + email);
-        }
-    }
+    // public sendInvitations() : void {
+    //     for (const iterator of this.participants) {
+    //         let email = iterator.getEmail();
+    //         // console.log("send a invatation to" + email);
+    //     }
+    // }
 }

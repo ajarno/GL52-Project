@@ -5,11 +5,15 @@ import { ThemeModule } from '../theme/theme.module';
 import { ProjectPreviewComponent } from './components/project-preview/project-preview.component';
 import { RouterModule } from '@angular/router';
 import { ProjectPreviewFinishComponent } from './components/project-preview-finish/project-preview-finish.component';
+import { CardComponent } from './components/card/card.component';
+import { ListComponent } from './components/list/list.component';
 
 const COMPONENTS = [
   RoleChoiceComponent,
   ProjectPreviewComponent,
-  ProjectPreviewFinishComponent
+  ProjectPreviewFinishComponent,
+  ListComponent,
+  CardComponent
 ];
 
 @NgModule({

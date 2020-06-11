@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { Project, ProductBacklog } from "src/app/shared/models";
+import { Project } from 'src/app/shared/models/project.model';
 
 const headers = new HttpHeaders().set(
   "Content-type",

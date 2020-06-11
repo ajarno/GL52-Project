@@ -2,6 +2,7 @@ import { Component, OnInit, Input, OnDestroy } from "@angular/core";
 import { map } from "rxjs/operators";
 import { Breakpoints, BreakpointObserver } from "@angular/cdk/layout";
 import { ProjectService } from "../../core/services/project.service";
+import { Project } from 'src/app/shared/models/project.model';
 
 @Component({
   selector: "app-projects",
@@ -10,8 +11,8 @@ import { ProjectService } from "../../core/services/project.service";
 })
 export class ProjectsComponent implements OnInit, OnDestroy {
   role: string;
-  projectsInit: any[] = [];
-  projectsFinished: any[] = [];
+  projectsInit: Array<Project> = new Array();
+  projectsFinished: Array<Project> = new Array();
   private subs: Array<any> = []; // store the promises to unsubscribe if pending while exiting page
 
   cardFinished = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
@@ -42,50 +43,66 @@ export class ProjectsComponent implements OnInit, OnDestroy {
 
   private initProjects() {
     this.subs.push(
-      this.projectService.getProjects().subscribe(data => {
-        data.forEach(project => {
-          if (project["status"] === "finished") {
-            this.projectsFinished.push(project);
-          } else {
-            this.projectsInit.push(project);
-          }
+      this.projectService.getProjects().subscribe((data: any[]) => {
+        data.forEach(proj => {
+          const project: Project = new Project(
+            proj.name,
+            proj.description,
+            proj.status,
+            proj.id
+          );
+          project.getStatus() === "finished"
+            ? this.projectsFinished.push(project)
+            : this.projectsInit.push(project);
         });
       })
     );
   }
 
   finish(projectId: number): void {
-    this.subs.push(this.projectsInit.forEach(project => {
-      if (project["id"] == projectId) {
-        project["status"] = "finished";
+    const project: Project = this.projectsInit.find(
+      project => project.getId() == projectId
+    );
+    if (project !== undefined) {
+      project.setStatus("finished");
+      this.subs.push(
         this.projectService.updateProject(project).subscribe(() => {
-          this.reflash();
-        });
-      }
-    }));
+          this.projectsInit.splice(this.projectsInit.indexOf(project), 1);
+          this.projectsFinished.push(project);
+        })
+      );
+    }
   }
 
   reOpen(projectId: number): void {
-    this.subs.push(this.projectsFinished.forEach(project => {
-      if (project["id"] == projectId) {
-        project["status"] = "in progress";
+    const project: Project = this.projectsFinished.find(
+      project => project.getId() == projectId
+    );
+    if (project !== undefined) {
+      project.setStatus("in progress");
+      this.subs.push(
         this.projectService.updateProject(project).subscribe(() => {
-          this.reflash();
-        });
-      }
-    }));
+          this.projectsFinished.splice(
+            this.projectsFinished.indexOf(project),
+            1
+          );
+          this.projectsInit.push(project);
+        })
+      );
+    }
   }
 
   delete(projectId: number): void {
     this.subs.push(
       this.projectService.deleteProject(projectId).subscribe(() => {
-        this.reflash();
+        this.projectsInit.splice(
+          this.projectsInit.indexOf(
+            this.projectsInit.find(project => project.getId() == projectId)
+          ),
+          1
+        );
       })
     );
-  }
-
-  reflash(): void {
-    window.location.reload();
   }
 
   ngOnDestroy() {

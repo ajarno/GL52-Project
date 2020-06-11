@@ -2,30 +2,42 @@ import { Task } from './task.model';
 import { generate } from 'shortid';
 
 export class SprintBacklog {
-    private id: string;
-    private storyId: number;
+    private id: number;
+    private storyId: string;
     private projectId: number;
     private sprintName: string;
+    private startDate : Date;
+    private endDate : Date;
     private tasks: Array<Task>;
 
-    constructor(backlog?) {
-        if (backlog) {
-            this.id = backlog.id;
-            this.storyId = backlog.storyId;
-            this.projectId = backlog.projectId;
-            this.sprintName = backlog.sprintName;
-            this.tasks = backlog.tasks.map(task => 
-                new Task(task.id, task.title, task.priority, task.description, task.deadline, task.members, task.status)
-            );
-        }
+    constructor(storyId: string, projectId: number, sprintName: string, startDate: string, endDate: string, tasks?: Array<any>, id?: number) {
+        if (id) this.id = id;
+        this.storyId = storyId;
+        this.projectId = projectId;
+        this.sprintName = sprintName;
+        this.startDate = new Date(startDate);
+        this.endDate = new Date(endDate);
+        this.tasks = (tasks && tasks != []) ? this._initTasks(tasks) : new Array();
     }
 
-    getSprintId(): string {
+    private _initTasks(tasks: Array<any>): Array<Task> {
+        return tasks.map(task => new Task(task.id, task.title, task.priority, task.description, task.deadline, task.members, task.status));
+    }
+
+    getUnfinishedTasks(): Array<Task> {
+        return this.tasks.filter(task => task.getStatus() === "To do" || task.getStatus() === "Doing")
+    }
+
+    getSprintId(): number {
         return this.id;
     }
 
     getSprintName() : string {
         return this.sprintName;
+    }
+
+    getStoryId() : string {
+        return this.storyId;
     }
 
     getTasksIdForStatus(status: string) : Array<string> {

@@ -6,9 +6,9 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./project-preview-finish.component.css']
 })
 export class ProjectPreviewFinishComponent implements OnInit {
-  @Input() id:number;
-  @Input() title:string;
-  @Input() content:string;
+  @Input() id: number;
+  @Input() title: string;
+  @Input() content: string;
 
   role: string;
   

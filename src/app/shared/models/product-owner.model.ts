@@ -1,6 +1,7 @@
-import { User, Project, Task, ProductBacklog } from '.';
+import { Project } from "./project.model";
+import { Task } from "./task.model";
 
-export class ProductOwner extends User {
+class ProductOwner extends User {
 
     public addTask(project : Project, task : Task) {
         // project.getProductBacklog().addTask(task);
@@ -11,8 +12,8 @@ export class ProductOwner extends User {
     // }
 
     public createProductBacklog(project : Project) : void {
-        let productBacklog = new ProductBacklog();
-        project.setProductBacklog(productBacklog);
+        // let productBacklog = new ProductBacklog();
+        // project.setProductBacklog(productBacklog);
     }
     
     // public changeTaskPriority(task : Task, priority : number) : void {

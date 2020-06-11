@@ -1,13 +1,15 @@
-import { User, Project, Meeting, Task } from '.';
+import { Project } from "./project.model";
+import { Meeting } from "./meeting.model";
+import { Task } from "./task.model";
 
-export class ScrumMaster extends User {
+class ScrumMaster extends User {
     
     public createMeeting(project : Project, meeting : Meeting) : void {
-        project.addMeeting(meeting);
+        // project.addMeeting(meeting);
     }
 
     public createProject() : void {
-        let project = new Project();
+        // let project = new Project();
         //stock project
     }
 

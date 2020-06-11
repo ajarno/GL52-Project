@@ -1,0 +1,40 @@
+<div class="header">
+  <mat-form-field class="title-field">
+    <h2 class="story-title" mat-dialog-title>
+      <textarea
+        matInput
+        placeholder="Résumé de la story"
+        [formControl]="name"
+        type="text"
+      ></textarea>
+    </h2>
+    <mat-error *ngIf="name.hasError('required')">
+      Veuillez indiquer un résumé de story
+    </mat-error>
+  </mat-form-field>
+</div>
+
+<mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Priorité</mat-label>
+    <mat-select
+      [(ngModel)]="priority"
+      name="duration"
+    >
+      <mat-option value="High">High</mat-option>
+      <mat-option value="Medium">Medium</mat-option>
+      <mat-option value="Low">Low</mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button class="mat-raised-button" aria-label="Annuler" (click)="close()">
+    Retour
+  </button>
+  <button mat-raised-button color="primary"
+    class="saveButton" aria-label="Enregistrer le sprint"
+    [disabled]="name.hasError('required')" (click)="save()">
+    Créer
+  </button>
+</mat-dialog-actions>
