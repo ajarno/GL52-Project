@@ -32,3 +32,7 @@
   font-size: 0.75em;
   padding-right: 20px; 
 }
+
+.mat-list-item .mat-icon {
+  margin-right: 0.3em;
+}

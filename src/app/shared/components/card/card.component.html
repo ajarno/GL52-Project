@@ -21,7 +21,7 @@
                         </p>
                     </div>
                 </div>
-                <button *ngIf="notFinished" aria-label="Editer la tâche"
+                <button *ngIf="notFinished && userRole !== 'Product Owner'" aria-label="Editer la tâche"
                     mat-icon-button (click)="openDialog()">
                     <mat-icon matTooltip="Editer la tâche" matTooltipShowDelay="1300">
                         edit

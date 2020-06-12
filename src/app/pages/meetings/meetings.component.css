@@ -1,0 +1,15 @@
+.picture {
+    margin-top: 2em;
+    min-width: 200px;
+    width: 50%;
+}
+  
+.grid-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.grid-container > h2 {
+    font-weight: 500;
+}

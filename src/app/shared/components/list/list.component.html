@@ -16,7 +16,7 @@
                     <app-card [card]="cardStore.getCard(cardId)" [cards]="cardStore" [list]="list" (updated)="updateSprint()"></app-card>
                 </div>
             </div>
-            <mat-form-field *ngIf="addable" class="newCard">
+            <mat-form-field *ngIf="addable && userRole !== 'Product Owner'" class="newCard">
                 <input matInput #addCardInput type="text" 
                     placeholder="Ajouter une tâche..."
                     (keyup.enter)="onEnter(addCardInput.value); addCardInput.value='';" 

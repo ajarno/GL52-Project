@@ -27,11 +27,15 @@ export class ListComponent implements OnInit {
   }
   
   list: Array<string>;
+  userRole: string;
+  
   @Output() updated = new EventEmitter<number>();
 
   constructor() { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    this.userRole = localStorage.getItem("role");
+  }
   
   drop(event: CdkDragDrop<Task[]>) {
     if (event.previousContainer === event.container) {

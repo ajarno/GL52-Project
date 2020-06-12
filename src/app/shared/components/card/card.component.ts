@@ -29,12 +29,15 @@ export class CardComponent implements OnInit {
   today: Date;
   notFinished: boolean;
 
+  userRole: string;
+
   @Output() updated = new EventEmitter<string>();
 
   constructor(private dialog: MatDialog, private snackBar: MatSnackBar, private service: SprintBacklogService) { }
     
   ngOnInit() { 
     this.today = new Date();
+    this.userRole = localStorage.getItem("role");
   }
  
   dragStart(ev) {

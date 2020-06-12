@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { SharedModule } from '../shared/shared.module';
 import { ThemeModule } from '../theme/theme.module';
 import { RoleAuthenticationComponent } from './role-authentication/role-authentication.component';
@@ -13,26 +12,24 @@ import { EditDialogComponent } from './sprintbacklog/edit-dialog/edit-dialog.com
 import { NewSprintComponent } from './project-backlog/new-sprint/new-sprint.component';
 import { NewStoryComponent } from './project-backlog/new-story/new-story.component';
 import { CloseSprintComponent } from './sprintbacklog/close-sprint/close-sprint.component';
+import { MeetingsComponent } from './meetings/meetings.component';
 
 const COMPONENTS = [
-  DashboardComponent,
   RoleAuthenticationComponent,
   ProjectsComponent,
   NewProjectComponent,
   ProjectBacklogComponent,
-  DashboardComponent,
-  RoleAuthenticationComponent,
   SprintBacklogComponent,
   EditDialogComponent,
   NewSprintComponent,
   NewStoryComponent,
   CloseSprintComponent,
+  MeetingsComponent,
 ];
 
 @NgModule({
   declarations: [
     ...COMPONENTS,
-
   ],
   imports: [
     CommonModule,
