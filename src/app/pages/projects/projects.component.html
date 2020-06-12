@@ -3,7 +3,7 @@
         <a [routerLink]="['/projects']" routerLinkActive="router-link-active">Mes Projets</a>
     </h2>
 
-    <mat-grid-list cols="4" rowHeight="350px">
+    <mat-grid-list [cols]="breakpoint" rowHeight="40vh">
         <mat-grid-tile [colspan]="1" [rowspan]="1" *ngIf="role=='Scrum Master'">
             <a href="projects/new">
                 <mat-card class="projects-card">
@@ -20,9 +20,9 @@
         </mat-grid-tile>
 
     </mat-grid-list>
-    <div *ngIf="['Scrum Master', 'Product Owner'].includes(role) ">
+    <div *ngIf="['Scrum Master', 'Product Owner'].includes(role) && projectsFinished.length > 0">
         <hr>
-        <mat-grid-list cols="4" rowHeight="350px">
+        <mat-grid-list [cols]="breakpoint" rowHeight="40vh">
             <mat-grid-tile *ngFor="let card of cardFinished | async" [colspan]="1" [rowspan]="1">
                 <app-project-preview-finish title="{{ card.getName() }}" id="{{ card.getId() }}" content='{{ card.getDescription() }}' (reOpened)="reOpen($event)"></app-project-preview-finish>
             </mat-grid-tile>

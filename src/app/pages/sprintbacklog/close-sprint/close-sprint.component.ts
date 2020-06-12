@@ -33,7 +33,7 @@ export class CloseSprintComponent implements OnInit {
 
   backlog: SprintBacklog;
 
-  selectedStory: string = '';
+  selectedStory: Story = null;
 
   constructor(private router: Router, private dialog: MatDialog, private sprintBacklogService: SprintBacklogService, private productBacklogService: ProductBacklogService,
     private dialogRef: MatDialogRef<CloseSprintComponent>,
@@ -58,12 +58,11 @@ export class CloseSprintComponent implements OnInit {
   ngOnInit() { }
 
   close() {
-    this.sprintBacklogService.deleteSprintBacklog(this.backlog.getSprintId()).subscribe(() => {
-      this.dialogRef.close();
-    });
     this.productBacklog.updateStoryStatus(sessionStorage.getItem("storyId"), "Done");
-    this.productBacklogService.updateProductBacklog(this.productBacklog).subscribe(() => {});
-    this.router.navigate([`/projects/${this.productBacklog.getProjectId()}/productbacklog`]);
+    this.productBacklogService.updateProductBacklog(this.productBacklog).subscribe(() => {
+      this.dialogRef.close();
+      this.router.navigate([`/projects/${this.productBacklog.getProjectId()}/productbacklog`]);
+    });
   }
 
   transfer() {
@@ -73,17 +72,16 @@ export class CloseSprintComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = "55vh";
     dialogConfig.data = {
-
-      storyId: this.backlog.getStoryId(),
+      storyId: this.selectedStory.getId(),
       projectId: this.productBacklog.getProjectId(),
-      sprintName: this.selectedStory,
+      sprintName: this.selectedStory.getName(),
       tasks: this.backlog.getUnfinishedTasks()
     };
     
     let dialogRef = this.dialog.open(NewSprintComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(data => {
       if (data) {
-        const id: string = this.productBacklog.getStories().find((story: Story) => story.getName() === this.selectedStory).getId();
+        const id: string = this.selectedStory.getId();
         this.productBacklog.updateStoryStatus(id, "Doing");
         this.productBacklogService.updateProductBacklog(this.productBacklog).subscribe(() => {
           this.close();

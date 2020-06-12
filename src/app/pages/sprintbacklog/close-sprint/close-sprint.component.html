@@ -12,7 +12,7 @@
     <mat-form-field>
       <mat-label>Créer un sprint à partir de la story suivante</mat-label>
       <mat-select [(value)]="selectedStory" name="story" required>
-          <mat-option *ngFor="let story of stories" [value]="story.getName()">
+          <mat-option *ngFor="let story of stories" [value]="story">
             {{ story.getName() }}
         </mat-option>
       </mat-select>
@@ -35,7 +35,7 @@
   </button>
   <button *ngIf="(toDo + doing) > 0 && stories.length !== 0"
     color="primary" mat-flat-button
-    [disabled]="stories.length === 0 || selectedStory === ''"
+    [disabled]="stories.length === 0 || selectedStory === null"
     (click)="transfer()">
     Transférer
   </button>

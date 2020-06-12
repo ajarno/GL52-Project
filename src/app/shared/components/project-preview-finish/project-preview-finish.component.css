@@ -7,12 +7,23 @@
     opacity: 0.7;
 }
 
-.more-button {
-    position: absolute;
-    top: 5px;
-    right: 10px;
+.mat-menu-trigger  {
+    margin-bottom: 12px;
+    margin-right: -16px;
+    margin-top: -7px;
 }
 
-.projects-card-content {
-    margin-left: 20px;
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.mat-card-content {
+    color: rgb(85, 84, 84);
+    text-align: justify;
+}
+
+::ng-deep .mat-card-header-text {
+    margin: 0 !important;
 }

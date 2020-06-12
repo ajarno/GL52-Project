@@ -27,6 +27,8 @@ export class ProjectsComponent implements OnInit, OnDestroy {
     })
   );
 
+  breakpoint: number;
+
   constructor(
     private breakpointObserver: BreakpointObserver,
     private projectService: ProjectService
@@ -35,6 +37,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.initRole();
     this.initProjects();
+    this.breakpoint = (window.innerWidth <= 720) ? 1 : (window.innerWidth <= 1000) ? 2 : 4;
   }
 
   private initRole() {

@@ -1,157 +1,49 @@
 {
   "projects": [
     {
-      "id": 1,
-      "name": "Projet 1",
-      "description": "Ceci est la description du projet",
-      "status": "in progress"
-    },
-    {
-      "id": 2,
-      "name": "Projet 2",
-      "description": "Ceci est la description du projet",
-      "status": "in progress"
-    },
-    {
-      "id": 3,
-      "name": "Projet 3",
-      "description": "Ceci est la description du projet",
-      "status": "in progress"
-    },
-    {
-      "id": 4,
-      "name": "Projet 4",
-      "description": "Ceci est la description du projet",
-      "status": "finished"
-    },
-    {
-      "name": "Projet 6",
-      "description": "Ceci est la description du projet",
-      "status": "finished",
-      "id": 6
-    },
-    {
-      "name": "Projet 5",
-      "description": "Ceci est la description du projet.",
-      "status": "in progress",
-      "id": 7
-    },
-    {
       "name": "Immo VR",
       "description": "Réalisation, du Cahier des Charges à l'implémentation d'une application VR, permettant la visite guidée par la visualisation d'appartements créés à partir de photos et caractéristiques des produits disponibles",
       "status": "in progress",
       "id": 8
+    },
+    {
+      "name": "Nutri'Respect",
+      "description": "Application d'aide au consommateur. En scannant un produit, l'application permettrait de savoir diverses informations sélectionnées comme étant intéressantes pour l'utilisateur. Il pourrait connaître des informations comme la qualité nutritionnelle ou la faible teneur en additifs, ou encore savoir si le produit est adapté selon un profil alimentaire spécifique (végétarien, végétalien, sans gluten…)",
+      "status": "in progress",
+      "id": 9
+    },
+    {
+      "name": "Banqu'in",
+      "description": "Développement et réalisation d'un tableau de bord pour les banques. Application permettant une visualisation rapide et ergonomique des opérations bancaires. Elle devra, par exemple, afficher des statistiques sur les opérations bancaires et les tâches effectuées par les employés, automatiser les dépôts de chèques...",
+      "status": "in progress",
+      "id": 10
+    },
+    {
+      "name": "PartyNow",
+      "description": "Plateforme accessible via une application web et mobile permettant au détenteur d'organiser ou participer facilement à des soirées. On retrouvera donc les fonctionnalités de base suivantes : organisation d'une soirée depuis la plateforme, gestion de la participation à la soirée, système de rappel...",
+      "status": "in progress",
+      "id": 11
+    },
+    {
+      "name": "MySmartPlace",
+      "description": "Application de domotique permettant d'accéder à n'importe quel appareil connecté, et de le contrôler depuis son domicile ou à distance. ",
+      "status": "finished",
+      "id": 12
+    },
+    {
+      "name": "Médic Assist",
+      "description": "Concevoir et de réaliser une application permettant la gestion d’un cabinet médical.",
+      "status": "finished",
+      "id": 13
+    },
+    {
+      "name": "BrainMe",
+      "description": "Application Web, pour le brainstorming, où les utilisateurs peuvent discuter sur un sujet en postant leurs propositions ou leurs avis sur un espace public dédié à tous les membres de l'application.",
+      "status": "in progress",
+      "id": 14
     }
   ],
   "productBacklog": [
-    {
-      "id": 1,
-      "projectId": 1,
-      "stories": [
-        {
-          "id": 1,
-          "name": "Story 1",
-          "priority": "Medium",
-          "status": "Doing"
-        },
-        {
-          "id": 2,
-          "name": "Story 2",
-          "priority": "Low",
-          "status": "To do"
-        },
-        {
-          "id": 3,
-          "name": "Story 3",
-          "priority": "Low",
-          "status": "To do"
-        },
-        {
-          "id": 4,
-          "name": "Story 4",
-          "priority": "High",
-          "status": "To do"
-        },
-        {
-          "id": 5,
-          "name": "Story 5",
-          "priority": "High",
-          "status": "To do"
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "projectId": 2,
-      "stories": [
-        {
-          "id": 1,
-          "name": "Story 1",
-          "priority": "Medium",
-          "status": "Done"
-        },
-        {
-          "id": 2,
-          "name": "Story 2",
-          "priority": "Medium",
-          "status": "Doing"
-        }
-      ]
-    },
-    {
-      "id": 3,
-      "projectId": 3,
-      "stories": [
-        {
-          "id": 1,
-          "name": "Story 1",
-          "priority": "Medium",
-          "status": "Doing"
-        },
-        {
-          "id": 2,
-          "name": "Story 2",
-          "priority": "Low",
-          "status": "To do"
-        },
-        {
-          "id": 3,
-          "name": "Story 3",
-          "priority": "Medium",
-          "status": "To do"
-        },
-        {
-          "id": 4,
-          "name": "Story 4",
-          "priority": "High",
-          "status": "To do"
-        }
-      ]
-    },
-    {
-      "id": 4,
-      "projectId": 7,
-      "stories": [
-        {
-          "id": "OAf2ULQYD",
-          "name": "Page d'accueil",
-          "priority": "Medium",
-          "status": "Doing"
-        },
-        {
-          "id": "BYc9fKqmD",
-          "name": "Page de résumé",
-          "priority": "Medium",
-          "status": "To do"
-        },
-        {
-          "id": "rNFXws-2d",
-          "name": "Fonctionnalité d'envoi de mail",
-          "priority": "Low",
-          "status": "To do"
-        }
-      ]
-    },
     {
       "id": 5,
       "projectId": 8,
@@ -166,7 +58,7 @@
           "id": "YtEy0Qyo4",
           "name": "Évaluation des meilleurs choix technologiques ",
           "priority": "Medium",
-          "status": "Doing"
+          "status": "Done"
         },
         {
           "id": "Z_YPd1c9q",
@@ -178,6 +70,198 @@
           "id": "5QxvHfEEJ",
           "name": "Implémentation d'une version Béta de la génération de visualisation à partir de photos",
           "priority": "Medium",
+          "status": "Doing"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "projectId": 9,
+      "stories": [
+        {
+          "id": "u2oNCyhaW",
+          "name": "Recherche technologique et structuration de la base de données",
+          "priority": "Medium",
+          "status": "Doing"
+        },
+        {
+          "id": "PCgBfssch",
+          "name": "Développement Béta de l'application ",
+          "priority": "High",
+          "status": "To do"
+        },
+        {
+          "id": "fK9UKZ_lP",
+          "name": "Vérification des bugs potentiels",
+          "priority": "Medium",
+          "status": "To do"
+        },
+        {
+          "id": "RBA01Ycxw",
+          "name": "Ajout de nouvelles fonctionnalités",
+          "priority": "Low",
+          "status": "To do"
+        },
+        {
+          "id": "XYcVJN81p",
+          "name": "Amélioration et finalisation de l'application pour une version Alpha",
+          "priority": "High",
+          "status": "To do"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "projectId": 10,
+      "stories": [
+        {
+          "id": "hmhEaBVXn",
+          "name": "Découverte des contraintes de l'univers bancaire",
+          "priority": "Medium",
+          "status": "To do"
+        },
+        {
+          "id": "MiXetVqBI",
+          "name": "Renseignements sur le terrain pour les besoins spécifiques",
+          "priority": "Medium",
+          "status": "To do"
+        },
+        {
+          "id": "QXF3abqaV",
+          "name": "Réalisation du Cahier des Charges",
+          "priority": "Medium",
+          "status": "To do"
+        },
+        {
+          "id": "SXp81DB6a",
+          "name": "Développement de la version Béta",
+          "priority": "Medium",
+          "status": "To do"
+        },
+        {
+          "id": "Y_HSPfmyu",
+          "name": "Vérifications de la sécurité",
+          "priority": "High",
+          "status": "To do"
+        },
+        {
+          "id": "dCIiP0HN1",
+          "name": "Amélioration de la version Béta pour passer à la version Alpha",
+          "priority": "Medium",
+          "status": "To do"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "projectId": 11,
+      "stories": [
+        {
+          "id": "HVOGvU8Z-",
+          "name": "Développement rapide d'une application web",
+          "priority": "Low",
+          "status": "Done"
+        },
+        {
+          "id": "MRZ2PIki2",
+          "name": "Développement de l'application Android",
+          "priority": "Medium",
+          "status": "Done"
+        },
+        {
+          "id": "9HqQ9OJMB",
+          "name": "Adapter l'application au système Apple",
+          "priority": "Low",
+          "status": "Done"
+        },
+        {
+          "id": "fImJkj4Ip",
+          "name": "Rendre l'application ergonomique et esthétique",
+          "priority": "High",
+          "status": "Done"
+        },
+        {
+          "id": "GD3vwMdsz",
+          "name": "Ouvrir l'application au grand public",
+          "priority": "Medium",
+          "status": "Doing"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "projectId": 12,
+      "stories": [
+        {
+          "id": "oqPkszuDD",
+          "name": "Recherche sur la domotique et les objets connectés",
+          "priority": "Medium",
+          "status": "To do"
+        },
+        {
+          "id": "DMqtRJ8me",
+          "name": "Etude d'une solution potentiellement envisageable",
+          "priority": "Medium",
+          "status": "To do"
+        },
+        {
+          "id": "H6JGZB6ry",
+          "name": "Rédaction du Cahier des Charges",
+          "priority": "Low",
+          "status": "To do"
+        },
+        {
+          "id": "wdSZ1ZokX",
+          "name": "Début du développement",
+          "priority": "Medium",
+          "status": "To do"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "projectId": 13,
+      "stories": [
+        {
+          "id": "nuzCIWf5A",
+          "name": "Développer la page d'accueil",
+          "priority": "Low",
+          "status": "To do"
+        },
+        {
+          "id": "MLHC8StUC",
+          "name": "Implémenter les fonctionnalités core nécessaires au bon fonctionnement de l'application",
+          "priority": "Medium",
+          "status": "To do"
+        },
+        {
+          "id": "PWSKALZfr",
+          "name": "Développement de la base de données sécurisée",
+          "priority": "Medium",
+          "status": "To do"
+        },
+        {
+          "id": "EJTe0mS-v",
+          "name": "Rendre le site accessible",
+          "priority": "Medium",
+          "status": "To do"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "projectId": 14,
+      "stories": [
+        {
+          "id": "qcNYIiXBv",
+          "name": "Développement rapide d'une version Béta",
+          "priority": "Medium",
+          "status": "Doing"
+        },
+        {
+          "id": "neBbe2__s",
+          "name": "Amélioration et finalisation de l'application",
+          "priority": "Medium",
           "status": "To do"
         }
       ]
@@ -186,9 +270,11 @@
   "sprintBacklog": [
     {
       "id": 1,
-      "storyId": 1,
-      "projectId": 1,
-      "sprintName": "Sprint 1",
+      "storyId": "qcNYIiXBv",
+      "projectId": 14,
+      "sprintName": "Développement rapide d'une version Béta",
+      "startDate": "2020-06-12T14:13:31.813Z",
+      "endDate": "2020-06-26T14:13:31.813Z",
       "tasks": [
         {
           "id": 1,
@@ -252,51 +338,17 @@
       ]
     },
     {
-      "id": 2,
-      "storyId": 2,
-      "projectId": 2,
-      "sprintName": "Sprint 1",
+      "id": 7,
+      "storyId": "YtEy0Qyo4",
+      "projectId": 8,
+      "sprintName": "Évaluation des meilleurs choix technologiques ",
+      "startDate": "2020-06-12T00:30:21.413Z",
+      "endDate": "2020-06-19T00:30:21.413Z",
       "tasks": [
         {
-          "id": 1,
-          "title": "Rédiger le Cahier des Charges",
-          "priority": "High",
-          "description": "Définir les spécifications techniques, le contexte du projet, vérifier les brevets, faire l'étude de marché",
-          "deadline": null,
-          "members": null,
-          "status": "Doing"
-        },
-        {
-          "id": 2,
-          "title": "Faire le SADT",
+          "id": "dTGoVKJva",
+          "title": "Suivre une formation Tenserflow",
           "priority": null,
-          "description": null,
-          "deadline": null,
-          "members": [],
-          "status": "Doing"
-        },
-        {
-          "id": 3,
-          "title": "Choisir le sujet de projet",
-          "priority": null,
-          "description": "Définir le périmètre du sujet, les objectifs à atteindre, ainsi que les outils de réalisation utilisés.",
-          "deadline": null,
-          "members": [],
-          "status": "Done"
-        },
-        {
-          "id": 4,
-          "title": "Définir le groupe de projet",
-          "priority": null,
-          "description": null,
-          "deadline": null,
-          "members": [],
-          "status": "Done"
-        },
-        {
-          "id": "EM6exACzh",
-          "title": "Bonjour",
-          "priority": "Low",
           "description": null,
           "members": null,
           "status": "To do"
@@ -304,70 +356,193 @@
       ]
     },
     {
-      "id": 3,
-      "storyId": 3,
-      "projectId": 2,
-      "sprintName": "Sprint 2",
+      "storyId": "5QxvHfEEJ",
+      "projectId": 8,
+      "sprintName": "Implémentation d'une version Béta de la génération de visualisation à partir de photos",
+      "startDate": "2020-06-12T09:43:07.484Z",
+      "endDate": "2020-06-26T09:43:07.484Z",
       "tasks": [
         {
-          "id": 1,
-          "title": "Réaliser une maquette",
-          "status": "Doing",
-          "priority": "Medium"
+          "id": "dTGoVKJva",
+          "title": "Suivre une formation Tenserflow",
+          "priority": null,
+          "description": null,
+          "deadline": null,
+          "members": null,
+          "status": "To do"
+        }
+      ],
+      "id": 8
+    },
+    {
+      "id": 9,
+      "storyId": "u2oNCyhaW",
+      "projectId": 9,
+      "sprintName": "Recherche technologique et structuration de la base de données",
+      "startDate": "2020-06-12T14:27:37.882Z",
+      "endDate": "2020-06-26T14:27:37.882Z",
+      "tasks": [
+        {
+          "id": "XcgPJWmnh",
+          "title": "Découverte des QR Code",
+          "priority": null,
+          "description": null,
+          "deadline": null,
+          "members": null,
+          "status": "To do"
         },
         {
-          "id": 2,
-          "title": "Concevoir l'application",
-          "status": "To do",
+          "id": "U3buC9Yb9",
+          "title": "Lecture de code barres",
+          "priority": null,
           "description": null,
-          "priority": "High",
-          "members": [
-            "Marie",
-            "Jacques",
-            "Jean-Charles",
-            "Alexane"
-          ],
-          "deadline": "08-22-2019"
+          "deadline": null,
+          "members": null,
+          "status": "To do"
+        },
+        {
+          "id": "cehIQRhjm",
+          "title": "Base de recherche pour trouver les produits",
+          "priority": null,
+          "description": null,
+          "deadline": null,
+          "members": null,
+          "status": "To do"
+        },
+        {
+          "id": "rONe_gzjK",
+          "title": "Analyse des données via IA ou autre ?",
+          "priority": null,
+          "description": null,
+          "deadline": null,
+          "members": null,
+          "status": "To do"
         }
       ]
     },
     {
-      "id": 4,
-      "storyId": 1,
-      "projectId": 3,
-      "sprintName": "Sprint 1",
+      "id": 10,
+      "storyId": "HVOGvU8Z-",
+      "projectId": 11,
+      "sprintName": "Développement rapide d'une application web",
+      "startDate": "2020-06-12T14:31:04.331Z",
+      "endDate": "2020-06-26T14:31:04.331Z",
       "tasks": [
         {
-          "id": 1,
-          "title": "Rédiger le Cahier des Charges",
-          "status": "Doing",
-          "description": "Définir les spécifications techniques, le contexte du projet, vérifier les brevets, faire l'étude de marché",
-          "priority": "High"
+          "id": "rbFS4pKRI",
+          "title": "Frontend",
+          "priority": null,
+          "description": null,
+          "deadline": null,
+          "members": null,
+          "status": "Doing"
         },
         {
-          "id": 2,
-          "title": "Choisir le sujet de projet",
-          "status": "Done",
-          "description": "Définir le périmètre du sujet, les objectifs à atteindre, ainsi que les outils de réalisation utilisés."
+          "id": "3PxkLR6AH",
+          "title": "Backend",
+          "priority": null,
+          "description": null,
+          "deadline": null,
+          "members": null,
+          "status": "Done"
         },
         {
-          "id": 3,
-          "title": "Définir le groupe de projet",
+          "id": "7T-8_HVyj",
+          "title": "Base de données",
+          "priority": null,
+          "description": null,
+          "deadline": null,
+          "members": null,
           "status": "Done"
         }
       ]
     },
     {
-      "id": 5,
-      "storyId": "OAf2ULQYD",
-      "projectId": 7,
-      "sprintName": "Page d'accueil",
-      "startDate": "2020-06-11T23:32:05.918Z",
-      "endDate": "2020-06-25T23:32:05.918Z",
+      "id": 11,
+      "storyId": "fImJkj4Ip",
+      "projectId": 11,
+      "sprintName": "Rendre l'application ergonomique et esthétique",
+      "startDate": "2020-06-12T14:31:51.151Z",
+      "endDate": "2020-06-26T14:31:51.151Z",
       "tasks": [
         {
-          "id": "tkdOfgqgb",
-          "title": "bg",
+          "id": "rbFS4pKRI",
+          "title": "Frontend",
+          "priority": null,
+          "description": null,
+          "deadline": null,
+          "members": null,
+          "status": "Done"
+        },
+        {
+          "id": "sZbkARh66",
+          "title": "Etude de la palette des couleurs",
+          "priority": null,
+          "description": null,
+          "deadline": null,
+          "members": null,
+          "status": "Done"
+        },
+        {
+          "id": "sdPJ8kf6K",
+          "title": "Vérification des padding-margin...",
+          "priority": null,
+          "description": null,
+          "deadline": null,
+          "members": null,
+          "status": "Done"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "storyId": "MRZ2PIki2",
+      "projectId": 11,
+      "sprintName": "Développement de l'application Android",
+      "startDate": "2020-06-12T14:33:44.083Z",
+      "endDate": "2020-06-26T14:33:44.083Z",
+      "tasks": [
+        {
+          "id": "RM0BdP8wj",
+          "title": "Adaptation de l'application sous Android",
+          "priority": null,
+          "description": null,
+          "deadline": null,
+          "members": null,
+          "status": "Done"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "storyId": "9HqQ9OJMB",
+      "projectId": 11,
+      "sprintName": "Adapter l'application au système Apple",
+      "startDate": "2020-06-12T14:34:36.337Z",
+      "endDate": "2020-06-26T14:34:36.337Z",
+      "tasks": [
+        {
+          "id": "j8YbVBJG5",
+          "title": "Rendre l'application disponible sur l'AppStore",
+          "priority": null,
+          "description": null,
+          "deadline": null,
+          "members": null,
+          "status": "Done"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "storyId": "GD3vwMdsz",
+      "projectId": 11,
+      "sprintName": "Ouvrir l'application au grand public",
+      "startDate": "2020-06-12T14:35:23.958Z",
+      "endDate": "2020-06-26T14:35:23.958Z",
+      "tasks": [
+        {
+          "id": "TZA4lFgo2",
+          "title": "Acheter un domaine URL pour la disponibilité internet",
           "priority": null,
           "description": null,
           "deadline": null,
@@ -375,15 +550,6 @@
           "status": "Doing"
         }
       ]
-    },
-    {
-      "storyId": "YtEy0Qyo4",
-      "projectId": 8,
-      "sprintName": "Évaluation des meilleurs choix technologiques ",
-      "startDate": "2020-06-12T00:30:21.413Z",
-      "endDate": "2020-06-19T00:30:21.413Z",
-      "tasks": [],
-      "id": 7
     }
   ]
 }

@@ -34,6 +34,7 @@ export class ProductBacklog {
     }
 
     public updateStoryStatus(storyId: string, status: string): void {
-        this.stories.find(story => story.getId() === storyId).setStatus(status);
+        const story: Story = this.stories.find(story => story.getId() == storyId);
+        story.setStatus(status);
     }
 }

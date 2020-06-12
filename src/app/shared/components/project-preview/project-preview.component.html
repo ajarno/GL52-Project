@@ -1,20 +1,20 @@
 <mat-card class="projects-card" (click)="storeID()">
-    <mat-card-header>
+    <mat-card-header class="header">
         <mat-card-title>
             {{title}}
         </mat-card-title>
+        <div *ngIf="role=='Scrum Master'">
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Toggle menu" (click)="$event.stopPropagation();">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+                <button mat-menu-item (click)="finish()">Clôturer</button>
+                <button mat-menu-item (click)="delete()">Supprimer</button>
+            </mat-menu>
+        </div>
     </mat-card-header>
-    <mat-card-actions *ngIf="role=='Scrum Master'">
-        <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu" (click)="$event.stopPropagation();">
-            <mat-icon>more_vert</mat-icon>
-          </button>
-        <mat-menu #menu="matMenu" xPosition="before">
-            <button mat-menu-item (click)="finish()">Clôturer</button>
-            <button mat-menu-item (click)="delete()">Supprimer</button>
-        </mat-menu>
-    </mat-card-actions>
     <mat-card-content class="projects-card-content">
-        {{content}}
+        {{ content | slice: 0:350 }}{{ content.length > 350 ? '...' : ''}}
     </mat-card-content>
 </mat-card>
 <!-- </a> -->

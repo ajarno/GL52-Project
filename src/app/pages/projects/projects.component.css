@@ -22,11 +22,9 @@
 }
 
 .projects-card-new {
-    line-height: 250px;
-    /* position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%); */
+    line-height: 25vh; /* hauteur de ligne (identique) */
+    white-space: nowrap; /* interdiction de passer à la ligne */
+    margin: 0;
 }
 
 a {
