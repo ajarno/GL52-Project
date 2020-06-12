@@ -33,7 +33,7 @@ export class CloseSprintComponent implements OnInit {
 
   backlog: SprintBacklog;
 
-  selectedStory: string;
+  selectedStory: string = '';
 
   constructor(private router: Router, private dialog: MatDialog, private sprintBacklogService: SprintBacklogService, private productBacklogService: ProductBacklogService,
     private dialogRef: MatDialogRef<CloseSprintComponent>,
@@ -45,14 +45,14 @@ export class CloseSprintComponent implements OnInit {
       this.doing = this.backlog.getTasksIdForStatus("Doing").length;
       this.done = this.backlog.getTasksIdForStatus("Done").length;
 
-      if ((this.toDo + this.doing) > 0) {
-
-        productBacklogService.getProductBacklog(Number(sessionStorage.getItem("id"))).subscribe(data => {
-          const list = (data[0].stories) ? data[0].stories : [];
-          this.productBacklog = new ProductBacklog(data[0].projectId, list, data[0].id);
-          this.stories = this.productBacklog.getStories().filter((story: Story) => (story.getId() !== this.backlog.getStoryId()) && (story.getStatus() !== "To do"));
-        });
-      }
+      productBacklogService.getProductBacklog(Number(sessionStorage.getItem("projectId"))).subscribe(data => {
+        const list = (data[0].stories) ? data[0].stories : [];
+        this.productBacklog = new ProductBacklog(data[0].projectId, list, data[0].id);
+        
+        this.stories = this.productBacklog.getStories().filter((story: Story) =>
+          (story.getId() !== this.backlog.getStoryId()) && (story.getStatus() === "To do")
+        );        
+      });
   }
 
   ngOnInit() { }
@@ -61,7 +61,7 @@ export class CloseSprintComponent implements OnInit {
     this.sprintBacklogService.deleteSprintBacklog(this.backlog.getSprintId()).subscribe(() => {
       this.dialogRef.close();
     });
-    this.productBacklog.updateStoryStatus(this.backlog.getStoryId(), "Done");
+    this.productBacklog.updateStoryStatus(sessionStorage.getItem("storyId"), "Done");
     this.productBacklogService.updateProductBacklog(this.productBacklog).subscribe(() => {});
     this.router.navigate([`/projects/${this.productBacklog.getProjectId()}/productbacklog`]);
   }

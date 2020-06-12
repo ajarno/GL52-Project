@@ -8,3 +8,7 @@
     justify-content: space-between;
     padding-top: 1rem; 
 }
+
+.mat-form-field {
+    width: 100%;
+}
