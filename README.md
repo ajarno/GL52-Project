@@ -1,4 +1,4 @@
-# GL52-Projet Scrum
+﻿# GL52-Projet Scrum
 Implémentation d’un logiciel de gestion de projet suivant la méthodologie SCRUM
 
 ## Création et configuration
@@ -15,4 +15,4 @@ Implémentation d’un logiciel de gestion de projet suivant la méthodologie SC
 Il est fort utile de prendre connaissance de la documentation disponible :
 - sur Angular : [Angular docs](https://angular.io/docs) | [Angular Material](https://material.angular.io/)
 - sur JSON Server : [Github](https://github.com/typicode/json-server)
-- dans le dossier docs : [Bonnes pratiques avec Angular](docs/Projet-GL52_BonnesPratiquesAngular.md) | [Management des données](docs/Projet-GL52_ManagementDesDonnées.md)
+- dans le dossier docs : [Bonnes pratiques avec Angular](docs/Projet-GL52_BonnesPratiquesAngular.md) | [Management des données](docs/Projet-GL52_ManagementDesDonnées.md) | [Dossier de conception](docs/[GL52]ProjetSCRUM_JARNO.pdf)
